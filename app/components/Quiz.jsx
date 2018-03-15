@@ -1,94 +1,77 @@
 import React from 'react';
-import './../assets/scss/quiz.scss';
+import {UI} from '../config/config.js';
+import {QUESTIONS} from '../config/questions.js';
+import Animation from './Animation.jsx';
+import {stopAnimation} from './../reducers/actions';
 
-import * as Utils from '../vendors/Utils.js';
-import {addObjectives, resetObjectives, finishApp} from './../reducers/actions';
-
-import QuizHeader from './QuizHeader.jsx';
-import MCQuestion from './MCQuestion.jsx';
 
 export default class Quiz extends React.Component {
   constructor(props){
     super(props);
-    let quiz = this.props.quiz;
-    let questions = quiz.questions;
-
-    // Adaptive behaviour
-    // Sort questions based on difficulty
-    let adaptive_sorted = false;
-    if((this.props.config.adaptive === true) && (typeof props.user_profile === "object") && (typeof props.user_profile.learner_preference === "object") && (typeof props.user_profile.learner_preference.difficulty === "number")){
-      let difficulty = props.user_profile.learner_preference.difficulty;
-      if((difficulty >= 0) && (difficulty <= 10)){
-        for(let i = 0; i < questions.length; i++){
-          if((typeof questions[i].difficulty !== "number") || (questions[i].difficulty < 0) || (questions[i].difficulty > 10)){
-            questions[i].difficulty = 5;
-          }
-          questions[i].suitability = (10 - Math.abs((questions[i].difficulty - difficulty))) / 10;
-        }
-        questions.sort(function(a, b){ return b.suitability - a.suitability; });
-        adaptive_sorted = true;
-      }
-    }
-
-    if(adaptive_sorted === false){
-      questions = Utils.shuffleArray(questions);
-    }
-
-    if((typeof this.props.config.n === "number") && (this.props.config.n >= 1)){
-      // Limit number of questions
-      questions = questions.slice(0, Math.min(this.props.config.n, questions.length));
-    }
-
-    quiz.questions = questions;
-
-    this.state = {
-      quiz:quiz,
-      current_question_index:1,
-    };
+    this.state = {showAnimation:false};
   }
-  componentDidMount(){
-    // Create objectives (One per question included in the quiz)
-    let objectives = [];
-    let nQuestions = this.state.quiz.questions.length;
-    for(let i = 0; i < nQuestions; i++){
-      objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(1 / nQuestions)}));
+  componentWillReceiveProps(nextProps){
+    let question = nextProps.questions[nextProps.index];
+    let old_question = this.props.questions[this.props.index];
+    if(nextProps.game_started && question && question.show_animation && !old_question.show_animation){
+      this.setState({showAnimation:true});
+      setTimeout(() => {
+        this.setState({showAnimation:false});
+      }, 0);
     }
-    this.props.dispatch(addObjectives(objectives));
-  }
-  onNextQuestion(){
-    let isLastQuestion = (this.state.current_question_index === this.state.quiz.questions.length);
-    if(isLastQuestion === false){
-      this.setState({current_question_index:(this.state.current_question_index + 1)});
-    } else {
-      this.props.dispatch(finishApp(true));
-    }
-  }
-  onResetQuiz(){
-    this.setState({current_question_index:1});
-    this.props.dispatch(resetObjectives());
   }
   render(){
-    let currentQuestion = this.state.quiz.questions[this.state.current_question_index - 1];
-    let isLastQuestion = (this.state.current_question_index === this.state.quiz.questions.length);
+    let question = this.props.questions[this.props.index];
+    if(this.props.game_started && question){
+      let answer_right = question.answered && question.score === question.score_accomplished;
+      let answer_wrong = question.answered && question.score !== question.score_accomplished;
+      let feedback1, feedback2, feedback1_class, feedback2_class;
 
-    let objective = this.props.tracking.objectives["Question" + (this.state.current_question_index)];
-    let onNextQuestion = this.onNextQuestion.bind(this);
-    let onResetQuiz = this.onResetQuiz.bind(this);
-    let currentQuestionRender = "";
+      if(answer_right){
+        feedback1 = "has acertado";
+        feedback1_class = "user_answer user_right_answer";
+      } else if(answer_wrong){
+        feedback1 = "has fallado";
+        feedback1_class = "user_answer user_wrong_answer";
+      }
+      if(question.true_or_false){
+        feedback2 = "la noticia es verdadera";
+        feedback2_class = "question right_question";
+      } else {
+        feedback2 = "la noticia es falsa";
+        feedback2_class = "question wrong_question";
+      }
 
-    switch (currentQuestion.type){
-    case "multiple_choice":
-      currentQuestionRender = (<MCQuestion question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
-      break;
-    default:
-      currentQuestionRender = "Question type not supported";
+      let feedback_component = <div className={"feedback_header " + feedback1_class}>{feedback1 + ": " + feedback2}</div>;
+      let with_feedback = (question.answered && question.show_animation === false) ? "with_feedback" : "";
+
+      let nav_img = (question.secure === true) ? "assets/images/others/secure_nav.png" : "assets/images/others/no_secure_nav.png";
+
+      let urlStyle = {
+        left: (question.secure === true) ? "14.5%" : "7%"
+      };
+
+      return (
+          <div className="main_box">
+          {(question.answered && question.show_animation === false) ? feedback_component : null}
+          <Animation dispatch={this.props.dispatch} show={this.state.showAnimation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
+          <div className={"nav_box " + with_feedback}>
+            <div className="nav_position">
+              <img className="nav_image" src={nav_img}/>
+              <span className="nav_url" style={urlStyle}>{question.source_url}</span>
+            </div>
+          </div>
+            <div className="image_box">
+              <img className="quiz_image" src={question.answered ? question.feedback_path : question.path}/>
+            </div>
+          </div>
+      );
     }
-
     return (
-      <div className="quiz">
-        <QuizHeader I18n={this.props.I18n} quiz={this.state.quiz} currentQuestionIndex={this.state.current_question_index}/>
-        {currentQuestionRender}
-      </div>
+        <div className="main_box">
+          <p className="main_text">{UI.initial_text}</p>
+        </div>
     );
+
   }
 }

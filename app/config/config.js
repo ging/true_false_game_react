@@ -38,3 +38,17 @@ let processConfig = (function(){
   GLOBAL_CONFIG.debug_scorm_api = ((GLOBAL_CONFIG.debug) && (GLOBAL_CONFIG.debug_scorm_api));
   GLOBAL_CONFIG.debug_scorm_api_window = ((GLOBAL_CONFIG.debug_scorm_api) && (GLOBAL_CONFIG.debug_scorm_api_window));
 })();
+
+
+
+export const UI = {
+  name:"Detector de noticias falsas",
+  app_logo:"assets/images/logos/fakedetector_logo.svg",
+  type_app_logo:"assets/images/logos/news.svg",
+  educalab_text:"una aplicación de",
+  educalab_logo:"assets/images/logos/educalab_logo_white.svg",
+  initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, que no te tomen por tonto",
+  instructions:"Marca verdadero o falso para cada una de las noticias propuestas. Irás obteniendo una puntuación según cuantas aciertes.",
+  button_left:"Falso",
+  button_right:"Verdadero",
+};

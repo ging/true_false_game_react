@@ -12,6 +12,19 @@ export function updateUserProfile(user_profile){
   };
 }
 
+export function resetObjectives(objectives){
+  return {
+    type:'RESET_OBJECTIVES',
+  };
+}
+
+export function finishApp(finished = true){
+  return {
+    type:'FINISH_APP',
+    finished:finished,
+  };
+}
+
 export function addObjectives(objectives){
   return {
     type:'ADD_OBJECTIVES',
@@ -19,11 +32,6 @@ export function addObjectives(objectives){
   };
 }
 
-export function resetObjectives(objectives){
-  return {
-    type:'RESET_OBJECTIVES',
-  };
-}
 
 export function objectiveAccomplished(objectiveId, accomplishedScore = null){
   return {
@@ -33,32 +41,78 @@ export function objectiveAccomplished(objectiveId, accomplishedScore = null){
   };
 }
 
-// Example of action created using the redux-thunk middleware for Redux
-export function objectiveAccomplishedThunk(objectiveId, accomplishedScore = null){
-  return (dispatch, getState) => {
-    const firstState = JSON.parse(JSON.stringify(getState()));
-    dispatch(objectiveAccomplished(objectiveId, accomplishedScore = null));
-
-    // Perform another action after accomplishing the objective
-    const secondState = getState();
-    if((typeof firstState.tracking.objectives[objectiveId] === "object") && (firstState.tracking.objectives[objectiveId].accomplished === false) && (typeof secondState.tracking.objectives[objectiveId] === "object") && (secondState.tracking.objectives[objectiveId].accomplished === true)){
-      // Objective with id objectiveId was accomplished.
-      // Do something and/or dispatch another action.
-      console.log("Objective with id " + objectiveId + " was accomplished.");
-      dispatch(showDialog("Objective with id " + objectiveId + " was accomplished."));
-    }
-  };
-}
-
-export function showDialog(text){
-  return (dispatch, getState) => {
-    alert(text);
-  };
-}
-
-export function finishApp(finished = true){
+export function passquiz(right_left){
   return {
-    type:'FINISH_APP',
-    finished:finished,
+    type:'QUIZ_PASSED',
+    right_left:right_left,
+  };
+}
+
+export function initgame(questions){
+  return {
+    type:'INIT_GAME',
+    questions:questions,
+  };
+}
+
+export function startgame(){
+  return {
+    type:'START_GAME',
+  };
+}
+
+export function endgame(){
+  return {
+    type:'END_GAME',
+  };
+}
+
+export function updateTimer(){
+  return {
+    type:'UPDATE_TIME',
+  };
+}
+
+export function pauseTimer(){
+  return {
+    type:'PAUSE_TIMER',
+  };
+}
+
+export function unpauseTimer(){
+  return {
+    type:'UNPAUSE_TIMER',
+  };
+}
+
+export function quizAnswered(index, answer, question){
+  return {
+    type:'QUIZ_ANSWERED',
+    index:index,
+    answer:answer,
+    question:question,
+  };
+}
+
+export function animationEnded(index){
+  return {
+    type:'ANIMATION_ENDED',
+    index:index,
+  };
+}
+
+export function goToQuestion(index){
+  return {
+    type:'GO_TO_QUESTION',
+    index:index,
+  };
+}
+
+export function quizAnsweredWithScorm(index, answer, question){
+  return (dispatch, getState) => {
+    dispatch(quizAnswered(index, answer, question));
+        // check if there is a new objective accomplished
+    let score = question.true_or_false === answer ? question.score : 0;
+    dispatch(objectiveAccomplished(index, score));
   };
 }

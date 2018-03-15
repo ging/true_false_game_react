@@ -3,7 +3,6 @@ export const INITIAL_STATE = {
     progress_measure:0,
     score:null,
     objectives:{},
-    finished:false,
   },
   scorm:null,
   user_profile:{
@@ -12,4 +11,15 @@ export const INITIAL_STATE = {
     learner_preference:{},
   },
   wait_for_user_profile:false,
+  game:{
+    index:0,
+    questions:[],
+    game_started:false,
+    game_ended:false,
+    time: 0,
+    clock_paused: true
+  },
 };
+
+export const GO_LEFT = "go_left";
+export const GO_RIGHT = "go_right";

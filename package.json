@@ -1,8 +1,8 @@
 {
-  "name": "RESCORM",
-  "version": "0.0.2",
-  "description": "A boilerplate for creating SCORM-compliant React applications",
-  "author": "Aldo Gordillo <agordillo@dit.upm.es>",
+  "name": "true_false_game_react",
+  "version": "0.0.1",
+  "description": "Game where the user has to detect whether something is true or false. For example fake news, phising emails, so on",
+  "author": "Enrique Barra <ebarra@dit.upm.es> and Ana Estrada <aemartos@gmail.com>",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
@@ -42,6 +42,7 @@
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "4.2.0",
+    "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "zip-folder": "^1.0.0"
@@ -77,7 +78,7 @@
     "react-hot-loader": "3.1.1",
     "react-test-renderer": "16.0.0",
     "rimraf": "2.6.2",
-    "sass-loader": "6.0.6",
+    "sass-loader": "6.0.7",
     "style-loader": "0.19.0",
     "url-loader": "0.6.1",
     "webpack": "3.8.0",

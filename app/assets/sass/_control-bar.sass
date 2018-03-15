@@ -1,0 +1,291 @@
+
+
+//----------- CONTROL BAR ------------
+
+.control_bar
+  @include flex
+  justify-content: space-between
+  font-weight: bold
+  color: $maincolor
+  font-size: 1.5em
+  background-color: rgba(255,255,255,.15)
+  padding: 0 1em
+  height: 4em
+  margin-top: 1em
+
+  //----------- CONTROLS ------------
+
+  .start_game
+    @include flex
+    justify-content: flex-start
+    @include hand_cursor
+    .start_game_text
+      margin-right: .5em
+    .control
+      &:hover
+        @include hover_scale
+  .credits
+    @include hand_cursor
+
+  .controls_menu
+    margin-right: 4em
+    @include flex
+    justify-content: flex-start
+    width: 17%
+    .control
+      fill: $secondarycolor
+      margin-right: .2em
+      @include hand_cursor
+      &:hover
+        @include hover_font-size
+
+
+  .controls_menu_mob
+    display: none
+    .control
+      fill: $secondarycolor
+      margin-right: .2em
+    
+  .app_controls
+    width: 22%
+    @include flex
+    justify-content: center
+    margin-left: 6em
+    .control
+      svg
+        //width: 1.5em
+        //height: 1.5em
+      &.control_right_arrow, &.control_left_arrow
+        @include hand_cursor
+      &.control_right_arrow
+        margin-left: .05em
+      &.control_left_arrow
+        //@include transform(rotate(180deg))
+        margin-right: .5em
+      &.control_true, &.control_false
+        font-size: 1.5em
+        margin-right: .3em
+        @include hand_cursor
+        &.button_pressed
+          fill-opacity: .3
+          @include transform(scale(1.15,1.15))
+        &.disabled
+          pointer-events: none
+          @include cursor
+          fill-opacity: .3
+      &:hover
+        @include hover_scale
+      &.control_true
+        margin-right: .4em
+      &.control_false
+        margin-left: .1em
+
+  .progress_score
+    width: 40%
+    color: white
+    @include flex
+    justify-content: flex-end
+    align-items: baseline
+    text-align: center
+    .number_progress
+      font-size: 1.5em
+    .text_progress
+      font-size: .5em
+      margin-top: -.3em
+
+    .time_elapsed
+      
+    .questions_answered
+      margin-left: .7em
+      width: 25%
+      .number_answered
+      .progress_bar
+        margin: 0 auto
+        width: 60%
+        height: .35em
+        border: .1em solid white
+        border-radius: 5em
+        margin-top: .04em
+        .progress_fill
+          width: 0
+          height: .25em
+          margin-left: -.1em
+          margin-top: -.05em
+          background-color: white
+          border-radius: .1em
+          //border-bottom-right-radius: .1em
+
+    .user_score
+      margin-left: .7em
+
+  .feedback_revision
+    color: white
+    font-size: 1.2em
+     
+
+
+//----------- ICONS GENERAL ------------
+
+.svg-button
+  display: inline-block
+  @include transition (all 300ms cubic-bezier(0.4, 0, 0.2, 1))
+  &.control
+    fill: $maincolor
+    width: 1.5em
+    height: 1.5em
+    svg
+      width: 1.5em
+      height: 1.5em
+      path
+        //width: 100%
+        //height: 100%
+    &.control_start
+    &.control_info
+    &.control_progress
+    &.control_stop
+
+
+@media (max-width: 1366px) and (orientation: landscape)
+
+  .control_bar
+    .app_controls
+      margin-left: 6.5em
+
+
+@media (max-width: 1200px)
+  
+  .control_bar
+    .app_controls
+      margin-left: 2.5em
+
+
+@media (max-width: 980px) 
+
+  //----------- CONTROL BAR ------------
+  
+  .control_bar
+    .progress_score
+      .time_elapsed
+        display: none
+
+
+@media (max-width: 812px) and (orientation: landscape) //iPhoneX
+  
+  //----------- CONTROL BAR ------------
+  
+  .control_bar
+    height: 3em
+    font-size: 1em
+    padding: 1em
+    margin-top: .8em
+    .progress_score
+      .questions_answered
+        .progress_bar
+          border: .09em solid white
+    .app_controls
+      margin-left: 6em
+
+
+@media (max-width: 768px) 
+
+  //----------- CONTROL BAR ------------
+  
+  .control_bar
+    .controls_menu
+      display: none
+    .controls_menu_mob
+      @include hand_cursor
+      @include column-flex
+      justify-content: center
+      position: relative
+      margin-right: 1.5em
+      .control
+        fill: $secondarycolor
+      .control_main
+        height: 1.5em
+        width: 1.5em
+      .controls_int
+        position: absolute
+        top: -7em
+        left: 0em
+        @include column-flex
+        justify-content: center
+        &.hide
+          display: none
+        .control
+          margin-right: .2em
+          margin-top: .2em
+
+    .app_controls
+      margin-left: 1em
+    .progress_score
+      width: 10%
+      margin-left: 2.5em
+      .questions_answered
+        width: auto
+        .progress_bar
+          width: 100%
+    
+
+@media (max-width: 736px) and (orientation: landscape)
+
+  .control_bar
+    height: 3em
+    .progress_score
+      width: 6%
+    .app_controls
+      margin-right: 2em
+
+
+
+@media (max-width: 736px) 
+
+  //----------- CONTROL BAR ------------
+
+  .control_bar
+    font-size: 1em
+    padding: 1em
+    margin-top: .8em
+    .controls_menu_mob
+      margin: 0
+    
+    .progress_score
+      margin-left: 0
+      .questions_answered
+        display: none
+        .progress_bar
+          border: .09em solid white
+    
+    .app_controls
+      margin-left: 0
+      margin-right: 0.6em
+
+    .feedback_revision
+      .feedback_text
+        font-size: .8em
+        margin-left: .7em
+      
+
+
+  //----------- CONTROLS ------------
+
+  .start_game
+    .start_game_text
+    .svg-button
+      width: 1.3em
+      height: 1.3em
+      &.control
+        svg
+          width: 1.3em
+          height: 1.3em
+         
+
+  .more_apps
+    cursor: pointer
+
+
+  
+
+
+
+
