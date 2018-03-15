@@ -50,9 +50,8 @@ function trackingReducer(state = {}, action){
         }
       }
     }
-
     return newState;
-  case 'RESET_OBJECTIVES':
+  case 'INITIALIZE_GAME':
     newState = JSON.parse(JSON.stringify(state));
     newState.objectives = {};
     newState.progress_measure = 0;

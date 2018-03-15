@@ -1,5 +1,5 @@
 import React from 'react';
-import {initgame} from './../reducers/actions';
+import {initializegame} from './../reducers/actions';
 import {QUESTIONS} from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
@@ -11,7 +11,7 @@ export default class ModalGameEnd extends React.Component {
   }
   handleClick(){
     this.props.handleClose("End");
-    this.props.dispatch(initgame(QUESTIONS));
+    this.props.dispatch(initializegame(QUESTIONS));
     this.props.resetState();
   }
 

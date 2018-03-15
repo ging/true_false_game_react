@@ -5,7 +5,7 @@ import '../assets/sass/main_styles.sass';
 import {GLOBAL_CONFIG} from '../config/config.js';
 import {QUESTIONS} from '../config/questions.js';
 import * as Utils from '../vendors/Utils.js';
-import {objectiveAccomplished, resetGame, initgame, startgame, updateTimer, pauseTimer, unpauseTimer} from './../reducers/actions';
+import {objectiveAccomplished, resetGame, initializegame, startgame, updateTimer, pauseTimer, unpauseTimer} from './../reducers/actions';
 
 import SCORM from './SCORM.jsx';
 import Controls from './Controls.jsx';
@@ -36,7 +36,7 @@ export class App extends React.Component {
     this.setState(INITIAL_STATE);
   }
   componentDidMount(){
-    this.props.dispatch(initgame(QUESTIONS));
+    this.props.dispatch(initializegame(QUESTIONS));
     let myinterval = setInterval(() => this.props.dispatch(updateTimer()), 1000);
     this.setState({intervalId: myinterval});
   }
@@ -85,7 +85,7 @@ export class App extends React.Component {
           </div>
         </div>
 
-        <Quiz dispatch={this.props.dispatch} game_started={this.props.game.game_started} index={this.props.game.index} questions={this.props.game.questions} />
+        <Quiz dispatch={this.props.dispatch} game={this.props.game} index={this.props.game.index} questions={this.props.game.questions} />
 
         <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} config={GLOBAL_CONFIG}/>
         <ModalGameStart show={this.state.showModalStart} handleClose={this.handleCloseModal} questions={this.props.game.questions} />

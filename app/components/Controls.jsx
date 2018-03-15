@@ -20,8 +20,9 @@ export default class Controls extends React.Component {
     this.setState({show_items: !this.state.show_items});
   }
   hideMenuMob(){
-    console.log("Hide menu");
-    this.setState({show_items: false});
+    if(this.state.show_items===true){
+      this.setState({show_items: false});
+    }
   }
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
@@ -35,10 +36,9 @@ export default class Controls extends React.Component {
   }
   handleClickOutside(event) {
     if (!this.wrapperRef || this.wrapperRef.contains(event.target)) {
-      console.log("click on the menu, no handleClickOutside");
+       console.log("no menu, or click on the menu, no handleClickOutside");
        return;
      }
-     console.log("click outside menu");
      this.hideMenuMob();
    }
   handleClick(button_clicked){
@@ -92,6 +92,7 @@ export default class Controls extends React.Component {
     let button_false_extra_class = (question && question.answered && question.user_answer === false) ? "button_pressed" : "";
     let button_true_extra_class = (question && question.answered && question.user_answer === true) ? "button_pressed" : "";
     let disabled_extra_class = (question && question.answered) || this.props.game.game_ended ? "disabled" : "";
+    let is_arrow_disabled = this.props.game.enable_buttons ? "":"disabled";
     let progress = question ? questions_answered : 0;
     let progressStyle = {
       width: Math.floor(105*questions_answered/this.props.game.questions.length) + "%"
@@ -137,7 +138,7 @@ export default class Controls extends React.Component {
                   <Icon className={this.props.game.game_ended ? "control control_stop" : "hide"} onClick={() => this.props.showModal("Stop")} icon="stop"/>
                 </div>
 
-                <div  className={this.state.show_items ? "controls_int":"controls_int hide"}>
+                <div className={this.state.show_items ? "controls_int":"controls_int hide"}>
                   <Icon className="control control_info" onClick={() => this.props.showModal("Info")} icon="info_fill"/>
                   <Icon className="control control_progress" onClick={() => this.props.showModal("Progress")} icon="progress_fill" />
                   <Icon className="control control_reset" onClick={() => this.props.showModal("Reset")} icon="reset_fill"/>
@@ -146,10 +147,10 @@ export default class Controls extends React.Component {
               </div>
 
               <div className="app_controls" style={this.props.game.game_ended ? finalStyleAppControls : null}>
-                <Icon className="control control_left_arrow" onClick={() => this.handleClick(GO_LEFT)} icon="left_arrow"/>
+                <Icon className={"control control_left_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_LEFT)} icon="left_arrow"/>
                 <Icon className={"control control_false " + button_false_extra_class + " " + disabled_extra_class} onClick={() => this.handleClick(false)} icon="false"/>
                 <Icon className={"control control_true " + button_true_extra_class + " " + disabled_extra_class} onClick={() => this.handleClick(true)} icon="true"/>
-                <Icon className="control control_right_arrow" onClick={() => this.handleClick(GO_RIGHT)} icon="right_arrow"/>
+                <Icon className={"control control_right_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_RIGHT)} icon="right_arrow"/>
               </div>
 
               <div className={this.props.game.game_ended ? "hide":"progress_score"}>

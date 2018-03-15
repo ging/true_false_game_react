@@ -12,6 +12,7 @@ export const INITIAL_STATE = {
   },
   wait_for_user_profile:false,
   game:{
+    enable_buttons: true,
     index:0,
     questions:[],
     game_started:false,

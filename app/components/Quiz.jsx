@@ -13,7 +13,7 @@ export default class Quiz extends React.Component {
   componentWillReceiveProps(nextProps){
     let question = nextProps.questions[nextProps.index];
     let old_question = this.props.questions[this.props.index];
-    if(nextProps.game_started && question && question.show_animation && !old_question.show_animation){
+    if(nextProps.game.game_started && question && question.show_animation && !old_question.show_animation){
       this.setState({showAnimation:true});
       setTimeout(() => {
         this.setState({showAnimation:false});
@@ -22,7 +22,7 @@ export default class Quiz extends React.Component {
   }
   render(){
     let question = this.props.questions[this.props.index];
-    if(this.props.game_started && question){
+    if(this.props.game.game_started && question){
       let answer_right = question.answered && question.score === question.score_accomplished;
       let answer_wrong = question.answered && question.score !== question.score_accomplished;
       let feedback1, feedback2, feedback1_class, feedback2_class;
@@ -62,7 +62,7 @@ export default class Quiz extends React.Component {
             </div>
           </div>
             <div className="image_box">
-              <img className="quiz_image" src={question.answered ? question.feedback_path : question.path}/>
+              <img className="quiz_image" src={(this.props.game.game_ended || question.answered) ? question.feedback_path : question.path}/>
             </div>
           </div>
       );

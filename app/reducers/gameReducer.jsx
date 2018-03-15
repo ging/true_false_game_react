@@ -5,7 +5,7 @@ import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
 export default function gameReducer(state = INITIAL_STATE.game, action){
   let receivedState;
   switch (action.type){
-  case 'INIT_GAME':
+  case 'INITIALIZE_GAME':
     receivedState = JSON.parse(JSON.stringify(INITIAL_STATE.game));
     receivedState.questions = action.questions.map((q, index) => {
       q.id = index;
@@ -42,6 +42,7 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
   case 'ANIMATION_ENDED':
     receivedState = JSON.parse(JSON.stringify(state));
     receivedState.questions[action.index].show_animation = false;
+    receivedState.enable_buttons = true;
     // check if answer is right or is last question to pass to the next question or show modal end
     let questions_unanswered = receivedState.questions.reduce((accumulator, currentValue) => {return currentValue.answered ? accumulator : accumulator + 1;}, 0);
     if(questions_unanswered === 0){
@@ -73,7 +74,6 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
     return checkAnswer(state, action);
   case 'QUIZ_PASSED':
     return passquiz(state, action);
-
   default:
     return state;
   }
@@ -92,27 +92,33 @@ function checkAnswer(state, action){
   questionclone.answered = true;
   questionclone.user_answer = action.answer;
   questionclone.show_animation = true; // we haven't shown the animation right/wrong telling the user
+  receivedState.enable_buttons = false; //disable next and prev buttons to wait for the animation to finish
   receivedState.questions[action.index] = questionclone;
   console.log("checkAnswer, receivedState: ", receivedState);
   return receivedState;
 }
 
 function passquiz(state, action){
-  let receivedState = JSON.parse(JSON.stringify(state));
-  if(action.right_left === GO_RIGHT){
-    if(QUESTIONS.length - 1 !== state.index){
-      receivedState.index = state.index + 1;
-    } else {
-      receivedState.index = 0;
-    }
-  } else if(action.right_left === GO_LEFT){
-    if(state.index !== 0){
-      receivedState.index = state.index - 1;
-    } else {
-      receivedState.index = QUESTIONS.length - 1;
-    }
+  if(state.enable_buttons === false){
+    console.log("No se puede pasar las preguntas durante una animación. enable_buttons es false");
+    return state;
   } else {
-    console.log("Solo entiendo las acciones GO LEFT y GO RIGHT");
+    let receivedState = JSON.parse(JSON.stringify(state));
+    if(action.right_left === GO_RIGHT){
+      if(QUESTIONS.length - 1 !== state.index){
+        receivedState.index = state.index + 1;
+      } else {
+        receivedState.index = 0;
+      }
+    } else if(action.right_left === GO_LEFT){
+      if(state.index !== 0){
+        receivedState.index = state.index - 1;
+      } else {
+        receivedState.index = QUESTIONS.length - 1;
+      }
+    } else {
+      console.log("Solo entiendo las acciones GO LEFT y GO RIGHT");
+    }
+    return receivedState;
   }
-  return receivedState;
 }

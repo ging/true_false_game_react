@@ -12,12 +12,6 @@ export function updateUserProfile(user_profile){
   };
 }
 
-export function resetObjectives(objectives){
-  return {
-    type:'RESET_OBJECTIVES',
-  };
-}
-
 export function finishApp(finished = true){
   return {
     type:'FINISH_APP',
@@ -48,9 +42,9 @@ export function passquiz(right_left){
   };
 }
 
-export function initgame(questions){
+export function initializegame(questions){
   return {
-    type:'INIT_GAME',
+    type:'INITIALIZE_GAME',
     questions:questions,
   };
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {initgame, endgame} from './../reducers/actions';
+import {initializegame, endgame, goToQuestion} from './../reducers/actions';
 import {QUESTIONS} from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
@@ -14,9 +14,13 @@ export default class ModalGameStop extends React.Component {
     this.props.handleClose("Stop");
     this.props.dispatch(endgame());
   }
+  questionClick(index){
+    this.props.handleClose("Stop");
+    this.props.dispatch(goToQuestion(index));
+  }
   resetGame(){
     this.props.handleClose("Stop");
-    this.props.dispatch(initgame(QUESTIONS));
+    this.props.dispatch(initializegame(QUESTIONS));
     this.props.resetState();
   }
   render(){
@@ -37,9 +41,9 @@ export default class ModalGameStop extends React.Component {
                       return <div className="individual_task" key={index}>
                         <span className="individual_task_text" onClick={ () => this.questionClick(index)}>{q.source_name}</span>
                         <div className="task-icons">
-                          <Icon className={"control control_feedback control_wrong " 
+                          <Icon className={"control control_feedback control_wrong "
                          + (q.answered ? (success ? "":"wrong") : "")} icon="cross"/>
-                          <Icon className={"control control_feedback control_right " 
+                          <Icon className={"control control_feedback control_right "
                          + (q.answered ? (success ? "right":"") : "")} icon="tick"/>
                         </div>
                       </div>;

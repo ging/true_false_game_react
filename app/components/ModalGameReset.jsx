@@ -1,6 +1,6 @@
 import React from 'react';
 import {QUESTIONS} from '../config/questions.js';
-import {initgame} from './../reducers/actions';
+import {initializegame} from './../reducers/actions';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
 
@@ -11,7 +11,7 @@ export default class ModalGameReset extends React.Component {
   }
   handleClick(){
     this.props.handleClose("Reset");
-    this.props.dispatch(initgame(QUESTIONS));
+    this.props.dispatch(initializegame(QUESTIONS));
     this.props.resetState();
   }
   render(){
