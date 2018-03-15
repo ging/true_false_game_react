@@ -107,6 +107,6 @@ export function quizAnsweredWithScorm(index, answer, question){
     dispatch(quizAnswered(index, answer, question));
         // check if there is a new objective accomplished
     let score = question.true_or_false === answer ? question.score : 0;
-    dispatch(objectiveAccomplished(index, score));
+    dispatch(objectiveAccomplished("Question" + (index + 1), score));
   };
 }

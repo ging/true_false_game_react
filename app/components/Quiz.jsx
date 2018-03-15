@@ -2,13 +2,23 @@ import React from 'react';
 import {UI} from '../config/config.js';
 import {QUESTIONS} from '../config/questions.js';
 import Animation from './Animation.jsx';
-import {stopAnimation} from './../reducers/actions';
+import {stopAnimation, addObjectives} from './../reducers/actions';
+import * as Utils from '../vendors/Utils.js';
 
 
 export default class Quiz extends React.Component {
   constructor(props){
     super(props);
     this.state = {showAnimation:false};
+  }
+  componentDidMount(){
+    // Create objectives (One per question included in the quiz)
+    let objectives = [];
+    let nQuestions = QUESTIONS.length;
+    for(let i = 0; i < nQuestions; i++){
+      objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(1 / nQuestions)}));
+    }
+    this.props.dispatch(addObjectives(objectives));
   }
   componentWillReceiveProps(nextProps){
     let question = nextProps.questions[nextProps.index];
