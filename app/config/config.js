@@ -49,6 +49,5 @@ export const UI = {
   educalab_logo:"assets/images/logos/educalab_logo_white.svg",
   initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, que no te tomen por tonto",
   instructions:"Marca verdadero o falso para cada una de las noticias propuestas. Irás obteniendo una puntuación según cuantas aciertes.",
-  button_left:"Falso",
-  button_right:"Verdadero",
+  with_reset_button: false  
 };
