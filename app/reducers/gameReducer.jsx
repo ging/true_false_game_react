@@ -11,6 +11,7 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
       q.id = index;
       q.score_accomplished = 0;
       q.answered = false;
+      q.show_animation = false;
       return q;
     });
     return receivedState;
