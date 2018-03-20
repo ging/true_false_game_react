@@ -1,18 +1,18 @@
 
 
-.fade-enter
+.feedback-box.fade-enter
   opacity: 0.01
 
-.fade-enter.example-enter-active
+.feedback-box.fade-enter.fade-enter-active
   opacity: 1
   transition: opacity 500ms ease-in
 
-.fade-leave
+.feedback-box.fade-exit
   opacity: 1
 
-.fade-leave.fade-leave-active
+.feedback-box.fade-exit.fade-exit-active
   opacity: 0.01
-  transition: opacity 300ms ease-in
+  transition: opacity 1500ms ease-in
 
 .dark-opacity
   position: fixed
@@ -30,7 +30,7 @@
   width: 60%
   left: 50%
   top: 50%
-  @include transform (translate(-50%, -50%)) 
+  @include transform (translate(-50%, -50%))
   position: fixed
   background-color: white
   font-size: 1.7em
@@ -116,7 +116,7 @@
         .text-questions
           margin-bottom: 1em
         .icon_list
-          //@include cursor 
+          //@include cursor
           li
             display: flex
             margin-bottom: .2em
@@ -126,8 +126,9 @@
           width: 2.5em
           margin-left: .3em
           vertical-align: middle
+          @include backface-visibility (hidden)
       .e_logo
-        width: 4.2em       
+        width: 4.2em
       .logos
         @include flex
         justify-content: space-around
@@ -136,6 +137,7 @@
         padding: 0 2em
         .logo
           @include hand_cursor
+          @include backface-visibility (hidden)
           &.upm_logo
             width: 3em
           &.orange_logo
@@ -249,7 +251,7 @@
             font-size: 1.5em
 
 
-@media (max-width: 480px) 
+@media (max-width: 480px)
 
   .modal
     width: 85vw
@@ -258,8 +260,8 @@
 
 
 
-@media (max-width: 320px) 
-  
+@media (max-width: 320px)
+
   .modal
     .modal-box
       .modal-content
@@ -273,4 +275,3 @@
               width: 6.5em
             &.crif_logo
               width: 4em
-

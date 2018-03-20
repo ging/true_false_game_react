@@ -9,7 +9,6 @@ import * as Utils from '../vendors/Utils.js';
 export default class Quiz extends React.Component {
   constructor(props){
     super(props);
-    this.state = {showAnimation:false};
   }
   componentDidMount(){
     // Create objectives (One per question included in the quiz)
@@ -19,16 +18,6 @@ export default class Quiz extends React.Component {
       objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(1 / nQuestions)}));
     }
     this.props.dispatch(addObjectives(objectives));
-  }
-  componentWillReceiveProps(nextProps){
-    let question = nextProps.questions[nextProps.index];
-    let old_question = this.props.questions[this.props.index];
-    if(nextProps.game.game_started && question && question.show_animation && !old_question.show_animation){
-      this.setState({showAnimation:true});
-      setTimeout(() => {
-        this.setState({showAnimation:false});
-      }, 0);
-    }
   }
   render(){
     let question = this.props.questions[this.props.index];
@@ -64,7 +53,7 @@ export default class Quiz extends React.Component {
       return (
           <div className="main_box">
           {(question.answered && question.show_animation === false) ? feedback_component : null}
-          <Animation dispatch={this.props.dispatch} show={this.state.showAnimation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
+          <Animation dispatch={this.props.dispatch} show={question.show_animation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
           <div className={"nav_box " + with_feedback}>
             <div className="nav_position">
               <img className="nav_image" src={nav_img}/>

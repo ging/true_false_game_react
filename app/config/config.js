@@ -51,4 +51,5 @@ export const UI = {
   instructions:"Marca verdadero o falso para cada una de las webs propuestas. Irás obteniendo puntos según aciertes.",
   button_left:"Falso",
   button_right:"Verdadero",
+  with_reset_button: false
 };
