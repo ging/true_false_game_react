@@ -25,11 +25,11 @@ export default class ModalGameStart extends React.Component {
 
                        <div className="task-list">
                           <div className="list-title" onClick={() => this.toggleItems()}>
-                            <p className="list-title-text">lista de noticias a contestar</p>
+                            <p className="list-title-text">lista de webs a contestar</p>
                             <Icon className="control control_plus" icon="plus2"/>
                           </div>
                           <ul className={this.state.show_items ? "":"hide"}>
-                            {this.props.questions.map((q,index) => {return <li key={index}>{q.source_name}</li>;})
+                            {this.props.questions.map((q,index) => {return <li key={index}>- {q.source_name}</li>;})
                             }
                           </ul>
                        </div>

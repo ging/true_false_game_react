@@ -42,13 +42,13 @@ let processConfig = (function(){
 
 
 export const UI = {
-  name:"Detector de noticias falsas",
+  name:"Detector de phishing",
   app_logo:"assets/images/logos/fakedetector_logo.svg",
-  type_app_logo:"assets/images/logos/news.svg",
+  type_app_logo:"assets/images/logos/phishing.svg",
   educalab_text:"una aplicación de",
   educalab_logo:"assets/images/logos/educalab_logo_white.svg",
-  initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, que no te tomen por tonto",
-  instructions:"Marca verdadero o falso para cada una de las noticias propuestas. Irás obteniendo una puntuación según cuantas aciertes.",
+  initial_text:"¿sabrías decir si las siguientes webs son verdaderas o falsas? aprende a distinguirlas, que no te la cuelen",
+  instructions:"Marca verdadero o falso para cada una de las webs propuestas. Irás obteniendo puntos según aciertes.",
   button_left:"Falso",
   button_right:"Verdadero",
 };
