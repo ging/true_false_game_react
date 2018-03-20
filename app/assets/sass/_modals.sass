@@ -126,6 +126,7 @@
           width: 2.5em
           margin-left: .3em
           vertical-align: middle
+          @include backface-visibility (hidden)
       .e_logo
         width: 4.2em       
       .logos
@@ -136,6 +137,7 @@
         padding: 0 2em
         .logo
           @include hand_cursor
+          @include backface-visibility (hidden)
           &.upm_logo
             width: 3em
           &.orange_logo
