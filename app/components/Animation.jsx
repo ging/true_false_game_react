@@ -23,7 +23,7 @@ export default class Animation extends React.Component {
     return (
            <CSSTransition
            in={this.state.isShown}
-           timeout={1500}
+           timeout={1000}
            classNames="fade"
            onEntered={()=>this.hideContent()}
            onExited={()=>this.endAnimation()}>

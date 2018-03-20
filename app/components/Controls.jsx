@@ -128,7 +128,8 @@ export default class Controls extends React.Component {
               <div className="controls_menu" style={this.props.game.game_ended ? finalStyleMenu : null}>
                 <Icon className={this.props.game.game_ended ? "hide":"control control_info"} onClick={() => this.props.showModal("Info")} icon="info"/>
                 <Icon className={this.props.game.game_ended ? "hide":"control control_progress"} onClick={() => this.props.showModal("Progress")} icon="progress" />
-                <Icon className={this.props.game.game_ended ? "hide":"control control_reset"} onClick={() => this.props.showModal("Reset")} icon="reset"/>
+                {UI.with_reset_button &&
+                  <Icon className={this.props.game.game_ended ? "hide":"control control_reset"} onClick={() => this.props.showModal("Reset")} icon="reset"/>}
                 <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop"/>
               </div>
 
@@ -141,7 +142,8 @@ export default class Controls extends React.Component {
                 <div className={this.state.show_items ? "controls_int":"controls_int hide"}>
                   <Icon className="control control_info" onClick={() => this.props.showModal("Info")} icon="info_fill"/>
                   <Icon className="control control_progress" onClick={() => this.props.showModal("Progress")} icon="progress_fill" />
-                  <Icon className="control control_reset" onClick={() => this.props.showModal("Reset")} icon="reset_fill"/>
+                  {UI.with_reset_button &&
+                    <Icon className="control control_reset" onClick={() => this.props.showModal("Reset")} icon="reset_fill"/>}
                   <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop_fill"/>
                 </div>
               </div>

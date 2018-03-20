@@ -3,6 +3,7 @@ import {initializegame, endgame, goToQuestion} from './../reducers/actions';
 import {QUESTIONS} from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
+import {UI} from '../config/config';
 
 export default class ModalGameStop extends React.Component {
   constructor(props){
@@ -24,7 +25,14 @@ export default class ModalGameStop extends React.Component {
     this.props.resetState();
   }
   render(){
-    let text = this.props.game_ended ? "¿deseas finalizar revisión del feedback y reiniciar juego?" : "¿estás seguro de que quieres parar y finalizar la prueba? todavía tienes preguntas sin contestar:";
+    let text;
+    if(this.props.game_ended===false){
+      text = "¿estás seguro de que quieres parar y finalizar la prueba? todavía tienes preguntas sin contestar:";
+    } else if(UI.with_reset_button===true){
+      text = "¿deseas finalizar revisión del feedback y reiniciar juego?";
+    } else {
+      text = "";
+    }
     return (
       <Modal show={this.props.show} >
          <div className="modal-box">

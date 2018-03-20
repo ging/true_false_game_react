@@ -50,6 +50,13 @@ export default class Quiz extends React.Component {
         left: (question.secure === true) ? "14.5%" : "7%"
       };
 
+      let question_src;
+      if(this.props.game.game_ended || (question.answered && answer_wrong) || (question.answered && answer_right && question.show_animation === false)){
+        question_src = question.feedback_path;
+      } else {
+        question_src = question.path;
+      }
+
       return (
           <div className="main_box">
           {(question.answered && question.show_animation === false) ? feedback_component : null}
@@ -61,7 +68,7 @@ export default class Quiz extends React.Component {
             </div>
           </div>
             <div className="image_box">
-              <img className="quiz_image" src={(this.props.game.game_ended || question.answered) ? question.feedback_path : question.path}/>
+              <img className="quiz_image" src={question_src}/>
             </div>
           </div>
       );
