@@ -4,25 +4,28 @@ import {CSSTransition} from 'react-transition-group';
 export default class Dark extends React.Component {
   constructor(props){
     super(props);
-    this.state = {isShown:false};
-    this.hideContent = this.hideContent.bind(this);
+    this.state = {in:false, hide: true};
+    this.hideCompletely = this.hideCompletely.bind(this);
   }
-  hideContent(){
-    this.setState({isShown:false});
+  hideCompletely(){
+    this.setState({hide:true});
   }
   componentWillReceiveProps(nextProps){
     if(this.props.show === false && nextProps.show === true){
-      this.setState({isShown:true});
+      this.setState({in:true, hide: false});
+    }
+    if(this.props.show === true && nextProps.show === false){
+      this.setState({in:false});
     }
   }
   render(){
     return (
            <CSSTransition
-           in={this.props.show}
-           timeout={0}
-           classNames="fade"
-           onExited={() => this.hideContent()}>
-            <div className={"dark-opacity " + (this.state.isShown ? "show" : "hide")} onClick={this.props.onClick}/>
+             in={this.state.in}
+             timeout={500}
+             classNames="fade"
+             onExited={()=>this.hideCompletely()}>
+            <div className={"dark-opacity " + (this.state.hide ? "hide" : "show")} onClick={this.props.onClick}/>
           </CSSTransition>);
   }
 }

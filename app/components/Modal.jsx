@@ -17,7 +17,6 @@ export default class Modal extends React.Component {
     if(this.props.show === true && nextProps.show === false){
       this.setState({in:false});
     }
-
   }
   render(){
     return (

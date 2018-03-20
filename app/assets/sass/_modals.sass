@@ -7,6 +7,16 @@
   background-color: rgba(0,0,0,0.5)
   z-index: 1
   @include hand_cursor
+  &.fade-enter
+    opacity: 0.01
+    &.fade-enter-active
+      opacity: 1
+      transition: opacity 500ms ease-in
+  &.fade-exit
+    opacity: 1
+    &.fade-exit-active
+      opacity: 0.01
+      transition: opacity 500ms ease-in
 
 .modal
   z-index: 2
