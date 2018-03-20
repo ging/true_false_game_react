@@ -5,8 +5,8 @@ import '../assets/sass/main_styles.sass';
 import {GLOBAL_CONFIG} from '../config/config.js';
 import {QUESTIONS} from '../config/questions.js';
 import * as Utils from '../vendors/Utils.js';
-import {objectiveAccomplished, resetGame, initializegame, startgame, updateTimer, pauseTimer, unpauseTimer} from './../reducers/actions';
-
+import {objectiveAccomplished, resetGame, initializegame, startgame, updateTimer, pauseTimer, unpauseTimer, passquiz} from './../reducers/actions';
+import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
 import SCORM from './SCORM.jsx';
 import Controls from './Controls.jsx';
 import Quiz from './Quiz.jsx';
@@ -29,6 +29,7 @@ export class App extends React.Component {
     this.showModal = this.showModal.bind(this);
     this.startGame = this.startGame.bind(this);
     this.resetState = this.resetState.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.state = INITIAL_STATE;
     this.total_score = QUESTIONS.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
   }
@@ -46,6 +47,14 @@ export class App extends React.Component {
   }
   startGame(){
     this.props.dispatch(startgame());
+  }
+  handleKeyPress(event) {
+    if(event.key == "ArrowRight"){
+      this.props.dispatch(passquiz(GO_RIGHT));
+    }
+    else if(event.key == "ArrowLeft"){
+      this.props.dispatch(passquiz(GO_LEFT));
+    }
   }
   handleCloseModal(name){
     if(name === "all"){
@@ -75,7 +84,7 @@ export class App extends React.Component {
     let user_score = this.props.game.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score_accomplished; }, 0);
     let showDarkLayer = this.state.showModalStart || this.state.showModalInfo || this.state.showModalProgress || this.state.showModalReset || this.state.showModalStop || this.state.showModalEnd || this.state.showModalCredits;
     return (
-      <div id="container">
+      <div id="container" onKeyDown={(e) => this.handleKeyPress(e)} tabIndex="0">
         <div className="main_header">
           <img className="detector_type_logo" src={UI.type_app_logo}/>
           <img className="fake_detector_logo" src={UI.app_logo}/>
