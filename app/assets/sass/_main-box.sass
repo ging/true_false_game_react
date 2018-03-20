@@ -19,13 +19,12 @@
       position: relative
       .nav_image
         width: 100%
-        vertical-align: bottom
         display: block
       .nav_url
         color: black
         font-size: .75vw
         position: absolute
-        top: 61.2%
+        top: 65%
         max-width: 89.3%
         white-space: nowrap
         text-overflow: ellipsis
@@ -36,7 +35,7 @@
   .quiz_image
     margin: 0 auto
     width: 70%
-    vertical-align: bottom
+    display: block
 
 
 @media (max-width: 1366px) and (orientation: landscape)
@@ -45,7 +44,10 @@
     .main_text
       font-size: calc(5vh + 2.3em)
       padding: 1em 3em 1em 1em
-
+    .nav_box
+      .nav_position
+        .nav_url
+          top: 65%
 
 
 @media (max-width: 1280px)
@@ -54,6 +56,10 @@
     .main_text
       font-size: calc(4vh + 2em)
       padding: 1em 2em 1em 1em
+    .nav_box
+      .nav_position
+        .nav_url
+          top: 65%
 
 
 @media (max-width: 1024px) and (orientation: landscape)
@@ -65,6 +71,9 @@
     .nav_box
       &.with_feedback
         margin-top: 3.1em
+      .nav_position
+        .nav_url
+          top: 65%
 
 
 @media (max-width: 812px) and (orientation: landscape) //iPhoneX
@@ -79,7 +88,7 @@
         margin-top: 1.7em
       .nav_position
         .nav_url
-          top: 55.5%
+          top: 63%
     .quiz_image
       width: 80%
 
@@ -95,7 +104,7 @@
         margin-top: 3.1em
       .nav_position
         .nav_url
-          top: 60%
+          top: 66%
     .quiz_image
       width: 80%
 
@@ -109,7 +118,7 @@
         margin-top: 1.7em
       .nav_position
         .nav_url
-          top: 57.1%
+          top: 67%
     .quiz_image
       width: 95%
 
@@ -125,6 +134,19 @@
     .quiz_image
       margin: 0 auto
       width: 80%
+    .nav_box
+      .nav_position
+        .nav_url
+          top: 66%
+
+
+@media (max-width: 670px) and (orientation: landscape)
+
+  .main_box
+    .nav_box
+      .nav_position
+        .nav_url
+          top: 64%
 
 
 @media (max-width: 640px) and (orientation: landscape)
@@ -160,4 +182,4 @@
     .nav_box
       .nav_position
         .nav_url
-          top: 55%
+          top: 68%
