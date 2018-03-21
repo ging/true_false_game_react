@@ -32,7 +32,11 @@ export default class Quiz extends React.Component {
       } else if(answer_wrong){
         feedback1 = "has fallado";
         feedback1_class = "user_answer user_wrong_answer";
+      } else {
+        feedback1 = "no has respondido esta pregunta";
+        feedback1_class = "user_answer user_not_answer";
       }
+      
       if(question.true_or_false){
         feedback2 = "la web es real";
         feedback2_class = "question right_question";

@@ -180,10 +180,12 @@ export default class Controls extends React.Component {
             </div>
           ) : (
             <div className="control_bar">
-              <div className="start_game">
-                <span className="start_game_text" onClick={this.props.startGame}>empezar prueba</span>
-                <Icon className="control control_start" onClick={this.props.startGame} icon="start"/>
-              </div>
+              {!this.props.tracking.finished &&
+                <div className="start_game">
+                  <span className="start_game_text" onClick={this.props.startGame}>empezar prueba</span>
+                  <Icon className="control control_start" onClick={this.props.startGame} icon="start"/>
+                </div>
+              }
               <div className="credits" onClick={() => this.props.showModal("Credits")}>créditos</div>
             </div>
         )}

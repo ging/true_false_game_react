@@ -17,14 +17,17 @@ import ModalGameProgress from './ModalGameProgress.jsx';
 import ModalGameReset from './ModalGameReset.jsx';
 import ModalGameStop from './ModalGameStop.jsx';
 import ModalCredits from './ModalCredits.jsx';
+import FinishScreen from './FinishScreen.jsx';
 import Dark from './Dark.jsx';
 import {UI} from '../config/config';
+import * as I18n from '../vendors/I18n.js';
 
 const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false};
 
 export class App extends React.Component {
   constructor(props){
     super(props);
+    I18n.init();
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.showModal = this.showModal.bind(this);
     this.startGame = this.startGame.bind(this);
@@ -93,9 +96,10 @@ export class App extends React.Component {
             <img className="educalab_logo" src={UI.educalab_logo}/>
           </div>
         </div>
-
-        <Quiz dispatch={this.props.dispatch} game={this.props.game} index={this.props.game.index} questions={this.props.game.questions} />
-
+        {this.props.tracking.finished ?
+          <FinishScreen tracking={this.props.tracking} I18n={I18n}/>:
+          <Quiz dispatch={this.props.dispatch} game={this.props.game} index={this.props.game.index} questions={this.props.game.questions} />
+        }
         <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} config={GLOBAL_CONFIG}/>
         <ModalGameStart show={this.state.showModalStart} handleClose={this.handleCloseModal} questions={this.props.game.questions} />
         <ModalGameInfo show={this.state.showModalInfo} handleClose={this.handleCloseModal} />
@@ -104,7 +108,7 @@ export class App extends React.Component {
         <ModalGameEnd resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalEnd} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} time={this.props.game.time}/>
         <ModalGameStop resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalStop} handleClose={this.handleCloseModal} questions={this.props.game.questions} game_ended={this.props.game.game_ended}/>
         <ModalCredits show={this.state.showModalCredits} handleClose={this.handleCloseModal} />
-        <Controls game={this.props.game} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG}/>
+        <Controls game={this.props.game} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG}/>
         <Dark show={showDarkLayer} onClick={() => this.handleCloseModal("all")}/>
       </div>
     );
