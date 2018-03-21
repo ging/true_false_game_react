@@ -41,34 +41,33 @@ export default class Quiz extends React.Component {
         feedback2_class = "question wrong_question";
       }
 
-      let feedback_component = <div className={"feedback_header " + feedback1_class}>{feedback1 + ": " + feedback2}</div>;
-      let with_feedback = (question.answered && question.show_animation === false) ? "with_feedback" : "";
-
-      let nav_img = (question.secure === true) ? "assets/images/others/secure_nav.png" : "assets/images/others/no_secure_nav.png";
 
       let urlStyle = {
         left: (question.secure === true) ? "14.5%" : "7%"
       };
 
-      let question_src;
+      let show_feedback;
       if(this.props.game.game_ended || (question.answered && answer_wrong) || (question.answered && answer_right && question.show_animation === false)){
-        question_src = question.feedback_path;
+        show_feedback =true;
       } else {
-        question_src = question.path;
+        show_feedback = false;
       }
+
+      let feedback_component = <div className={"feedback_header " + feedback1_class}>{feedback1 + ": " + feedback2}</div>;
+      let nav_img = (question.secure === true) ? "assets/images/others/secure_nav.png" : "assets/images/others/no_secure_nav.png";
 
       return (
           <div className="main_box">
-          {(question.answered && question.show_animation === false) ? feedback_component : null}
+          {show_feedback ? feedback_component : null}
           <Animation dispatch={this.props.dispatch} show={question.show_animation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
-          <div className={"nav_box " + with_feedback}>
+          <div className={"nav_box " + (show_feedback ? "with_feedback" : "") }>
             <div className="nav_position">
               <img className="nav_image" src={nav_img}/>
               <span className="nav_url" style={urlStyle}>{question.source_url}</span>
             </div>
           </div>
             <div className="image_box">
-              <img className="quiz_image" src={question_src}/>
+              <img className="quiz_image" src={show_feedback ? question.feedback_path:question.path}/>
             </div>
           </div>
       );

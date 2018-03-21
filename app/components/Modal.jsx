@@ -24,7 +24,7 @@ export default class Modal extends React.Component {
            in={this.state.in}
            timeout={1500}
            classNames="fade"
-           onExited={()=>this.hideCompletely()}>
+           onExited={() =>this.hideCompletely()}>
               <div className={"modal " + (this.state.hide ? "hide" : "")}>
                  {this.props.children}
               </div>
