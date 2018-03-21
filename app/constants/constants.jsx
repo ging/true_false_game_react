@@ -3,7 +3,6 @@ export const INITIAL_STATE = {
     progress_measure:0,
     score:null,
     objectives:{},
-    finished: true
   },
   scorm:null,
   user_profile:{
