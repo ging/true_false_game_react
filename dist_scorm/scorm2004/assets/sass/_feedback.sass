@@ -1,0 +1,130 @@
+.feedback-box
+  opacity: 0
+  position: absolute
+  z-index: 1
+  width: 95%
+  margin: 0 auto
+  height: calc(100vh - 14.5em)
+  background-color: rgba(255, 255, 255,.8)
+  pointer-events: none
+  @include column-flex
+  justify-content: center
+  .user_answer
+    font-size: 8em
+    font-weight: bold
+    @include transform(rotate(-10deg))
+    &.user_right_answer
+      color: $green
+    &.user_wrong_answer
+      color: $red
+  .question
+    font-size: 5em
+    font-weight: bold
+    @include transform(rotate(-10deg))
+    &.right_question
+      color: $green
+    &.wrong_question
+      color: $red
+  &.fade-enter
+    opacity: 0.01
+    &.fade-enter-active
+      opacity: 1
+      transition: opacity 500ms ease-in
+  &.fade-exit
+    opacity: 1
+    &.fade-exit-active
+      opacity: 0.01
+      transition: opacity 500ms ease-in
+
+.feedback_header
+  z-index: 1
+  text-align: right
+  padding: .2em .7em
+  font-size: 2.5em
+  font-weight: bold
+  position: fixed
+  width: 95%
+  &.user_answer
+    color: white
+    &.user_right_answer
+      background-color: $green
+    &.user_wrong_answer
+      background-color: $red
+
+
+@media (max-width: 1024px) and (orientation: landscape)
+
+  .feedback-box
+    .user_answer
+      font-size: 6em
+    .question
+      font-size: 3.5em
+
+  .feedback_header
+    font-size: 2em
+
+
+@media (max-width: 1024px)
+
+  .feedback-box
+    .user_answer
+      font-size: 6em
+    .question
+      font-size: 3.5em
+
+  .feedback_header
+    font-size: 2em
+
+
+@media (max-width: 823px) and (orientation: landscape) 
+
+  .feedback-box
+    height: calc(100vh - 8.3em)
+    .user_answer
+      font-size: 3.2em
+    .question
+      font-size: 1.7em
+
+  .feedback_header
+    text-align: right
+    font-size: 1.1em
+
+
+@media (max-width: 768px)
+
+  .feedback-box
+    .user_answer
+      font-size: 6em
+    .question
+      font-size: 3.5em
+
+  .feedback_header
+    font-size: 2em
+
+
+@media (max-width: 736px)
+
+  .feedback-box
+    height: calc(100vh - 9em)
+    .user_answer
+      font-size: 3.2em
+    .question
+      font-size: 1.7em
+
+  .feedback_header
+    font-size: 1.1em
+
+
+@media (max-width: 736px) and (orientation: landscape)
+
+  .feedback-box
+    height: calc(100vh - 8em)
+
+  .feedback_header
+    text-align: right
+
+
+@media (max-width: 480px)
+
+  .feedback_header
+    text-align: center
