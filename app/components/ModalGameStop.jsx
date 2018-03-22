@@ -1,5 +1,5 @@
 import React from 'react';
-import {initializegame, endgame, goToQuestion} from './../reducers/actions';
+import {initializegame, endgame, goToQuestion, finishApp} from './../reducers/actions';
 import {QUESTIONS} from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
@@ -10,6 +10,7 @@ export default class ModalGameStop extends React.Component {
     super(props);
     this.endGame = this.endGame.bind(this);
     this.resetGame = this.resetGame.bind(this);
+    this.finishGame = this.finishGame.bind(this);
   }
   endGame(){
     this.props.handleClose("Stop");
@@ -24,6 +25,10 @@ export default class ModalGameStop extends React.Component {
     this.props.dispatch(initializegame(QUESTIONS));
     this.props.resetState();
   }
+  finishGame(){
+    this.props.handleClose("Stop");
+    this.props.dispatch(finishApp(true));
+  }
   render(){
     let text;
     if(this.props.game_ended===false){
@@ -31,7 +36,7 @@ export default class ModalGameStop extends React.Component {
     } else if(UI.with_reset_button===true){
       text = "¿deseas finalizar revisión del feedback y reiniciar juego?";
     } else {
-      text = "";
+      text = "¿deseas finalizar revisión del feedback?";
     }
     return (
       <Modal show={this.props.show} >
@@ -62,8 +67,8 @@ export default class ModalGameStop extends React.Component {
                 <div className="modal-actions">
                   <div className="btn btn-red" onClick={ () => this.props.handleClose("Stop")}>cancelar</div>
                   {this.props.game_ended ?
-                  <div className="btn btn-green" onClick={this.resetGame}>aceptar</div> :
-                  <div className="btn btn-green" onClick={this.endGame}>aceptar</div>
+                    <div className="btn btn-green" onClick={UI.with_reset_button ? this.resetGame:this.finishGame}>aceptar</div> :
+                    <div className="btn btn-green" onClick={this.endGame}>aceptar</div>
                   }
                 </div>
              </div>

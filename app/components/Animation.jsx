@@ -25,8 +25,8 @@ export default class Animation extends React.Component {
            in={this.state.isShown}
            timeout={1000}
            classNames="fade"
-           onEntered={()=>this.hideContent()}
-           onExited={()=>this.endAnimation()}>
+           onEntered={() =>this.hideContent()}
+           onExited={() =>this.endAnimation()}>
             <div className="feedback-box">
               <div className={this.props.className1}>{this.props.feedback1}</div>
               <div className={this.props.className2}>{this.props.feedback2}</div>

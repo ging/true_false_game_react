@@ -14,6 +14,7 @@ export default class Controls extends React.Component {
     this.hideMenuMob = this.hideMenuMob.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.requestFullScreen = this.requestFullScreen.bind(this);
   }
   toggleMenuMob(){
     console.log("toggle menu");
@@ -55,7 +56,15 @@ export default class Controls extends React.Component {
       break;
     }
   }
+  requestFullScreen(){
+    console.log("req")
+  }
   render(){
+    let fullscreenEnabled = UI.with_fullscreen && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled);
+    if (!fullscreenEnabled) {
+      console.log("Browser does not support fullscreen, or it is disabled by the app, we disable the button");
+    }
+
     let loggedText;
     let trackingTexts = [];
 
@@ -120,6 +129,15 @@ export default class Controls extends React.Component {
       marginRight: 0,
     };
 
+    let mobileMenuTop = {
+      top: "-8.7em"
+    };
+    if((!UI.with_reset_button && fullscreenEnabled) || (UI.with_reset_button && !fullscreenEnabled)){
+      mobileMenuTop = {top: "-7.1em"};
+    } else if(!UI.with_reset_button && !fullscreenEnabled) {
+      mobileMenuTop = {top: "-5.4em"};
+    }
+
     return (
       <div className="control_box">
           {this.props.game.game_started ?
@@ -131,6 +149,11 @@ export default class Controls extends React.Component {
                 {UI.with_reset_button &&
                   <Icon className={this.props.game.game_ended ? "hide":"control control_reset"} onClick={() => this.props.showModal("Reset")} icon="reset"/>}
                 <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop"/>
+                  {fullscreenEnabled &&
+                    (!this.props.isFullScreen ?
+                      <Icon className="control control_fullscreen" onClick={() => this.props.requestFullScreen()} icon="full_screen"/>:
+                      <Icon className="control control_nofullscreen" onClick={() => this.props.exitFullscreen()} icon="no_full_screen"/>)
+                      }
               </div>
 
               <div ref={this.setWrapperRef} className="controls_menu_mob">
@@ -139,12 +162,17 @@ export default class Controls extends React.Component {
                   <Icon className={this.props.game.game_ended ? "control control_stop" : "hide"} onClick={() => this.props.showModal("Stop")} icon="stop"/>
                 </div>
 
-                <div className={this.state.show_items ? "controls_int":"controls_int hide"}>
+                <div className={this.state.show_items ? "controls_int":"controls_int hide"} style={mobileMenuTop}>
                   <Icon className="control control_info" onClick={() => this.props.showModal("Info")} icon="info_fill"/>
                   <Icon className="control control_progress" onClick={() => this.props.showModal("Progress")} icon="progress_fill" />
                   {UI.with_reset_button &&
                     <Icon className="control control_reset" onClick={() => this.props.showModal("Reset")} icon="reset_fill"/>}
                   <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop_fill"/>
+                    {fullscreenEnabled &&
+                      (!this.props.isFullScreen ?
+                        <Icon className="control control_fullscreen" onClick={() => this.props.requestFullScreen()} icon="full_screen_fill"/>:
+                        <Icon className="control control_nofullscreen" onClick={() => this.props.exitFullscreen()} icon="no_full_screen_fill"/>)
+                        }
                 </div>
               </div>
 
@@ -180,10 +208,12 @@ export default class Controls extends React.Component {
             </div>
           ) : (
             <div className="control_bar">
-              <div className="start_game">
-                <span className="start_game_text" onClick={this.props.startGame}>empezar prueba</span>
-                <Icon className="control control_start" onClick={this.props.startGame} icon="start"/>
-              </div>
+              {!this.props.tracking.finished &&
+                <div className="start_game">
+                  <span className="start_game_text" onClick={this.props.startGame}>empezar prueba</span>
+                  <Icon className="control control_start" onClick={this.props.startGame} icon="start"/>
+                </div>
+              }
               <div className="credits" onClick={() => this.props.showModal("Credits")}>créditos</div>
             </div>
         )}

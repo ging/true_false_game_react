@@ -3,6 +3,7 @@ import {initializegame} from './../reducers/actions';
 import {QUESTIONS} from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
+import {UI} from '../config/config.js';
 
 export default class ModalGameEnd extends React.Component {
   constructor(props){
@@ -35,12 +36,13 @@ export default class ModalGameEnd extends React.Component {
     }
     let message;
     if(this.props.user_score > this.props.total_score*0.7){
-      message = "eres un crack, ¡a ti no hay quien te engañe! sabemos que no necesitas que te enseñemos cómo reconocer fuentes fiables, pero aquí te dejamos un pequeño vídeo por si quieres saber más:";
+      message = UI.message_pro;
     } else if(this.props.user_score > this.props.total_score*0.5){
-      message = "lo has hecho bastante bien, pero has fallado algunas. Revisa el siguiente video para aprender a detectar fuentes fiables:";
+      message = UI.message_good;
     } else {
-      message = "No has acertado muchas. Es muy importante detectar bien las fuentes fiables para una navegación segura. Te dejamos un video para que aprendas a detectarlas:";
+      message = UI.message_ok;
     }
+
     return (
        <Modal show={this.props.show} >
        <div className="modal-box">

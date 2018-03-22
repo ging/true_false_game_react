@@ -1,7 +1,9 @@
 import React from 'react';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
- 
+import {UI} from '../config/config';
+
+
 export default class ModalGameInfo extends React.Component {
   constructor(props){
     super(props);
@@ -16,12 +18,13 @@ export default class ModalGameInfo extends React.Component {
                   <div className="modal-content">
                      <div className="modal-title">instrucciones</div>
                      <div className="modal-text">
-                       <p>¿sabes qué noticias son verdaderas y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto detector de fake news. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.</p>
+                       <p>{UI.modal_inst}</p>
 
                        <ul className="icon_list">
                         <li><Icon className="control control_info" icon="info"/>muestra las instrucciones</li>
                         <li><Icon className="control control_progress" icon="progress"/>muestra el progreso</li>
-                        <li><Icon className="control control_reset" icon="reset"/>reinicia la prueba</li>
+                        {UI.with_reset_button &&
+                          <li><Icon className="control control_reset" icon="reset"/>reinicia la prueba</li>}
                         <li><Icon className="control control_stop" icon="stop"/>finaliza la prueba</li>
                        </ul>
                      </div>
