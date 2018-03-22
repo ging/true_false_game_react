@@ -22,7 +22,7 @@ import Dark from './Dark.jsx';
 import {UI} from '../config/config';
 import * as I18n from '../vendors/I18n.js';
 
-const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false};
+const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen: false};
 
 export class App extends React.Component {
   constructor(props){
@@ -33,6 +33,8 @@ export class App extends React.Component {
     this.startGame = this.startGame.bind(this);
     this.resetState = this.resetState.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.requestFullScreen = this.requestFullScreen.bind(this);
+    this.exitFullscreen = this.exitFullscreen.bind(this);
     this.state = INITIAL_STATE;
     this.total_score = QUESTIONS.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
   }
@@ -83,11 +85,49 @@ export class App extends React.Component {
       this.setState({showModalEnd:true});
     }
   }
+  requestFullScreen(){
+    let fullscreen = false;
+    if(document.body.requestFullscreen) {
+      document.body.requestFullscreen();
+      fullscreen = true;
+    } else if(document.body.mozRequestFullScreen) {
+      document.body.mozRequestFullScreen();
+      fullscreen = true;
+    } else if(document.body.webkitRequestFullscreen) {
+      document.body.webkitRequestFullscreen();
+      fullscreen = true;
+    } else if(document.body.msRequestFullscreen) {
+      document.body.msRequestFullscreen();
+      fullscreen = true;
+    }
+    if(fullscreen){
+      this.setState({isFullScreen:true});
+    }
+  }
+  exitFullscreen() {
+    let fullscreen = true;
+    if(document.exitFullscreen) {
+      document.exitFullscreen();
+      fullscreen = false;
+    } else if(document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+      fullscreen = false;
+    } else if(document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+      fullscreen = false;
+    } else if (document.msExitFullscreen) {
+    	document.msExitFullscreen();
+      fullscreen = false;
+    }
+    if(!fullscreen){
+      this.setState({isFullScreen:false});
+    }
+  }
   render(){
     let user_score = this.props.game.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score_accomplished; }, 0);
     let showDarkLayer = this.state.showModalStart || this.state.showModalInfo || this.state.showModalProgress || this.state.showModalReset || this.state.showModalStop || this.state.showModalEnd || this.state.showModalCredits;
     return (
-      <div id="container" onKeyDown={(e) => this.handleKeyPress(e)} tabIndex="0">
+      <div id="container" onKeyDown={(e) => this.handleKeyPress(e)} tabIndex="0" >
         <div className="main_header">
           <img className="detector_type_logo" src={UI.type_app_logo}/>
           <img className="fake_detector_logo" src={UI.app_logo}/>
@@ -108,7 +148,7 @@ export class App extends React.Component {
         <ModalGameEnd resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalEnd} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} time={this.props.game.time}/>
         <ModalGameStop resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalStop} handleClose={this.handleCloseModal} questions={this.props.game.questions} game_ended={this.props.game.game_ended}/>
         <ModalCredits show={this.state.showModalCredits} handleClose={this.handleCloseModal} />
-        {this.props.tracking.finished ? null : <Controls game={this.props.game} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG}/>}
+        {this.props.tracking.finished ? null : <Controls game={this.props.game} isFullScreen={this.state.isFullScreen} requestFullScreen={this.requestFullScreen} exitFullscreen={this.exitFullscreen} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG}/>}
         <Dark show={showDarkLayer} onClick={() => this.handleCloseModal("all")}/>
       </div>
     );
