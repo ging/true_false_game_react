@@ -9,9 +9,9 @@ export default class FinishScreen extends React.Component {
     let hasProgressMeasure = (typeof progress_measure === "number");
     let hasScore = (typeof score === "number");
     if(hasProgressMeasure && hasScore){
-      finishTitleText = this.props.I18n.getTrans("i.finish_screen_title_full", {progress_measure:(progress_measure * 100), score:(score * 100)});
+      finishTitleText = this.props.I18n.getTrans("i.finish_screen_title_full", {progress_measure:(progress_measure * 100).toFixed(0), score:(score * 100)});
     } else if(hasProgressMeasure){
-      finishTitleText = this.props.I18n.getTrans("i.finish_screen_title_wpm", {progress_measure:(progress_measure * 100)});
+      finishTitleText = this.props.I18n.getTrans("i.finish_screen_title_wpm", {progress_measure:(progress_measure * 100).toFixed(0)});
     } else if(hasScore){
       finishTitleText = this.props.I18n.getTrans("i.finish_screen_title_ws", {score:(score * 100)});
     }
