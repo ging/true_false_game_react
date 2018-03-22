@@ -131,6 +131,7 @@ export default class Controls extends React.Component {
                 {UI.with_reset_button &&
                   <Icon className={this.props.game.game_ended ? "hide":"control control_reset"} onClick={() => this.props.showModal("Reset")} icon="reset"/>}
                 <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop"/>
+                <Icon className="control control_fullscreen" onClick={() => this.props.showModal("")} icon="full_screen"/>
               </div>
 
               <div ref={this.setWrapperRef} className="controls_menu_mob">
@@ -145,6 +146,7 @@ export default class Controls extends React.Component {
                   {UI.with_reset_button &&
                     <Icon className="control control_reset" onClick={() => this.props.showModal("Reset")} icon="reset_fill"/>}
                   <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop_fill"/>
+                  <Icon className="control control_fullscreen" onClick={() => this.props.showModal("")} icon="full_screen_fill"/>
                 </div>
               </div>
 

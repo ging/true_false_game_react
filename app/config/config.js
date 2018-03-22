@@ -4,7 +4,7 @@ export let GLOBAL_CONFIG = {
     debug_scorm_api:false,
     debug_scorm_api_window:false,
     available_locales:["en", "es"],
-    // locale: "es",
+    locale: "es",
     adaptive:true,
     finish_screen:true,
     scorm:{
@@ -49,7 +49,7 @@ export const UI = {
   educalab_logo:"assets/images/logos/educalab_logo_white.svg",
   initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, que no te tomen por tonto",
   instructions:"Marca verdadero o falso para cada una de las noticias propuestas. Irás obteniendo una puntuación según cuantas aciertes.",
-  with_reset_button: false,
+  with_reset_button: true,
   feedback2_right: "la noticia es real",
   feedback2_wrong: "la noticia es falsa",
   message_pro: "eres un crack, ¡a ti no hay quien te engañe! sabemos que no necesitas que te enseñemos cómo reconocer fuentes fiables, pero aquí te dejamos un pequeño vídeo por si quieres saber más:",
