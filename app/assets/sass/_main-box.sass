@@ -36,6 +36,8 @@
     margin: 0 auto
     width: 70%
     display: block
+  &.main_box_finished
+    height: calc(100vh - 7.7em)
 
 
 @media (max-width: 1366px) and (orientation: landscape)
@@ -76,7 +78,7 @@
           top: 65%
 
 
-@media (max-width: 812px) and (orientation: landscape) //iPhoneX
+@media (max-width: 823px) and (orientation: landscape) 
 
   .main_box
     height: calc(100vh - 8.3em)
@@ -91,6 +93,15 @@
           top: 63%
     .quiz_image
       width: 80%
+    &.main_box_finished
+      height: calc(100vh - 6.7em)
+
+
+@media (max-width: 812px) and (orientation: landscape) //iPhoneX
+
+  .main_box
+    &.main_box_finished
+      height: calc(100vh - 4.7em)
 
 
 @media (max-width: 768px)
@@ -121,6 +132,8 @@
           top: 67%
     .quiz_image
       width: 95%
+    &.main_box_finished
+      height: calc(100vh - 4.1em)
 
 
 
@@ -138,6 +151,8 @@
       .nav_position
         .nav_url
           top: 66%
+    &.main_box_finished
+      height: calc(100vh - 4.7em)
 
 
 @media (max-width: 670px) and (orientation: landscape)

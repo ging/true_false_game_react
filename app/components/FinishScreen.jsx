@@ -23,8 +23,8 @@ export default class FinishScreen extends React.Component {
   render(){
     let finishTitleText = this._getFinishScreenTitle(this.props.tracking.progress_measure, this.props.tracking.score);
     return (
-      <div className="finish_screen">
-        <h1 id="finish_title">{finishTitleText}</h1>
+      <div className="main_box main_box_finished">
+        <h1 className="main_text" id="finish_title">{finishTitleText}</h1>
       </div>
     );
   }

@@ -18,7 +18,7 @@ export default class ModalGameInfo extends React.Component {
                   <div className="modal-content">
                      <div className="modal-title">instrucciones</div>
                      <div className="modal-text">
-                       <p>¿sabes qué noticias son verdaderas y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto detector de fake news. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.</p>
+                       <p>{UI.modal_inst}</p>
 
                        <ul className="icon_list">
                         <li><Icon className="control control_info" icon="info"/>muestra las instrucciones</li>

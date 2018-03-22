@@ -22,11 +22,11 @@ export default class ModalGameStart extends React.Component {
                   <div className="modal-content">
                      <div className="modal-title">instrucciones</div>
                      <div className="modal-text">
-                       <p>¿sabes qué noticias son verdaderas y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto detector de fake news. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.</p>
+                       <p>{UI.modal_inst}</p>
 
                        <div className="task-list">
                           <div className="list-title" onClick={() => this.toggleItems()}>
-                            <p className="list-title-text">lista de noticias a contestar</p>
+                            <p className="list-title-text">{UI.task_list}</p>
                             <Icon className="control control_plus" icon="plus2"/>
                           </div>
                           <ul className={this.state.show_items ? "":"hide"}>
