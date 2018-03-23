@@ -33,7 +33,7 @@
     padding-bottom: 1em
     max-height: 26em
     overflow-y: auto
-    @include transition (transform 500ms ease-in)
+    @include backface-visibility (hidden)
     &.fade-enter
       opacity: 0.01
       @include transform (scale(0.01))
@@ -41,14 +41,13 @@
         opacity: 1
         @include transition (transform 500ms ease-in)
         @include transform (scale(1))
-        @include backface-visibility (hidden)
     &.fade-exit
       opacity: 1
-      @include transform (scale(1))
+      @include transform (scale(0.01))
       @include transition (transform 500ms ease-in)
       &.fade-exit-active
         opacity: 0.01
-        @include transform (scale(0.01))
+        @include transform (scale(1))
         @include transition (transform 500ms ease-in)
     .modal-box
       margin: 1em

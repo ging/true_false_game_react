@@ -71,7 +71,7 @@ export default class Quiz extends React.Component {
             </div>
           </div>
             <div className="image_box">
-              <img className="quiz_image" src={show_feedback ? question.feedback_path:question.path}/>
+              <img className={"quiz_image" + (question.horizontal ? " horizontal":"")} src={show_feedback ? question.feedback_path:question.path}/>
             </div>
           </div>
       );
