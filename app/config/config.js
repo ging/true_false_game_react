@@ -50,7 +50,7 @@ export const UI = {
   initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, que no te tomen por tonto",
   instructions:"marca verdadero o falso para cada una de las noticias propuestas. irás obteniendo una puntuación según cuantas aciertes.",
   with_reset_button: false,
-  with_fullscreen: false,
+  with_fullscreen: true,
   feedback2_right: "la noticia es real",
   feedback2_wrong: "la noticia es falsa",
   message_pro: "eres un crack, ¡a ti no hay quien te engañe! sabemos que no necesitas que te enseñemos cómo reconocer fuentes fiables, pero aquí te dejamos un pequeño vídeo por si quieres saber más:",

@@ -9,6 +9,15 @@ import * as Utils from '../vendors/Utils.js';
 export default class Quiz extends React.Component {
   constructor(props){
     super(props);
+    this.state = {width: false, height: false};
+    this.updateDimensions = this.updateDimensions.bind(this);
+  }
+  updateDimensions() {
+    if(this.box){
+      this.setState({width: this.box.clientWidth, height: this.box.clientHeight});
+    } else {
+      console.log("WARNING: no box defined");
+    }
   }
   componentDidMount(){
     // Create objectives (One per question included in the quiz)
@@ -18,10 +27,23 @@ export default class Quiz extends React.Component {
       objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(1 / nQuestions)}));
     }
     this.props.dispatch(addObjectives(objectives));
+    console.log("llamamos");
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions);
   }
   componentDidUpdate(prevProps, prevState){
-    console.log("DIDUPDATE");
-
+    if(prevProps.index !==this.props.index){
+      console.log("Question changed");
+      if(this.img && this.box){
+        let imgaspect = this.img.naturalWidth/this.img.naturalHeight;
+        let boxaspect = this.state.width/this.state.height;
+        console.log("ratio natural: " + imgaspect);
+        console.log("ratio box: " + boxaspect);
+      }
+    }
   }
   render(){
     let question = this.props.questions[this.props.index];
@@ -65,23 +87,23 @@ export default class Quiz extends React.Component {
       let nav_img = (question.secure === true) ? "assets/images/others/secure_nav.png" : "assets/images/others/no_secure_nav.png";
 
       return (
-          <div className="main_box">
-          {show_feedback ? feedback_component : null}
-          <Animation dispatch={this.props.dispatch} show={question.show_animation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
-          <div className={"nav_box " + (show_feedback ? "with_feedback" : "") }>
-            <div className="nav_position">
-              <img className="nav_image" src={nav_img}/>
-              <span className="nav_url" style={urlStyle}>{question.source_url}</span>
+          <div className="main_box" ref={(box) => { this.box = box; }}>
+            {show_feedback ? feedback_component : null}
+            <Animation dispatch={this.props.dispatch} show={question.show_animation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
+            <div className={"nav_box " + (show_feedback ? "with_feedback" : "") }>
+              <div className="nav_position">
+                <img className="nav_image" src={nav_img}/>
+                <span className="nav_url" style={urlStyle}>{question.source_url}</span>
+              </div>
             </div>
-          </div>
             <div className="image_box">
-              <img className={"quiz_image" + (question.full_horizontal ? " horizontal":"") + (question.full_vertical ? " vertical":"")} src={show_feedback ? question.feedback_path:question.path}/>
+              <img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.full_horizontal ? " horizontal":"") + (question.full_vertical ? " vertical":"")} src={show_feedback ? question.feedback_path:question.path}/>
             </div>
           </div>
       );
     }
     return (
-        <div className="main_box">
+        <div className="main_box" ref={(box) => { this.box = box; }}>
           <p className="main_text">{UI.initial_text}</p>
         </div>
     );
