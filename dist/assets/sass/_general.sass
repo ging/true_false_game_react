@@ -2,10 +2,9 @@
 *
   @include box-sizing(border-box)
   outline: none
-  @include no_select_text 
+  @include no_select_text
 
 body
-  background-color: white
   height: 100vh
   width: 100%
   color: white
@@ -16,7 +15,7 @@ body
   //overflow: hidden
   @include cursor
 
-a 
+a
   text-decoration: none
   color: $secondarycolor
   //display: inline
@@ -28,6 +27,10 @@ ul
   padding: 0
   list-style-type: none
 
+#root
+  background-color: $background
+  height: 100%
+  
 #container
   width: 95%
   margin: 0 auto
@@ -53,14 +56,14 @@ ul
 
 //------------ RESPONSIVE VIDEOS ---------
 
-.responsive_video 
+.responsive_video
   position: relative
   padding-bottom: 56.25%
   height: 0
   width: 100%
   height: 100%
   margin: 1em auto
-  iframe 
+  iframe
     position: absolute
     top: 0
     left: 0
@@ -80,8 +83,3 @@ ul
 //   background-color: $midarkgrey
 //   outline: 1px solid slategrey
 //   border-radius: 5em
-
-
-
-
-
