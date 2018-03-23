@@ -19,6 +19,10 @@ export default class Quiz extends React.Component {
     }
     this.props.dispatch(addObjectives(objectives));
   }
+  componentDidUpdate(prevProps, prevState){
+    console.log("DIDUPDATE");
+
+  }
   render(){
     let question = this.props.questions[this.props.index];
     if(this.props.game.game_started && question){
@@ -36,7 +40,7 @@ export default class Quiz extends React.Component {
         feedback1 = "no has respondido esta pregunta";
         feedback1_class = "user_answer user_not_answer";
       }
-      
+
       if(question.true_or_false){
         feedback2 = UI.feedback2_right;
         feedback2_class = "question right_question";
@@ -71,7 +75,7 @@ export default class Quiz extends React.Component {
             </div>
           </div>
             <div className="image_box">
-              <img className={"quiz_image" + (question.horizontal ? " horizontal":"")} src={show_feedback ? question.feedback_path:question.path}/>
+              <img className={"quiz_image" + (question.full_horizontal ? " horizontal":"") + (question.full_vertical ? " vertical":"")} src={show_feedback ? question.feedback_path:question.path}/>
             </div>
           </div>
       );
