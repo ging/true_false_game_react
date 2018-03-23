@@ -40,6 +40,7 @@ export default class ModalGameStart extends React.Component {
                         {UI.with_reset_button &&
                           <li><Icon className="control control_reset" icon="reset"/>reinicia la prueba</li>}
                         <li><Icon className="control control_stop" icon="stop"/>finaliza la prueba</li>
+                        <li><Icon className="control control_fullscreen" icon="full_screen"/>modo pantalla completa</li>
                        </ul>
                      </div>
                     <div className="modal-actions">

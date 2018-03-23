@@ -6,7 +6,8 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing01_feedback.png",
-      feedback_text: ""
+      feedback_text: "",
+      horizontal: true
     },
     { path: "./assets/images/quiz/phishing02.png",
       source_name: "Olivia Pareja, venta zapatos",
@@ -15,7 +16,8 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing02_feedback.png",
-      feedback_text: ""
+      feedback_text: "",
+      horizontal: true
     },
     { path: "./assets/images/quiz/phishing03.png",
       source_name: "Banco ING Direct",
@@ -24,7 +26,8 @@ export const QUESTIONS = [
       true_or_false: true,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing03_feedback.png",
-      feedback_text: ""
+      feedback_text: "",
+      horizontal: true
     },
     { path: "./assets/images/quiz/phishing04.png",
       source_name: "UGG venta zapatos",
@@ -33,7 +36,8 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing04_feedback.png",
-      feedback_text: ""
+      feedback_text: "",
+      horizontal: true
     },
     { path: "./assets/images/quiz/phishing05.png",
       source_name: "Movistar",
@@ -42,16 +46,18 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing05_feedback.png",
-      feedback_text: ""
+      feedback_text: "",
+      horizontal: true
     },
     { path: "./assets/images/quiz/phishing06.png",
       source_name: "Netflix registro",
       source_url: "www.netflix.com/signup/regform",
+      feedback_text: "",
       secure: true,
       true_or_false: true,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing06_feedback.png",
-      feedback_text: ""
+      horizontal: true
     },
     { path: "./assets/images/quiz/phishing07.png",
       source_name: "Banco BBVA",
@@ -60,7 +66,8 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing07_feedback.png",
-      feedback_text: ""
+      feedback_text: "",
+      horizontal: true
     },
     { path: "./assets/images/quiz/phishing08.png",
       source_name: "Pandora, venta joyería",
@@ -69,7 +76,9 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing08_feedback.png",
-      feedback_text: ""
+      feedback_text: "",
+      horizontal: true,
+      force_width_100: true
     },
     { path: "./assets/images/quiz/phishing09.png",
       source_name: "Tuenti movil, contratar",
@@ -78,7 +87,8 @@ export const QUESTIONS = [
       true_or_false: true,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing09_feedback.png",
-      feedback_text: ""
+      feedback_text: "",
+      horizontal: true
     },
     { path: "./assets/images/quiz/phishing10.png",
       source_name: "Recompensas Google",
@@ -87,6 +97,7 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing10_feedback.png",
-      feedback_text: ""
+      feedback_text: "",
+      horizontal: true
     },
 ]
