@@ -1,5 +1,5 @@
 import React from 'react';
-import {initializegame} from './../reducers/actions';
+import {initializegame, finishApp} from './../reducers/actions';
 import {QUESTIONS} from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
@@ -8,14 +8,18 @@ import {UI} from '../config/config.js';
 export default class ModalGameEnd extends React.Component {
   constructor(props){
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.resetClick = this.resetClick.bind(this);
+    this.finishGame = this.finishGame.bind(this);
   }
-  handleClick(){
+  resetClick(){
     this.props.handleClose("End");
     this.props.dispatch(initializegame(QUESTIONS));
     this.props.resetState();
   }
-
+  finishGame(){
+    this.props.handleClose("End");
+    this.props.dispatch(finishApp(true));
+  }
   render(){
 
     let question = this.props.questions[this.props.index];
@@ -63,7 +67,9 @@ export default class ModalGameEnd extends React.Component {
                   </div>
                 </div>
               <div className="modal-actions">
-                <div className="btn btn-red" onClick={this.handleClick}>reiniciar</div>
+                {UI.with_reset_button ?
+                  <div className="btn btn-red" onClick={this.resetClick}>reiniciar</div>:
+                  <div className="btn btn-red" onClick={this.finishGame}>terminar</div>}
                 <div className="btn btn-green" onClick={ () =>this.props.handleClose("End")}>ver feedback</div>
               </div>
            </div>
