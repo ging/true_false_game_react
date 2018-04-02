@@ -46,7 +46,7 @@ export const UI = {
   app_logo:"assets/images/logos/fakedetector_logo.svg",
   type_app_logo:"assets/images/logos/news.svg",
   educalab_text:"una aplicación de",
-  educalab_logo:"assets/images/logos/educalab_logo_white.svg",
+  educalab_logo:"assets/images/logos/elab_logo_white.svg",
   initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, que no te tomen por tonto",
   instructions:"marca verdadero o falso para cada una de las noticias propuestas. irás obteniendo una puntuación según cuantas aciertes.",
   with_reset_button: false,

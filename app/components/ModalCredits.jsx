@@ -16,7 +16,7 @@ export default class ModalCredits extends React.Component {
                   <div className="modal-content">
                      <div className="modal-title">créditos</div>
                      <div className="modal-text">
-                       <p>aplicación de <img className="e_logo" src="assets/images/logos/educalab_logo_black.svg"/>, desarrollada por el Grupo Internet de Nueva Generación de la UPM, con el apoyo institucional del INCIBE, el CRIF las Acacias y Orange.</p>
+                       <p>aplicación de <img className="e_logo" src="assets/images/logos/elab_logo_black.svg"/>, desarrollada por el Grupo Internet de Nueva Generación de la UPM, con el apoyo institucional del INCIBE, el CRIF las Acacias y Orange.</p>
                      </div>
                      <div className="logos">
                         <a href="http://www.upm.es/" target="_blank"><img className="logo upm_logo" src="assets/images/logos/upm_logo.png"/></a>
