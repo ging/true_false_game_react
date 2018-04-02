@@ -35,6 +35,7 @@ export class App extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.requestFullScreen = this.requestFullScreen.bind(this);
     this.exitFullscreen = this.exitFullscreen.bind(this);
+    this.fullscreenChange = this.fullscreenChange.bind(this);
     this.state = INITIAL_STATE;
     this.total_score = QUESTIONS.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
   }
@@ -45,6 +46,16 @@ export class App extends React.Component {
     this.props.dispatch(initializegame(QUESTIONS));
     let myinterval = setInterval(() => this.props.dispatch(updateTimer()), 1000);
     this.setState({intervalId: myinterval});
+    window.addEventListener('fullscreenchange', this.fullscreenChange);
+    window.addEventListener('webkitfullscreenchange', this.fullscreenChange);
+    window.addEventListener('mozfullscreenchange', this.fullscreenChange);
+    window.addEventListener('MSFullscreenChange', this.fullscreenChange);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('fullscreenchange', this.fullscreenChange);
+    window.removeEventListener('webkitfullscreenchange', this.fullscreenChange);
+    window.removeEventListener('mozfullscreenchange', this.fullscreenChange);
+    window.removeEventListener('MSFullscreenChange', this.fullscreenChange);
   }
   componentWillUnmount(){
     console.log("CLEAR INTERVAL!");
@@ -86,41 +97,36 @@ export class App extends React.Component {
     }
   }
   requestFullScreen(){
-    let fullscreen = false;
     if(document.body.requestFullscreen) {
       document.body.requestFullscreen();
-      fullscreen = true;
     } else if(document.body.mozRequestFullScreen) {
       document.body.mozRequestFullScreen();
-      fullscreen = true;
     } else if(document.body.webkitRequestFullscreen) {
       document.body.webkitRequestFullscreen();
-      fullscreen = true;
     } else if(document.body.msRequestFullscreen) {
       document.body.msRequestFullscreen();
-      fullscreen = true;
-    }
-    if(fullscreen){
-      this.setState({isFullScreen:true});
     }
   }
   exitFullscreen() {
-    let fullscreen = true;
     if(document.exitFullscreen) {
       document.exitFullscreen();
-      fullscreen = false;
     } else if(document.mozCancelFullScreen) {
       document.mozCancelFullScreen();
-      fullscreen = false;
     } else if(document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
-      fullscreen = false;
     } else if (document.msExitFullscreen) {
     	document.msExitFullscreen();
-      fullscreen = false;
     }
-    if(!fullscreen){
+  }
+  fullscreenChange(){
+    //this method is called whenever a fullscreenChange event is fired.
+    //we change state here and not in the other methods because fullscreen can be toggled also with keys, not only buttons
+    if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+      console.log("no fullscreen");
       this.setState({isFullScreen:false});
+    } else{
+      console.log("fullscreen");
+      this.setState({isFullScreen:true});
     }
   }
   render(){
