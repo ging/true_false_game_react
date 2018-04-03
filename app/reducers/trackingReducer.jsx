@@ -10,6 +10,7 @@ function trackingReducer(state = {}, action){
         newState.objectives[action.objectives[i].id] = action.objectives[i];
       }
     }
+    console.log(newState);
     return newState;
   case 'OBJECTIVE_ACCOMPLISHED':
     if(typeof action.objective_id === "undefined"){
