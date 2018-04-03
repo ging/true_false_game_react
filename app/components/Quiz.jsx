@@ -2,7 +2,7 @@ import React from 'react';
 import {UI} from '../config/config.js';
 import {QUESTIONS} from '../config/questions.js';
 import Animation from './Animation.jsx';
-import {stopAnimation, addObjectives} from './../reducers/actions';
+import {stopAnimation, addObjectives, addSizes} from './../reducers/actions';
 import * as Utils from '../vendors/Utils.js';
 
 
@@ -12,6 +12,7 @@ export default class Quiz extends React.Component {
     this.state = {width_box: 0, height_box: 0, height_nav: 0};
     this.updateDimensions = this.updateDimensions.bind(this);
     this.handleImageLoaded = this.handleImageLoaded.bind(this);
+    this.calculateImgsSizes = this.calculateImgsSizes.bind(this);
   }
   updateDimensions() {
     if(this.box && this.nav){
@@ -21,6 +22,30 @@ export default class Quiz extends React.Component {
     } else {
       console.log("WARNING: no box defined");
     }
+  }
+  calculateImgsSizes(){
+    let nQuestions = QUESTIONS.length;
+    let processed = 0;
+    let sizes = [];
+    for(let i = 0; i < nQuestions; i++){
+      let img = new Image();
+
+      img.onload = function(){
+        let height = img.height;
+        let width = img.width;
+        console.log("width: " + width + " hei: " + height);
+        // code here to use the dimensions
+        processed +=1;
+        sizes[+img.id] = {width: width, height: height};
+        if(processed===QUESTIONS.length){
+          console.log(sizes);
+          this.props.dispatch(addSizes(sizes));
+        }
+      }.bind(this);
+      img.id = i;
+      img.src = QUESTIONS[i].path;
+    }
+
   }
   componentDidMount(){
     // Create objectives (One per question included in the quiz)
@@ -33,6 +58,7 @@ export default class Quiz extends React.Component {
     console.log("llamamos");
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions);
+    this.calculateImgsSizes();
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
@@ -41,7 +67,8 @@ export default class Quiz extends React.Component {
     if(prevProps.index !==this.props.index){
       console.log("Question changed");
       if(this.img && this.box){
-        let imgaspect = this.img.naturalWidth/this.img.naturalHeight;
+        let question = this.props.questions[this.props.index]
+        let imgaspect = question.width/question.height;
         let boxaspect = this.state.width_box/this.state.height_box;
         console.log("ratio natural: " + imgaspect);
         console.log("ratio box: " + boxaspect);
