@@ -9,12 +9,15 @@ import * as Utils from '../vendors/Utils.js';
 export default class Quiz extends React.Component {
   constructor(props){
     super(props);
-    this.state = {width: false, height: false};
+    this.state = {width_box: 0, height_box: 0, height_nav: 0};
     this.updateDimensions = this.updateDimensions.bind(this);
+    this.handleImageLoaded = this.handleImageLoaded.bind(this);
   }
   updateDimensions() {
-    if(this.box){
-      this.setState({width: this.box.clientWidth, height: this.box.clientHeight});
+    if(this.box && this.nav){
+      this.setState({width_box: this.box.clientWidth, height_box: this.box.clientHeight, height_nav: this.nav.clientHeight});
+    } else if(this.box) {
+      this.setState({width_box: this.box.clientWidth, height_box: this.box.clientHeight});
     } else {
       console.log("WARNING: no box defined");
     }
@@ -39,11 +42,26 @@ export default class Quiz extends React.Component {
       console.log("Question changed");
       if(this.img && this.box){
         let imgaspect = this.img.naturalWidth/this.img.naturalHeight;
-        let boxaspect = this.state.width/this.state.height;
+        let boxaspect = this.state.width_box/this.state.height_box;
         console.log("ratio natural: " + imgaspect);
         console.log("ratio box: " + boxaspect);
+        if(imgaspect > boxaspect){
+          console.log("readjusting img");
+          this.img.style.height = this.state.height_box - this.state.height_nav + "px";
+          this.img.style.width = "auto";
+        } else {
+          console.log("readjusting back");
+          this.img.style.height = "";
+          this.img.style.width = "";
+        }
       }
     }
+  }
+  handleImageLoaded(){
+    console.log("LOADED");
+    let imgaspect = this.img.naturalWidth/this.img.naturalHeight;
+    let boxaspect = this.state.width_box/this.state.height_box;
+    console.log("ratio natural: " + imgaspect);
   }
   render(){
     let question = this.props.questions[this.props.index];
@@ -91,12 +109,12 @@ export default class Quiz extends React.Component {
             {show_feedback ? feedback_component : null}
             <Animation dispatch={this.props.dispatch} show={question.show_animation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
             <div className={"nav_box " + (show_feedback ? "with_feedback" : "") }>
-              <div className="nav_position">
-                <img className="nav_image" src={nav_img}/>
+              <div className="nav_position" ref={(nav) => { this.nav = nav; }}>
+                <img className="nav_image" src={nav_img} onLoad={this.handleImageLoaded} />
                 <span className="nav_url" style={urlStyle}>{question.source_url}</span>
               </div>
             </div>
-            <div className="image_box">
+            <div className="image_box" ref={(imgbox) => { this.imgbox = imgbox; }}>
               <img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.full_horizontal ? " horizontal":"") + (question.full_vertical ? " vertical":"")} src={show_feedback ? question.feedback_path:question.path}/>
             </div>
           </div>
