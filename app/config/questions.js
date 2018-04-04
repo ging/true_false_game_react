@@ -1,13 +1,4 @@
 export const QUESTIONS = [
-    { path: "./assets/images/quiz/phishing02.png",
-      source_name: "Olivia Pareja, venta zapatos",
-      source_url: "http://www.oliviapareja.es/",
-      secure: false,
-      true_or_false: false,
-      score: 10,
-      feedback_path: "./assets/images/quiz/phishing02_feedback.png",
-      feedback_text: "",
-    },
     { path: "./assets/images/quiz/phishing01.png",
       source_name: "Banco Santander",
       source_url: "http://www.bitidlma.com/s4nbnc/San/Home.php?i=tablet.bancosantander.es/supernetLogin/indexSan.html?tsid=20182140546#!login",
