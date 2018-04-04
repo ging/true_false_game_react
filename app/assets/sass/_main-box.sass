@@ -31,6 +31,14 @@
         white-space: nowrap
         text-overflow: ellipsis
         overflow: hidden
+  .eduiframe
+    width: 100%
+    height: 100vh
+    border: none
+    margin: 0
+    padding: 0
+    overflow: hidden
+    z-index: 999999
   .image_box
     text-align: center
     width: 100%
@@ -42,6 +50,7 @@
       width: 70%
   &.main_box_finished
     height: calc(100vh - 7.7em)
+
 
 
 @media (max-width: $media1) and (orientation: landscape)
@@ -83,7 +92,7 @@
           top: 65%
 
 
-@media (max-width: $media5) 
+@media (max-width: $media5)
 
   .main_box
     .nav_box
@@ -135,7 +144,7 @@
       .quiz_image
         &.with_margins
           width: 80%
-       
+
 
 @media (max-width: $media9)
 
@@ -217,4 +226,3 @@
       .nav_position
         .nav_url
           top: 68%
-
