@@ -192,7 +192,7 @@ export default class Controls extends React.Component {
 
                 <div className="questions_answered">
                   <div className="number_progress number_answered">{progress}/{QUESTIONS.length}</div>
-                  <div className="progress_bar"><div className="progress_fill" style={progressStyle}/></div>
+                  <div className="progress_bar"><div className="progress_fill" style={progressStyle}></div></div>
                 </div>
 
                 <div className="user_score">

@@ -2,22 +2,47 @@ import React from 'react';
 import {UI} from '../config/config.js';
 import {QUESTIONS} from '../config/questions.js';
 import Animation from './Animation.jsx';
-import {stopAnimation, addObjectives} from './../reducers/actions';
+import {stopAnimation, addObjectives, addSizes} from './../reducers/actions';
 import * as Utils from '../vendors/Utils.js';
 
 
 export default class Quiz extends React.Component {
   constructor(props){
     super(props);
-    this.state = {width: false, height: false};
+    this.state = {width_box: 0, height_box: 0, height_nav: 0};
     this.updateDimensions = this.updateDimensions.bind(this);
+    this.calculateImgsSizes = this.calculateImgsSizes.bind(this);
   }
   updateDimensions() {
-    if(this.box){
-      this.setState({width: this.box.clientWidth, height: this.box.clientHeight});
+    if(this.box) {
+      this.setState({width_box: this.box.clientWidth, height_box: this.box.clientHeight});
     } else {
       console.log("WARNING: no box defined");
     }
+  }
+  calculateImgsSizes(){
+    let nQuestions = QUESTIONS.length;
+    let processed = 0;
+    let sizes = [];
+    for(let i = 0; i < nQuestions; i++){
+      let img = new Image();
+
+      img.onload = function(){
+        let height = img.height;
+        let width = img.width;
+        console.log("width: " + width + " hei: " + height);
+        // code here to use the dimensions
+        processed +=1;
+        sizes[+img.id] = {width: width, height: height};
+        if(processed===QUESTIONS.length){
+          console.log(sizes);
+          this.props.dispatch(addSizes(sizes));
+        }
+      }.bind(this);
+      img.id = i;
+      img.src = QUESTIONS[i].path;
+    }
+
   }
   componentDidMount(){
     // Create objectives (One per question included in the quiz)
@@ -27,21 +52,28 @@ export default class Quiz extends React.Component {
       objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(1 / nQuestions)}));
     }
     this.props.dispatch(addObjectives(objectives));
-    console.log("llamamos");
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions);
+    this.calculateImgsSizes();
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
   }
   componentDidUpdate(prevProps, prevState){
     if(prevProps.index !==this.props.index){
-      console.log("Question changed");
       if(this.img && this.box){
-        let imgaspect = this.img.naturalWidth/this.img.naturalHeight;
-        let boxaspect = this.state.width/this.state.height;
-        console.log("ratio natural: " + imgaspect);
-        console.log("ratio box: " + boxaspect);
+        let question = this.props.questions[this.props.index]
+        let imgaspect = question.width/question.height;
+        let boxaspect = this.state.width_box/this.state.height_box;
+        //console.log("ratio natural: " + imgaspect);
+        //console.log("ratio box: " + boxaspect);
+        if(imgaspect > boxaspect){
+          this.img.style.height = this.state.height_box - this.nav.clientHeight -15 + "px";
+          this.img.style.width = "auto";
+        } else {
+          this.img.style.height = "";
+          this.img.style.width = "";
+        }
       }
     }
   }
@@ -71,7 +103,6 @@ export default class Quiz extends React.Component {
         feedback2_class = "question wrong_question";
       }
 
-
       let urlStyle = {
         left: (question.secure === true) ? "14.5%" : "7%"
       };
@@ -91,13 +122,13 @@ export default class Quiz extends React.Component {
             {show_feedback ? feedback_component : null}
             <Animation dispatch={this.props.dispatch} show={question.show_animation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
             <div className={"nav_box " + (show_feedback ? "with_feedback" : "") }>
-              <div className="nav_position">
-                <img className="nav_image" src={nav_img}/>
+              <div className="nav_position" ref={(nav) => { this.nav = nav; }}>
+                <img className="nav_image" src={nav_img} />
                 <span className="nav_url" style={urlStyle}>{question.source_url}</span>
               </div>
             </div>
-            <div className="image_box">
-              <img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.full_horizontal ? " horizontal":"") + (question.full_vertical ? " vertical":"")} src={show_feedback ? question.feedback_path:question.path}/>
+            <div className="image_box" ref={(imgbox) => { this.imgbox = imgbox; }}>
+              <img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path}/>
             </div>
           </div>
       );
