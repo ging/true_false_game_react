@@ -6,8 +6,7 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing02_feedback.png",
-      feedback_text: "",
-      full_vertical: true
+      feedback_text: ""
     },
     { path: "./assets/images/quiz/phishing01.png",
       source_name: "Banco Santander",
@@ -16,8 +15,7 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing01_feedback.png",
-      feedback_text: "",
-      full_horizontal: true
+      feedback_text: ""
     },
     { path: "./assets/images/quiz/phishing05.png",
       source_name: "Movistar",
@@ -26,8 +24,7 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "./assets/images/quiz/phishing05_feedback.png",
-      feedback_text: "",
-      full_horizontal: true
+      feedback_text: ""
     },
     { path: "./assets/images/quiz/noticia1.png",
       source_name: "ABC",
@@ -36,7 +33,8 @@ export const QUESTIONS = [
       true_or_false: true,
       score: 5,
       feedback_path: "./assets/images/quiz/noticia1s.png",
-      feedback_text: "La noticia es verdadera, viene de un medio nacional, el periódico ABC."
+      feedback_text: "La noticia es verdadera, viene de un medio nacional, el periódico ABC.",
+      with_margins: true
     },
     { path: "./assets/images/quiz/noticia2.png",
       source_name: "ABC",
@@ -45,7 +43,8 @@ export const QUESTIONS = [
       true_or_false: true,
       score: 10,
       feedback_path: "./assets/images/quiz/noticia2s.png",
-      feedback_text: " La noticia es verdadera."
+      feedback_text: " La noticia es verdadera.",
+      with_margins: true
     },
     { path: "./assets/images/quiz/noticia3.png",
       source_name: "Veterinarios.info",
@@ -54,6 +53,7 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 15,
       feedback_path: "./assets/images/quiz/noticia3s.png",
-      feedback_text: "La noticia es falsa. Hay que fijarse que es un blog y conviene contrastar la información, además anima a difundirlo, que siempre lleva a la sospecha. Una rápida búsqueda en Google y verás que es falsa."
+      feedback_text: "La noticia es falsa. Hay que fijarse que es un blog y conviene contrastar la información, además anima a difundirlo, que siempre lleva a la sospecha. Una rápida búsqueda en Google y verás que es falsa.",
+      with_margins: true
     },
 ]

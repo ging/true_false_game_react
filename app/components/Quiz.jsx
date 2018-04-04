@@ -14,9 +14,7 @@ export default class Quiz extends React.Component {
     this.calculateImgsSizes = this.calculateImgsSizes.bind(this);
   }
   updateDimensions() {
-    if(this.box && this.nav){
-      this.setState({width_box: this.box.clientWidth, height_box: this.box.clientHeight, height_nav: this.nav.clientHeight});
-    } else if(this.box) {
+    if(this.box) {
       this.setState({width_box: this.box.clientWidth, height_box: this.box.clientHeight});
     } else {
       console.log("WARNING: no box defined");
@@ -70,7 +68,7 @@ export default class Quiz extends React.Component {
         //console.log("ratio natural: " + imgaspect);
         //console.log("ratio box: " + boxaspect);
         if(imgaspect > boxaspect){
-          this.img.style.height = this.state.height_box - this.state.height_nav + "px";
+          this.img.style.height = this.state.height_box - this.nav.clientHeight -15 + "px";
           this.img.style.width = "auto";
         } else {
           this.img.style.height = "";
@@ -130,7 +128,7 @@ export default class Quiz extends React.Component {
               </div>
             </div>
             <div className="image_box" ref={(imgbox) => { this.imgbox = imgbox; }}>
-              <img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.full_horizontal ? " horizontal":"") + (question.full_vertical ? " vertical":"")} src={show_feedback ? question.feedback_path:question.path}/>
+              <img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path}/>
             </div>
           </div>
       );
