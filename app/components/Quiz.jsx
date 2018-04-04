@@ -9,15 +9,23 @@ import * as Utils from '../vendors/Utils.js';
 export default class Quiz extends React.Component {
   constructor(props){
     super(props);
-    this.state = {width_box: 0, height_box: 0, height_nav: 0};
     this.updateDimensions = this.updateDimensions.bind(this);
     this.calculateImgsSizes = this.calculateImgsSizes.bind(this);
   }
   updateDimensions() {
-    if(this.box) {
-      this.setState({width_box: this.box.clientWidth, height_box: this.box.clientHeight});
-    } else {
-      console.log("WARNING: no box defined");
+    if(this.img && this.box){
+      let question = this.props.questions[this.props.index]
+      let imgaspect = question.width/question.height;
+      let boxaspect = this.box.clientWidth/this.box.clientHeight;
+      //console.log("ratio natural: " + imgaspect);
+      //console.log("ratio box: " + boxaspect);
+      if(imgaspect > boxaspect){
+        this.img.style.height = (this.box.offsetHeight - this.nav.clientHeight -7) + "px";
+        this.img.style.width = "auto";
+      } else {
+        this.img.style.height = "";
+        this.img.style.width = "";
+      }
     }
   }
   calculateImgsSizes(){
@@ -61,20 +69,7 @@ export default class Quiz extends React.Component {
   }
   componentDidUpdate(prevProps, prevState){
     if(prevProps.index !==this.props.index){
-      if(this.img && this.box){
-        let question = this.props.questions[this.props.index]
-        let imgaspect = question.width/question.height;
-        let boxaspect = this.state.width_box/this.state.height_box;
-        //console.log("ratio natural: " + imgaspect);
-        //console.log("ratio box: " + boxaspect);
-        if(imgaspect > boxaspect){
-          this.img.style.height = this.state.height_box - this.nav.clientHeight -7 + "px";
-          this.img.style.width = "auto";
-        } else {
-          this.img.style.height = "";
-          this.img.style.width = "";
-        }
-      }
+      this.updateDimensions();
     }
   }
   render(){
@@ -107,7 +102,7 @@ export default class Quiz extends React.Component {
         left: (question.secure === true) ? "14.5%" : "7%"
       };
 
-      let imgboxstyle = {marginTop: this.nav ? this.nav.clientHeight + "px":"0px"};
+      let imgboxstyle = {marginTop: this.nav ? this.nav.clientHeight + "px":"70px"};
 
       let show_feedback;
       if(this.props.game.game_ended || (question.answered && answer_wrong) || (question.answered && answer_right && question.show_animation === false)){
@@ -129,7 +124,7 @@ export default class Quiz extends React.Component {
                 <span className="nav_url" style={urlStyle}>{question.source_url}</span>
               </div>
             </div>
-            <div className="image_box" ref={(imgbox) => { this.imgbox = imgbox; }} style={imgboxstyle}>
+            <div className="image_box" style={imgboxstyle}>
               <img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
             </div>
           </div>
