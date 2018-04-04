@@ -102,7 +102,6 @@ export default class Quiz extends React.Component {
         left: (question.secure === true) ? "14.5%" : "7%"
       };
 
-      let imgboxstyle = {marginTop: this.nav ? this.nav.clientHeight + "px":"70px"};
 
       let show_feedback;
       if(this.props.game.game_ended || (question.answered && answer_wrong) || (question.answered && answer_right && question.show_animation === false)){
@@ -111,7 +110,13 @@ export default class Quiz extends React.Component {
         show_feedback = false;
       }
 
-      let feedback_component = <div className={"feedback_header " + feedback1_class}>{feedback1 + ": " + feedback2}</div>;
+      let margin1 = this.nav ? this.nav.clientHeight:70;
+      let margin2 = show_feedback ? (this.feedback ? this.feedback.clientHeight:61):0;
+      let margin = margin1 + margin2 + "px";
+      let imgboxstyle = {marginTop: margin};
+
+
+      let feedback_component = <div className={"feedback_header " + feedback1_class} ref={(feedback) => { this.feedback = feedback; }}>{feedback1 + ": " + feedback2}</div>;
       let nav_img = (question.secure === true) ? "assets/images/others/secure_nav.png" : "assets/images/others/no_secure_nav.png";
 
       return (
@@ -125,7 +130,10 @@ export default class Quiz extends React.Component {
               </div>
             </div>
             <div className="image_box" style={imgboxstyle}>
-              <img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
+              {question.type ==="iframe" ?
+                <iframe src={question.path} class="eduiframe"></iframe>
+              :<img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
+            }
             </div>
           </div>
       );
