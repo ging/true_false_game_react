@@ -13,6 +13,7 @@ export default class Quiz extends React.Component {
     super(props);
     this.updateDimensions = this.updateDimensions.bind(this);
     this.calculateImgsSizes = this.calculateImgsSizes.bind(this);
+    this.total_score = QUESTIONS.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
   }
   updateDimensions() {
     if(this.img && this.box){
@@ -59,7 +60,7 @@ export default class Quiz extends React.Component {
     let objectives = [];
     let nQuestions = QUESTIONS.length;
     for(let i = 0; i < nQuestions; i++){
-      objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(1 / nQuestions)}));
+      objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(QUESTIONS[i].score / this.total_score)}));
     }
     this.props.dispatch(addObjectives(objectives));
     this.updateDimensions();
