@@ -1,0 +1,86 @@
+
+
+//----------- HEADER ----------------
+
+.main_header
+  display: flex
+  flex-flow: row nowrap
+  justify-content: space-between
+  align-items: center
+  padding: 1em 2em
+  .detector_type_logo
+    position: relative
+    z-index: 1
+    width: 4em
+    top: -0.72em
+    left: -1.4em
+    @include transform(rotate(-10deg))
+  .fake_detector_logo
+    position: absolute
+    width: 12em
+    //@include hand_cursor
+  .educalab
+    display: flex
+    flex-flow: row nowrap
+    justify-content: space-between
+    align-items: center
+    .text_educalab
+      font-weight: lighter
+      margin-right: .8em
+      padding-top: .3em
+    .educalab_logo
+      width: 4em
+      //@include hand_cursor
+
+
+@media (max-width: $media2)
+  
+  .main_header
+    .detector_type_logo
+    .fake_detector_logo
+    .educalab
+      .text_educalab
+      .educalab_logo
+
+
+@media (max-width: $media6) and (orientation: landscape) 
+
+  .main_header
+    padding: .7em
+    .detector_type_logo
+      width: 2em
+      top: -0.4em
+      left: -.7em
+    .fake_detector_logo
+      width: 6em
+    .educalab
+      .text_educalab
+        font-size: .6em
+      .educalab_logo
+        width: 2em
+
+@media (max-width: $media9) and (orientation: landscape)
+
+  .main_header
+    padding: .7em
+
+
+@media (max-width: $media9) 
+  
+  .main_header
+    padding: 1em
+    .detector_type_logo
+      width: 2em
+      top: -0.4em
+      left: -.7em
+    .fake_detector_logo
+      width: 6em
+    .educalab
+      .text_educalab
+        font-size: .5em
+        margin: 0 1em 0 0
+      .educalab_logo
+        width: 2em
+     
+
+
