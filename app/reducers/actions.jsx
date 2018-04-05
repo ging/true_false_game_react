@@ -26,6 +26,12 @@ export function addObjectives(objectives){
   };
 }
 
+export function addSizes(sizes){
+  return {
+    type:'ADD_SIZES',
+    sizes:sizes,
+  };
+}
 
 export function objectiveAccomplished(objectiveId, accomplishedScore = null){
   return {

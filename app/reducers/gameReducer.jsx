@@ -1,6 +1,9 @@
 import {INITIAL_STATE, OBJECTIVES} from '../constants/constants';
-import {QUESTIONS} from '../config/questions.js';
+import * as questions from '../config/questions.js';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
+import {UI} from '../config/config';
+
+const QUESTIONS = questions[UI.question_array];
 
 export default function gameReducer(state = INITIAL_STATE.game, action){
   let receivedState;
@@ -40,6 +43,15 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
     } else {
       return state;
     }
+  case 'ADD_SIZES':
+    receivedState = JSON.parse(JSON.stringify(state));
+    receivedState.questions = receivedState.questions.map((q, index) => {
+      q.width = action.sizes[index].width;
+      q.height = action.sizes[index].height;
+      return q;
+    });
+    console.log(receivedState);
+    return receivedState;
   case 'ANIMATION_ENDED':
     receivedState = JSON.parse(JSON.stringify(state));
     receivedState.questions[action.index].show_animation = false;

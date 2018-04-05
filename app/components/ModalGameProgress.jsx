@@ -1,16 +1,19 @@
 import React from 'react';
 import {goToQuestion} from './../reducers/actions';
-import {QUESTIONS} from '../config/questions.js';
+import * as questions from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
 import {UI} from '../config/config';
+
+const QUESTIONS = questions[UI.question_array];
+
 
 export default class ModalGameProgress extends React.Component {
   constructor(props){
     super(props);
     this.questionClick = this.questionClick.bind(this);
   }
-  
+
   questionClick(index){
     this.props.handleClose("Progress");
     this.props.dispatch(goToQuestion(index));
@@ -29,7 +32,7 @@ export default class ModalGameProgress extends React.Component {
               <Icon className="control control_cross" onClick={ () => this.props.handleClose("Progress")} icon="cross"/>
             </div>
 
-            
+
             <div className="modal-content">
               <div className="modal-title">progreso de la prueba</div>
                 <div className="modal-text">
@@ -40,9 +43,9 @@ export default class ModalGameProgress extends React.Component {
                       return <div className="individual_task" key={index}>
                         <span className="individual_task_text" onClick={ () => this.questionClick(index)}>{q.source_name}</span>
                         <div className="task-icons">
-                          <Icon className={"control control_feedback control_wrong " 
+                          <Icon className={"control control_feedback control_wrong "
                          + (q.answered ? (success ? "":"wrong") : "")} icon="cross"/>
-                          <Icon className={"control control_feedback control_right " 
+                          <Icon className={"control control_feedback control_right "
                          + (q.answered ? (success ? "right":"") : "")} icon="tick"/>
                         </div>
                       </div>;

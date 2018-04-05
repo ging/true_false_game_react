@@ -2,8 +2,10 @@ import React from 'react';
 import {UI} from '../config/config';
 import {quizAnsweredWithScorm, passquiz} from './../reducers/actions';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
-import {QUESTIONS} from '../config/questions.js';
+import * as questions from '../config/questions.js';
 import Icon from './Icon.jsx';
+
+const QUESTIONS = questions[UI.question_array];
 
 export default class Controls extends React.Component {
   constructor(props){
@@ -192,7 +194,7 @@ export default class Controls extends React.Component {
 
                 <div className="questions_answered">
                   <div className="number_progress number_answered">{progress}/{QUESTIONS.length}</div>
-                  <div className="progress_bar"><div className="progress_fill" style={progressStyle}/></div>
+                  <div className="progress_bar"><div className="progress_fill" style={progressStyle}></div></div>
                 </div>
 
                 <div className="user_score">
