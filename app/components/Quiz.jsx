@@ -118,6 +118,15 @@ export default class Quiz extends React.Component {
 
       let feedback_component = <div className={"feedback_header " + feedback1_class} ref={(feedback) => { this.feedback = feedback; }}>{feedback1 + ": " + feedback2}</div>;
       let nav_img = (question.secure === true) ? "assets/images/others/secure_nav.png" : "assets/images/others/no_secure_nav.png";
+      let feedback_iframe;
+      if(question.type ==="iframe" && show_feedback){
+        if(question.true_or_false === false){
+          feedback_iframe = <div className="feedback_iframe">En este caso la noticia es falsa.<br/> Es un bulo sobre la salud como hay muchos. Conviene contrastar la información y con una simple búsqueda en Internet podremos ver que es falsa, por ejemplo <a href={question.feedback_search}>con esta simple búsqueda</a>.<br/>Podremos encontrar webs muy útiles dedicadas a desmentir este tipo de bulos, por ejemplo este nos lo desmienten en <a href={question.feedback_path}>{question.feedback_sitename}</a></div> ;
+        } else {
+          feedback_iframe = <div className="feedback_iframe">En este caso la noticia es verdadera. Fíjate que viene de un medio reputado y que si buscas en Internet información adicional verás la noticia en diferentes webs y periódicos también de prestigio.</div> ;
+        }
+      }
+
 
       return (
           <div className="main_box" ref={(box) => { this.box = box; }}>
@@ -133,6 +142,9 @@ export default class Quiz extends React.Component {
               {question.type ==="iframe" ?
                 <iframe src={question.path} class="eduiframe"></iframe>
               :<img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
+            }
+            {question.type ==="iframe" && show_feedback &&
+              feedback_iframe
             }
             </div>
           </div>

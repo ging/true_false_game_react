@@ -7,7 +7,8 @@ export const QUESTIONS = [
       true_or_false: false,
       score: 10,
       feedback_path: "http://saludsinbulos.com/alertas/diabetes-dos-ingredientes/",
-      feedback_text: "Feedback mostrado"
+      feedback_search: "https://www.google.es/search?q=diabetes+dos+ingredientes+bulo",
+      feedback_sitename: "saludsinbulos"
     },
     { path: "./assets/images/quiz/phishing02.png",
       source_name: "Olivia Pareja, venta zapatos",
