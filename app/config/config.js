@@ -51,7 +51,7 @@ export const UI = {
   educalab_logo:"assets/images/logos/elab_logo_white.svg",
   initial_text:"¿sabrías decir si las siguientes webs son verdaderas o falsas? aprende a distinguirlas, que no te la cuelen",
   with_reset_button: false,
-  with_fullscreen: false,
+  with_fullscreen: true,
   feedback2_right: "la web es real",
   feedback2_wrong: "la web es falsa",
   message_pro: "eres un crack, ¡a ti no hay quien te engañe! sabemos que no necesitas que te enseñemos cómo reconocer webs fiables, pero aquí te dejamos un pequeño vídeo por si quieres saber más:",

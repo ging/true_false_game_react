@@ -66,7 +66,7 @@ function SCORM_Player(options){
 			settings.LOCALE = "en"; //Default language
 		}
 	}
-	
+
 	if((typeof settings.LMS_API != "undefined")&&(typeof settings.IFRAME_API != "undefined")){
 		setSCORMGateway();
 	}
@@ -79,7 +79,7 @@ function SCORM_Player(options){
 	this.loadScormContent = function(callback){
 		$(document).ready(function(){
 			var timeoutToLoadScormContent = 500;
-			
+
 			if((typeof settings.IFRAME_API != "undefined")&&(isIframe())){
 				settings.IFRAME_API.init(
 					{
@@ -131,7 +131,7 @@ function SCORM_Player(options){
 			//Already loaded
 			return;
 		}
-		var iframe = $('<iframe id="scormcontent" style="width:100%; height:100%; border: none" webkitAllowFullScreen="true" allowfullscreen="true" mozallowfullscreen="true"></iframe>');
+		var iframe = $('<iframe id="scormcontent" style="width:833px; height:911px; border: none" webkitAllowFullScreen="true" allowfullscreen="true" mozallowfullscreen="true"></iframe>');
 		if(settings.NAVBAR === true){
 			$(iframe).css("height","94%");
 			$("body").append(createNavBar());
@@ -139,7 +139,7 @@ function SCORM_Player(options){
 			updateNavBar();
 		}
 		$("body").prepend(iframe);
-		
+
 		loadCurrentLo(callback);
 	};
 
@@ -163,10 +163,10 @@ function SCORM_Player(options){
 
 	function createNavBar(){
 		var navbar = $('<div id="scormnavbar"><div id="scormnavbar_prev"></div><div id="scormnavbar_title"></div><div id="scormnavbar_next"></div></div>');
-		
+
 		var prevText = getTransFromLocales(SCORM_PLAYER_LOCALES,"i.prevText");
 		var nextText = getTransFromLocales(SCORM_PLAYER_LOCALES,"i.nextText");
-		
+
 		$(navbar).find("#scormnavbar_prev").html(prevText);
 		$(navbar).find("#scormnavbar_next").html(nextText);
 
@@ -189,7 +189,7 @@ function SCORM_Player(options){
 		$(navbar).find("#scormnavbar_title").css("width","100%");
 		$(navbar).find("#scormnavbar_title").css("text-align","center");
 		$(navbar).find("#scormnavbar_title").css("cursor","default");
-	
+
 		return navbar;
 	};
 
@@ -374,7 +374,7 @@ function SCORM_Player(options){
 		if((typeof settings.LMS_API != "object")||(typeof settings.LMS_API.addListener != "function")){
 			return;
 		}
-		
+
 		if(settings.SCORM_VERSION === "1.2"){
 			settings.LMS_API.addListener("cmi.core.lesson_status", function(value){
 				if(settings.IFRAME_API.isConnected()){
@@ -384,7 +384,7 @@ function SCORM_Player(options){
 					// success_status = "|passed|failed|unknown|"
 					var completionValue = undefined;
 					var successValue = undefined;
-					
+
 					switch(value){
 					case "passed":
 						completionValue = "completed";
@@ -462,7 +462,7 @@ function SCORM_Player(options){
 	};
 
 	function adaptContent(){
-		
+
 		var checkElement = function(el){
 			var iframes = $(el).find("iframe");
 			$(iframes).each(function(index,iframe){

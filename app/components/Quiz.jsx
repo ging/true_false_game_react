@@ -71,7 +71,7 @@ export default class Quiz extends React.Component {
     window.removeEventListener("resize", this.updateDimensions);
   }
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.index !==this.props.index){
+    if(prevProps.index !==this.props.index || (prevProps.game.game_started===false && this.props.game.game_started===true)){
       this.updateDimensions();
     }
   }
