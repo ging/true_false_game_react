@@ -5,7 +5,7 @@ export const MASTER = [
       source_url: "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
       secure: false,
       true_or_false: false,
-      score: 10,
+      score: 20,
       feedback_path: "http://saludsinbulos.com/alertas/diabetes-dos-ingredientes/",
       feedback_search: "https://www.google.es/search?q=diabetes+dos+ingredientes+bulo",
       feedback_sitename: "saludsinbulos"
@@ -52,7 +52,7 @@ export const MASTER = [
       source_url: "www.abc.es/economia/abci-draghi-principal-obstaculo-para-guindos-201802030215_noticia.html",
       secure: true,
       true_or_false: true,
-      score: 10,
+      score: 5,
       feedback_path: "./assets/images/quiz/noticia2s.png",
       feedback_text: " La noticia es verdadera.",
       with_margins: true

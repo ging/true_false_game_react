@@ -26,14 +26,14 @@
     align-items: center
     .text_educalab
       font-weight: lighter
-      margin-right: 1em
+      margin-right: .8em
       padding-top: .3em
     .educalab_logo
-      width: 8em
+      width: 4em
       //@include hand_cursor
 
 
-@media (max-width: 1280px)
+@media (max-width: $media2)
   
   .main_header
     .detector_type_logo
@@ -43,7 +43,7 @@
       .educalab_logo
 
 
-@media (max-width: 823px) and (orientation: landscape) 
+@media (max-width: $media6) and (orientation: landscape) 
 
   .main_header
     padding: .7em
@@ -57,15 +57,15 @@
       .text_educalab
         font-size: .6em
       .educalab_logo
-        width: 4em
+        width: 2em
 
-@media (max-width: 736px) and (orientation: landscape)
+@media (max-width: $media9) and (orientation: landscape)
 
   .main_header
     padding: .7em
 
 
-@media (max-width: 736px) 
+@media (max-width: $media9) 
   
   .main_header
     padding: 1em
@@ -76,16 +76,11 @@
     .fake_detector_logo
       width: 6em
     .educalab
-      @include column-flex
-      justify-content: center
-      align-items: none
       .text_educalab
         font-size: .5em
-        margin: 0
-        padding: 0
-        margin-bottom: .2em
+        margin: 0 1em 0 0
       .educalab_logo
-        width: 4em
+        width: 2em
      
 
 

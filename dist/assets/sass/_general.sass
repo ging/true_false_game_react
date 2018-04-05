@@ -1,4 +1,7 @@
 
+html
+  overflow: hidden
+
 *
   @include box-sizing(border-box)
   outline: none
@@ -73,13 +76,20 @@ ul
 
 //----------SCROLLBAR ADJUSTMENTS------------
 
-// ::-webkit-scrollbar
-//   width: .45em
+::-webkit-scrollbar
+  width: .45em
+  height: .45em
+  @include cursor
 
-// ::-webkit-scrollbar-track
-//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+::-webkit-scrollbar-track
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+  @include cursor
 
-// ::-webkit-scrollbar-thumb
-//   background-color: $midarkgrey
-//   outline: 1px solid slategrey
-//   border-radius: 5em
+::-webkit-scrollbar-thumb
+  background-color: $secondarycolor
+  outline: 1px solid slategrey
+  border-radius: 5em
+  @include hand_cursor
+
+
+  

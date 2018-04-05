@@ -1,5 +1,3 @@
-
-
 //----------- MAIN BOX ----------------
 
 .main_box
@@ -13,6 +11,8 @@
     padding: .7em 6em 1em 1em
     margin: 0
   .nav_box
+    position: fixed
+    width: 95%
     &.with_feedback
       margin-top: 3.9em
     .nav_position
@@ -23,38 +23,47 @@
       .nav_url
         color: black
         font-size: .75vw
-        //font-size: calc(0.45vw + 0.45vh)
         position: absolute
         top: 65%
         max-width: 89.3%
         white-space: nowrap
         text-overflow: ellipsis
         overflow: hidden
+  .eduiframe
+    width: 100%
+    height: 100vh
+    border: none
+    margin: 0
+    padding: 0
+    overflow: hidden
+    z-index: 999999
   .image_box
     text-align: center
+    width: 100%
   .quiz_image
     width: 100%
     display: block
+    margin: 0 auto
+    &.with_margins
+      width: 70%
   &.main_box_finished
     height: calc(100vh - 7.7em)
 
 
-@media (max-width: 1366px) and (orientation: landscape)
+
+@media (max-width: $media1) and (orientation: landscape)
 
   .main_box
     .main_text
       font-size: calc(5vh + 2.3em)
       padding: 1em 3em 1em 1em
     .nav_box
-      width: 110.7%
       .nav_position
         .nav_url
-          font-size: .8em
-          top: 64%
-    .image_box
-      width: 110.7%
+          top: 65%
 
-@media (max-width: 1280px)
+
+@media (max-width: $media2)
 
   .main_box
     .main_text
@@ -66,39 +75,30 @@
           top: 65%
 
 
-@media (max-width: 1024px)
 
-  .main_box
-    .nav_box
-      width: 211.8%
-      .nav_position
-        .nav_url
-          font-size: 1em
-    .image_box
-      width: 211.8%
-
-
-
-@media (max-width: 1024px) and (orientation: landscape) 
-
+@media (max-width: $media4) and (orientation: landscape)
 
   .main_box
     .main_text
       font-size: calc(4vh + 2em)
       padding: 1em 2em 1em 1em
     .nav_box
-      width: 100%
       &.with_feedback
         margin-top: 3.1em
       .nav_position
         .nav_url
           top: 65%
-          font-size: .55em
-    .image_box
-      width: 100%
 
 
-@media (max-width: 823px) and (orientation: landscape) 
+@media (max-width: $media5)
+
+  .main_box
+    .nav_box
+      &.with_feedback
+        margin-top: 3.1em
+
+
+@media (max-width: $media6) and (orientation: landscape)
 
   .main_box
     height: calc(100vh - 8.3em)
@@ -110,38 +110,41 @@
         margin-top: 1.7em
       .nav_position
         .nav_url
-          font-size: .4em
           top: 63%
+    .quiz_image
+      &.with_margins
+        width: 80%
     &.main_box_finished
       height: calc(100vh - 6.7em)
 
 
-@media (max-width: 812px) and (orientation: landscape) //iPhoneX
+@media (max-width: $media7) and (orientation: landscape) //iPhoneX
 
   .main_box
     &.main_box_finished
       height: calc(100vh - 4.7em)
 
 
-@media (max-width: 768px)
+
+@media (max-width: $media8)
 
   .main_box
     .main_text
       font-size: calc(3vh + 2em)
       padding: 1em 2em 1em 1em
     .nav_box
-      width: 197%
       &.with_feedback
         margin-top: 3.1em
       .nav_position
         .nav_url
-          font-size: .7em
-          top: 64%
+          top: 66%
     .image_box
-      width: 197%
+      .quiz_image
+        &.with_margins
+          width: 80%
 
 
-@media (max-width: 736px)
+@media (max-width: $media9)
 
   .main_box
     height: calc(100vh - 9em)
@@ -151,11 +154,15 @@
       .nav_position
         .nav_url
           top: 67%
+    .quiz_image
+      &.with_margins
+        width: 95%
     &.main_box_finished
       height: calc(100vh - 4.1em)
 
 
-@media (max-width: 736px) and (orientation: landscape)
+
+@media (max-width: $media9) and (orientation: landscape)
 
   .main_box
     height: calc(100vh - 8em)
@@ -163,13 +170,13 @@
       font-size: calc(2.5vh + 1.7em)
       padding: .7em 2.5em .7em 1em
     .nav_box
-      width: 100%
       .nav_position
         .nav_url
-          font-size: .4em
           top: 66%
     .image_box
-      width: 100%
+      .quiz_image
+        &.with_margins
+          width: 80%
     &.main_box_finished
       height: calc(100vh - 4.7em)
 
@@ -183,7 +190,7 @@
           top: 64%
 
 
-@media (max-width: 640px) and (orientation: landscape)
+@media (max-width: $media10) and (orientation: landscape)
 
   .main_box
     .main_text
@@ -191,63 +198,32 @@
       padding: .8em 3em .8em 1em
 
 
-@media (max-width: 480px)
+@media (max-width: $media12)
 
   .main_box
     .main_text
       font-size: calc(3vh + 1.2em)
       padding: .8em 2.2em .8em 1em
-    .nav_box
-      width: 274%
-      .nav_position
-        .nav_url
-          font-size: .5em
-    .image_box
-      width: 274%
-      
 
 
-@media (max-width: 412px)
+@media (max-width: $media13)
 
   .main_box
     .main_text
       font-size: calc(3vh + 1.2em)
       padding: .8em 1.2em .8em 1em
-    .nav_box
-      width: 340%
-      .nav_position
-        .nav_url
-          font-size: .6em
-          top: 65%
-    .image_box
-      width: 340%
 
 
-@media (max-width: 375px) 
-
-  .main_box   
-    .nav_box
-      width: 266%
-      .nav_position
-        .nav_url
-          font-size: .5em
-          top: 65%
-    .image_box
-      width: 266%
-
-
-@media (max-width: 360px)
+@media (max-width: $media14)
 
   .main_box
     .main_text
       font-size: calc(3vh + 1em)
       padding: .7em 2em .7em 1em
     .nav_box
-      width: 262.5%
       .nav_position
         .nav_url
-          font-size: .5em
-          top: 65%
-    .image_box
-      width: 262.5%
+          top: 68%
 
+
+          
