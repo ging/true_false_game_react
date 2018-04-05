@@ -1,9 +1,11 @@
 import React from 'react';
 import {UI} from '../config/config.js';
-import {QUESTIONS} from '../config/questions.js';
+import * as questions from '../config/questions.js';
 import Animation from './Animation.jsx';
 import {stopAnimation, addObjectives, addSizes} from './../reducers/actions';
 import * as Utils from '../vendors/Utils.js';
+
+const QUESTIONS = questions[UI.question_array];
 
 
 export default class Quiz extends React.Component {

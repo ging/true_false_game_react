@@ -1,9 +1,12 @@
 import React from 'react';
 import {initializegame, finishApp} from './../reducers/actions';
-import {QUESTIONS} from '../config/questions.js';
+import * as questions from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
 import {UI} from '../config/config.js';
+
+const QUESTIONS = questions[UI.question_array];
+
 
 export default class ModalGameEnd extends React.Component {
   constructor(props){

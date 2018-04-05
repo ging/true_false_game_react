@@ -1,8 +1,12 @@
 import React from 'react';
-import {QUESTIONS} from '../config/questions.js';
+import * as questions from '../config/questions.js';
+import {UI} from '../config/config';
 import {initializegame} from './../reducers/actions';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
+
+const QUESTIONS = questions[UI.question_array];
+
 
 export default class ModalGameReset extends React.Component {
   constructor(props){

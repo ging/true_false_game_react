@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import '../assets/sass/main_styles.sass';
 
 import {GLOBAL_CONFIG} from '../config/config.js';
-import {QUESTIONS} from '../config/questions.js';
+import * as questions from '../config/questions.js';
 import * as Utils from '../vendors/Utils.js';
 import {objectiveAccomplished, resetGame, initializegame, startgame, updateTimer, pauseTimer, unpauseTimer, passquiz} from './../reducers/actions';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
@@ -23,6 +23,7 @@ import {UI} from '../config/config';
 import * as I18n from '../vendors/I18n.js';
 
 const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen: false};
+const QUESTIONS = questions[UI.question_array];
 
 export class App extends React.Component {
   constructor(props){
