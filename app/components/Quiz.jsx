@@ -121,7 +121,7 @@ export default class Quiz extends React.Component {
       let feedback_iframe;
       if(question.type ==="iframe" && show_feedback){
         if(question.true_or_false === false){
-          feedback_iframe = <div className="feedback_iframe">En este caso la noticia es falsa.<br/> Es un bulo sobre la salud como hay muchos. Conviene contrastar la información y con una simple búsqueda en Internet podremos ver que es falsa, por ejemplo <a href={question.feedback_search}>con esta simple búsqueda</a>.<br/>Podremos encontrar webs muy útiles dedicadas a desmentir este tipo de bulos, por ejemplo este nos lo desmienten en <a href={question.feedback_path}>{question.feedback_sitename}</a></div> ;
+          feedback_iframe = <div className="feedback_iframe">En este caso la noticia es falsa.<br/> Es un bulo sobre la salud como hay muchos. Conviene contrastar la información y con una simple búsqueda en Internet podremos ver que es falsa, por ejemplo <a href={question.feedback_search} target="_blank">con esta simple búsqueda</a>.<br/>Podremos encontrar webs muy útiles dedicadas a desmentir este tipo de bulos, por ejemplo este nos lo desmienten en <a href={question.feedback_path} target="_blank">{question.feedback_sitename}</a></div> ;
         } else {
           feedback_iframe = <div className="feedback_iframe">En este caso la noticia es verdadera. Fíjate que viene de un medio reputado y que si buscas en Internet información adicional verás la noticia en diferentes webs y periódicos también de prestigio.</div> ;
         }
