@@ -31,17 +31,21 @@
         white-space: nowrap
         text-overflow: ellipsis
         overflow: hidden
-  .eduiframe
-    width: 100%
-    height: 100vh
-    border: none
-    margin: 0
-    padding: 0
-    overflow: hidden
-    z-index: 999999
   .image_box
     text-align: center
     width: 100%
+    .iframeparent
+      width: 100%
+    .eduiframe
+      width: 100%
+      height: 300vh
+      pointer-events: none
+      display: block
+      border: none
+      margin: 0
+      padding: 0
+      overflow: hidden
+      overflow-x: hidden
   .quiz_image
     width: 100%
     display: block
@@ -90,6 +94,14 @@
       .nav_position
         .nav_url
           top: 65%
+
+
+@media (max-width: $media4) 
+  
+  .main_box
+    .nav_box
+      &.with_feedback
+        margin-top: 3.1em
 
 
 @media (max-width: $media5)
