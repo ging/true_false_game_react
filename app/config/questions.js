@@ -3,7 +3,7 @@ export const MASTER = [
       type: "iframe",
       source_name: "Eliminar diabetes con dos ingredientes",
       source_url: "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
-      secure: false,
+      secure: true,
       true_or_false: false,
       score: 20,
       feedback_path: "http://saludsinbulos.com/alertas/diabetes-dos-ingredientes/",
@@ -164,7 +164,7 @@ export const PHISHING = [
     },
 ]
 
-export const SALUD = [
+export const HEALTH = [
     { path: "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
       type: "iframe",
       source_name: "Eliminar diabetes con dos ingredientes",

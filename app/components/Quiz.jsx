@@ -147,7 +147,7 @@ export default class Quiz extends React.Component {
             </div>
             <div className="image_box" style={imgboxstyle}>
               {question.type ==="iframe" ?
-                <iframe src={question.path} className="eduiframe" style={{height:this.box.offsetHeight - margin1 + "px"}}></iframe>
+                <div className="iframeparent" style={{height:this.box.offsetHeight - margin1 + "px"}}><iframe src={question.path} scrolling="no" className="eduiframe" ></iframe></div>
               :<img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
             }
             </div>
@@ -156,12 +156,13 @@ export default class Quiz extends React.Component {
             }
           </div>
       );
+    } else {
+      return (
+          <div className="main_box" ref={(box) => { this.box = box; }}>
+            <p className="main_text">{UI.initial_text}</p>
+          </div>
+      );
     }
-    return (
-        <div className="main_box" ref={(box) => { this.box = box; }}>
-          <p className="main_text">{UI.initial_text}</p>
-        </div>
-    );
 
   }
 }
