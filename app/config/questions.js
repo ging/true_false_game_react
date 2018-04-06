@@ -171,7 +171,7 @@ export const HEALTH = [
       source_url: "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
       secure: true,
       true_or_false: false,
-      score: 20,
+      score: 10,
       feedback_path: "http://saludsinbulos.com/alertas/diabetes-dos-ingredientes/",
       feedback_search: "https://www.google.es/search?q=diabetes+dos+ingredientes+bulo",
       feedback_sitename: "saludsinbulos"
@@ -182,7 +182,7 @@ export const HEALTH = [
       source_url: "http://www.dietametabolica.es/lacteos.htm",
       secure: false,
       true_or_false: false,
-      score: 20,
+      score: 10,
       feedback_path: "http://saludsinbulos.com/detras-del-titular/leche-sin-pasteurizar/",
       feedback_search: "https://www.google.es/search?q=leche+sin+pasteurizar+bulo",
       feedback_sitename: "saludsinbulos"
@@ -193,7 +193,7 @@ export const HEALTH = [
       source_url: "https://elpais.com/elpais/2018/04/02/buenavida/1522699942_976535.html",
       secure: true,
       true_or_false: true,
-      score: 20,
+      score: 10,
       feedback_path: "",
       feedback_search: "",
       feedback_sitename: ""
@@ -204,7 +204,7 @@ export const HEALTH = [
       source_url: "https://elpais.com/elpais/2018/03/16/tentaciones/1521192377_540924.html",
       secure: true,
       true_or_false: false,
-      score: 20,
+      score: 10,
       feedback_path: "http://saludsinbulos.com/detras-del-titular/alopecia-peluquero-tijera-pelo-fuego/",
       feedback_search: "https://www.google.es/search?q=tijera+pelo+alopecia+bulo",
       feedback_sitename: "saludsinbulos"
@@ -215,7 +215,7 @@ export const HEALTH = [
       source_url: "https://anabelavila.com/paleo/guia-dieta",
       secure: true,
       true_or_false: false,
-      score: 20,
+      score: 10,
       feedback_path: "http://saludsinbulos.com/nutricion/dieta-paleolitica/",
       feedback_search: "https://www.google.es/search?q=dieta+paleolitica+bulo",
       feedback_sitename: "saludsinbulos"
@@ -226,7 +226,7 @@ export const HEALTH = [
       source_url: "https://www.20minutos.es/noticia/3301842/0/crean-dispositivo-permite-detectar-meningitis-infantil-3-segundos/",
       secure: true,
       true_or_false: true,
-      score: 20,
+      score: 10,
       feedback_path: "",
       feedback_search: "",
       feedback_sitename: ""
@@ -237,7 +237,7 @@ export const HEALTH = [
       source_url: "http://retoadelgaza.com/dieta-de-la-banana/",
       secure: false,
       true_or_false: false,
-      score: 20,
+      score: 10,
       feedback_path: "http://saludsinbulos.com/detras-del-titular/dieta-banana/",
       feedback_search: "https://www.google.es/search?q=dieta+banana+bulo",
       feedback_sitename: "saludsinbulos"
@@ -248,17 +248,18 @@ export const HEALTH = [
       source_url: "las patatas del McDonald's podrían curar la calvicie, según un estudio japonés",
       secure: true,
       true_or_false: false,
-      score: 20,
+      score: 10,
       feedback_path: "http://saludsinbulos.com/detras-del-titular/patatas-fritas-dimetilpolisiloxano-alopecia-calvicie/",
       feedback_search: "https://www.google.es/search?q=bulo+patatas+mcdonalds+calvicie",
       feedback_sitename: "saludsinbulos"
     },
     { path: "http://www.elmundo.es/comunidad-valenciana/castellon/2018/03/20/5ab15bb0e2704ee2308b4760.html",
+      type: "iframe",
       source_name: "17 horas sin dormir: límite al volante",
       source_url: "http://www.elmundo.es/comunidad-valenciana/castellon/2018/03/20/5ab15bb0e2704ee2308b4760.html",
       secure: false,
       true_or_false: true,
-      score: 20,
+      score: 10,
       feedback_path: "",
       feedback_search: "",
       feedback_sitename: ""
@@ -269,7 +270,7 @@ export const HEALTH = [
       source_url: "http://www.bbc.com/mundo/noticias-38933890",
       secure: false,
       true_or_false: false,
-      score: 20,
+      score: 10,
       feedback_path: "http://saludsinbulos.com/detras-del-titular/arsenico-arroz/",
       feedback_search: "https://www.google.es/search?q=arsenico+arroz+bulo",
       feedback_sitename: "saludsinbulos"
