@@ -145,11 +145,11 @@ export default class Quiz extends React.Component {
               {question.type ==="iframe" ?
                 <iframe src={question.path} class="eduiframe" style={{height:this.box.offsetHeight - margin1 + "px"}}></iframe>
               :<img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
-            }
+            }            
+            </div>
             {question.type ==="iframe" && show_feedback &&
               feedback_iframe
             }
-            </div>
           </div>
       );
     }
