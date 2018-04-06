@@ -163,3 +163,28 @@ export const PHISHING = [
       feedback_text: "",
     },
 ]
+
+export const SALUD = [
+    { path: "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
+      type: "iframe",
+      source_name: "Eliminar diabetes con dos ingredientes",
+      source_url: "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
+      secure: true,
+      true_or_false: false,
+      score: 20,
+      feedback_path: "http://saludsinbulos.com/alertas/diabetes-dos-ingredientes/",
+      feedback_search: "https://www.google.es/search?q=diabetes+dos+ingredientes+bulo",
+      feedback_sitename: "saludsinbulos"
+    },
+    { path: "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
+      type: "iframe",
+      source_name: "Eliminar diabetes con dos ingredientes",
+      source_url: "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
+      secure: false,
+      true_or_false: false,
+      score: 20,
+      feedback_path: "http://saludsinbulos.com/alertas/diabetes-dos-ingredientes/",
+      feedback_search: "https://www.google.es/search?q=diabetes+dos+ingredientes+bulo",
+      feedback_sitename: "saludsinbulos"
+    },
+  ]

@@ -23,6 +23,13 @@ export default class ModalGameEnd extends React.Component {
     this.props.handleClose("End");
     this.props.dispatch(finishApp(true));
   }
+  componentWillReceiveProps(nextProps){
+    if(this.props.show === true && nextProps.show === false){
+      //reset youtube video src to stop it when modal closes
+      let mysrc = this.youtube.src;
+      this.youtube.src = "";
+      this.youtube.src = mysrc;     }
+  }
   render(){
 
     let question = this.props.questions[this.props.index];
@@ -66,7 +73,7 @@ export default class ModalGameEnd extends React.Component {
                   </div>
                   <p>{message}</p>
                   <div className="responsive_video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/GKSRyLdjsPA" frameBorder="0" allow="encrypted-media" allowFullScreen />
+                    <iframe ref={(youtube) => { this.youtube = youtube; }} width="560" height="315" src="https://www.youtube.com/embed/-2PLx_udcK8?rel=0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
                   </div>
                 </div>
               <div className="modal-actions">

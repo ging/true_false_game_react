@@ -33,27 +33,31 @@ export default class Quiz extends React.Component {
   }
   calculateImgsSizes(){
     let nQuestions = QUESTIONS.length;
+    let only_imgs_length = QUESTIONS.filter((q) =>{return q.type!=="iframe";}).length;
     let processed = 0;
     let sizes = [];
     for(let i = 0; i < nQuestions; i++){
-      let img = new Image();
+      if(QUESTIONS[i].type==="iframe"){
+        sizes[i] = null;
+      } else {
+        let img = new Image();
 
-      img.onload = function(){
-        let height = img.height;
-        let width = img.width;
-        console.log("width: " + width + " hei: " + height);
-        // code here to use the dimensions
-        processed +=1;
-        sizes[+img.id] = {width: width, height: height};
-        if(processed===QUESTIONS.length){
-          console.log(sizes);
-          this.props.dispatch(addSizes(sizes));
-        }
-      }.bind(this);
-      img.id = i;
-      img.src = QUESTIONS[i].path;
+        img.onload = function(){
+          let height = img.height;
+          let width = img.width;
+          //console.log("width: " + width + " hei: " + height);
+          // code here to use the dimensions
+          processed +=1;
+          sizes[+img.id] = {width: width, height: height};
+          if(processed===only_imgs_length){
+            console.log(sizes);
+            this.props.dispatch(addSizes(sizes));
+          }
+        }.bind(this);
+        img.id = i;
+        img.src = QUESTIONS[i].path;
+      }
     }
-
   }
   componentDidMount(){
     // Create objectives (One per question included in the quiz)
@@ -124,9 +128,9 @@ export default class Quiz extends React.Component {
       let feedback_iframe;
       if(question.type ==="iframe" && show_feedback){
         if(question.true_or_false === false){
-          feedback_iframe = <div className="feedback_iframe">En este caso la noticia es falsa.<br/> Es un bulo sobre la salud como hay muchos. Conviene contrastar la información y con una simple búsqueda en Internet podremos ver que es falsa, por ejemplo <a href={question.feedback_search} target="_blank">con esta simple búsqueda</a>.<br/>Podremos encontrar webs muy útiles dedicadas a desmentir este tipo de bulos, por ejemplo este nos lo desmienten en <a href={question.feedback_path} target="_blank">{question.feedback_sitename}</a></div> ;
+          feedback_iframe = <div className="feedback_iframe"><div className="feedback_i_content"><p className="content01">en este caso la noticia es falsa</p> <p className="content02">es un bulo sobre la salud como hay muchos. conviene contrastar la información y con una simple búsqueda en internet podemos ver que es falsa, por ejemplo <a href={question.feedback_search} target="_blank">con esta simple búsqueda</a></p><p className="content03">podemos encontrar webs muy útiles dedicadas a destapar este tipo de bulos, por ejemplo este lo desmienten en <a href={question.feedback_path} target="_blank">{question.feedback_sitename}</a></p></div></div> ;
         } else {
-          feedback_iframe = <div className="feedback_iframe">En este caso la noticia es verdadera. Fíjate que viene de un medio reputado y que si buscas en Internet información adicional verás la noticia en diferentes webs y periódicos también de prestigio.</div> ;
+          feedback_iframe = <div className="feedback_iframe"><div className="feedback_i_content"><p className="content02">en este caso la noticia es verdadera. fíjate que viene de un medio reputado y que si buscas en internet información adicional verás la noticia en diferentes webs y periódicos también de prestigio</p></div></div> ;
         }
       }
 
@@ -143,13 +147,13 @@ export default class Quiz extends React.Component {
             </div>
             <div className="image_box" style={imgboxstyle}>
               {question.type ==="iframe" ?
-                <iframe src={question.path} class="eduiframe"></iframe>
+                <iframe src={question.path} className="eduiframe" style={{height:this.box.offsetHeight - margin1 + "px"}}></iframe>
               :<img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
             }
-            {question.type ==="iframe" && show_feedback &&
+            </div>
+            {(question.type ==="iframe" && show_feedback && question.show_animation===false) &&
               feedback_iframe
             }
-            </div>
           </div>
       );
     }
