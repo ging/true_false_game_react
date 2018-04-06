@@ -43,7 +43,7 @@ let processConfig = (function(){
 
 
 export const UI = {
-  question_array: "MASTER",
+  question_array: "HEALTH",
   name:"detector de noticias falsas",
   app_logo:"assets/images/logos/fakedetector_logo.svg",
   type_app_logo:"assets/images/logos/health.svg",
