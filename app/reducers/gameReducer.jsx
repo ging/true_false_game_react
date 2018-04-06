@@ -45,9 +45,12 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
     }
   case 'ADD_SIZES':
     receivedState = JSON.parse(JSON.stringify(state));
+    //in action.sizes we have an array with all the image sizes , if type is iframe it comes with a null, instead of width and height
     receivedState.questions = receivedState.questions.map((q, index) => {
-      q.width = action.sizes[index].width;
-      q.height = action.sizes[index].height;
+      if(q.type!=="iframe"){
+        q.width = action.sizes[index].width;
+        q.height = action.sizes[index].height;
+      }
       return q;
     });
     console.log(receivedState);

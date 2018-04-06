@@ -33,27 +33,31 @@ export default class Quiz extends React.Component {
   }
   calculateImgsSizes(){
     let nQuestions = QUESTIONS.length;
+    let only_imgs_length = QUESTIONS.filter((q)=>{return q.type!=="iframe";}).length;
     let processed = 0;
     let sizes = [];
     for(let i = 0; i < nQuestions; i++){
-      let img = new Image();
+      if(QUESTIONS[i].type==="iframe"){
+        sizes[i] = null;
+      } else {
+        let img = new Image();
 
-      img.onload = function(){
-        let height = img.height;
-        let width = img.width;
-        console.log("width: " + width + " hei: " + height);
-        // code here to use the dimensions
-        processed +=1;
-        sizes[+img.id] = {width: width, height: height};
-        if(processed===QUESTIONS.length){
-          console.log(sizes);
-          this.props.dispatch(addSizes(sizes));
-        }
-      }.bind(this);
-      img.id = i;
-      img.src = QUESTIONS[i].path;
+        img.onload = function(){
+          let height = img.height;
+          let width = img.width;
+          //console.log("width: " + width + " hei: " + height);
+          // code here to use the dimensions
+          processed +=1;
+          sizes[+img.id] = {width: width, height: height};
+          if(processed===only_imgs_length){
+            console.log(sizes);
+            this.props.dispatch(addSizes(sizes));
+          }
+        }.bind(this);
+        img.id = i;
+        img.src = QUESTIONS[i].path;
+      }
     }
-
   }
   componentDidMount(){
     // Create objectives (One per question included in the quiz)
