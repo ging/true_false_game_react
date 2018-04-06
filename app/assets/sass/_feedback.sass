@@ -59,13 +59,27 @@
   top: 9.3em
   z-index: 1
   width: 95%
-  margin: 0 auto
+  //margin: 0 auto
   height: calc(100vh - 18.35em)
-  background-color: rgba(255, 255, 255,.8)
+  background-color: rgba(255, 255, 255,.85)
   color: black
+  @include flex
+  justify-content: center
   .feedback_i_content
-    padding: 5em
-    font-size: 2em
+    width: 65%
+    font-size: calc(1vh + 1vw + .5em)
+    background-color: rgba(255, 255, 255,.7)
+    @include box-shadow (0px 0px 60px 15px rgba(255,255,255,1))
+    a
+      font-weight: 700
+    p
+      margin: .5em 0 0 0
+    .content01
+      font-weight: 600
+      font-size: calc(1.1vh + 1.1vw + .5em)
+    .content02
+    .content03
+      //font-size: calc(1.1vh + 1vw + .5em)
 
 
 @media (max-width: $media4) and (orientation: landscape)
@@ -79,6 +93,10 @@
   .feedback_header
     font-size: 2em
 
+  .feedback_iframe
+    top: 8.55em
+    height: calc(100vh - 17.6em)
+
 
 @media (max-width: $media4)
 
@@ -90,6 +108,10 @@
 
   .feedback_header
     font-size: 2em
+
+  .feedback_iframe
+    top: 8.55em
+    height: calc(100vh - 17.6em)
 
 
 @media (max-width: $media6) and (orientation: landscape) 
@@ -104,6 +126,21 @@
   .feedback_header
     text-align: right
     font-size: 1.1em
+
+
+@media (max-width: 880px)
+
+  .feedback_iframe
+    top: 8.55em
+    height: calc(100vh - 17.6em)
+
+
+@media (max-width: 880px) and (orientation: landscape) 
+  .feedback_iframe
+    top: 5.1em
+    height: calc(100vh - 10em)
+    .feedback_i_content
+      font-size: calc(.7vh + .7vw + .5em)
 
 
 @media (max-width: $media8)
@@ -130,6 +167,10 @@
   .feedback_header
     font-size: 1.1em
 
+  .feedback_iframe
+    top: 5em
+    height: calc(100vh - 10.75em)
+
 
 @media (max-width: $media9) and (orientation: landscape)
 
@@ -139,8 +180,23 @@
   .feedback_header
     text-align: right
 
+  .feedback_iframe
+    top: 5em
+    height: calc(100vh - 9.75em)
+    .feedback_i_content
+      font-size: calc(.6vh + .6vw + .4em)
+
 
 @media (max-width: $media12)
 
   .feedback_header
     text-align: center
+
+
+@media (max-width: $media15)
+
+  .feedback_iframe
+    .feedback_i_content
+      font-size: calc(1vh + 1vw + .4em)
+
+
