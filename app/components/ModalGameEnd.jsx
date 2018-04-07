@@ -73,7 +73,7 @@ export default class ModalGameEnd extends React.Component {
                   </div>
                   <p>{message}</p>
                   <div className="responsive_video">
-                    <iframe ref={(youtube) => { this.youtube = youtube; }} width="560" height="315" src="https://www.youtube.com/embed/-2PLx_udcK8?rel=0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                    <iframe ref={(youtube) => { this.youtube = youtube; }} width="560" height="315" src={UI.final_video} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
                   </div>
                 </div>
               <div className="modal-actions">

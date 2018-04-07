@@ -60,5 +60,6 @@ export const UI = {
   message_ok: "no has acertado muchas. es muy importante detectar bien las fuentes fiables para una navegación segura. Te dejamos un video para que aprendas a detectarlas:",
   modal_inst: "¿sabes qué noticias son verdaderas y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto detector de fake news. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.",
   progress_text: "noticias contestadas",
-  task_list: "lista de noticias a contestar"
+  task_list: "lista de noticias a contestar",
+  final_video: "https://www.youtube.com/embed/-2PLx_udcK8?rel=0"
 };
