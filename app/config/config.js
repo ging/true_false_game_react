@@ -59,6 +59,6 @@ export const UI = {
   message_ok: "no has acertado muchas. Es muy importante detectar bien las webs fiables para una navegación segura. te dejamos un video para que aprendas a detectarlas:",
   modal_inst: "¿sabes qué webs son reales y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto en phishing. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.",
   progress_text: "webs contestadas",
-  task_list: "lista de webs a contestar"
+  task_list: "lista de webs a contestar",
   final_video: "https://www.youtube.com/embed/-2PLx_udcK8?rel=0"
 };
