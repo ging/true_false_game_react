@@ -128,9 +128,9 @@ export default class Quiz extends React.Component {
       let feedback_iframe;
       if(question.type ==="iframe" && show_feedback){
         if(question.true_or_false === false){
-          feedback_iframe = <div className="feedback_iframe"><div className="feedback_i_content"><p className="content01">en este caso la noticia es falsa</p> <p className="content02">es un bulo sobre la salud como hay muchos. conviene contrastar la información y con una simple búsqueda en internet podemos ver que es falsa, por ejemplo <a href={question.feedback_search} target="_blank">con esta simple búsqueda</a></p><p className="content03">podemos encontrar webs muy útiles dedicadas a destapar este tipo de bulos, por ejemplo este lo desmienten en <a href={question.feedback_path} target="_blank">{question.feedback_sitename}</a></p></div></div> ;
+          feedback_iframe = <div className="feedback_iframe"><div className="feedback_i_content"><p className="content01">{question.source_name}</p> <p className="content02">es un bulo sobre la salud como hay muchos. conviene contrastar la información y con una simple búsqueda en internet podemos ver que es falsa, por ejemplo <a href={question.feedback_search} target="_blank">con esta simple búsqueda</a></p><p className="content03">podemos encontrar webs muy útiles dedicadas a destapar este tipo de bulos, por ejemplo este lo desmienten en <a href={question.feedback_path} target="_blank">{question.feedback_sitename}</a></p></div></div> ;
         } else {
-          feedback_iframe = <div className="feedback_iframe"><div className="feedback_i_content"><p className="content02">en este caso la noticia es verdadera. fíjate que viene de un medio reputado y que si buscas en internet información adicional verás la noticia en diferentes webs y periódicos también de prestigio</p></div></div> ;
+          feedback_iframe = <div className="feedback_iframe"><div className="feedback_i_content"><p className="content01">{question.source_name}</p><p className="content02">fíjate que viene de un medio reputado y que si buscas en internet información adicional verás la noticia en diferentes webs y periódicos también de prestigio</p></div></div> ;
         }
       }
 
