@@ -21,7 +21,7 @@ export default class FinishScreen extends React.Component {
     }
     return finishTitleText;
   }
-  
+
   render(){
     let surv;
     if(UI.survey){
@@ -31,7 +31,7 @@ export default class FinishScreen extends React.Component {
     return (
       <div className="main_box main_box_finished">
         <div className="main_text" id="finish_title">
-        {surv}
+        {surv}<br/>
         {finishTitleText}
         </div>
         }
