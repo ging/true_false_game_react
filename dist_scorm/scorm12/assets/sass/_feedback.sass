@@ -65,21 +65,61 @@
   color: black
   @include flex
   justify-content: center
+  @include transition_default
   .feedback_i_content
     width: 65%
+    opacity: 1
     font-size: calc(1vh + 1vw + .5em)
+    margin-top: -1em
     background-color: rgba(255, 255, 255,.7)
     @include box-shadow (0px 0px 60px 15px rgba(255,255,255,1))
+    @include transition (opacity 1100ms ease)
     a
       font-weight: 700
     p
       margin: .5em 0 0 0
     .content01
+      margin-top: 0
       font-weight: 600
       font-size: calc(1.1vh + 1.1vw + .5em)
     .content02
     .content03
       //font-size: calc(1.1vh + 1vw + .5em)
+  .toggleFeedback
+    position: absolute
+    @include flex
+    justify-content: flex-end
+    font-size: calc(.8vw + .8vh + .5em)
+    font-weight: 700
+    right: 1em
+    bottom: 1em
+    .control
+      fill: black
+      font-size: .8em
+      margin-left: .5em
+      @include hand_cursor
+      @include transform(rotate(180deg))
+      @include transition (all 300ms cubic-bezier(0.4, 0, 0.2, 1))
+      &:hover
+        @include hover_scale_in
+  &.redux
+    height: 3.5em
+    font-size: 1em
+    padding: .2em .7em
+    font-weight: bold
+    background-color: $lightgray
+    @include transition_default
+    .feedback_i_content
+      opacity: 0
+      @include transition (opacity 250ms ease)
+    .toggleFeedback
+      right: 1em
+      top: 1em
+      .control
+        @include transition (all 300ms cubic-bezier(0.4, 0, 0.2, 1))
+        @include transform(rotate(0deg))
+        &:hover
+          @include hover_scale_out
 
 
 @media (max-width: $media4) and (orientation: landscape)
@@ -96,6 +136,8 @@
   .feedback_iframe
     top: 8.55em
     height: calc(100vh - 17.6em)
+    &.redux
+      height: 3.5em
 
 
 @media (max-width: $media4)
@@ -112,6 +154,8 @@
   .feedback_iframe
     top: 8.55em
     height: calc(100vh - 17.6em)
+    &.redux
+      height: 3.5em
 
 
 @media (max-width: $media6) and (orientation: landscape) 
@@ -127,12 +171,19 @@
     text-align: right
     font-size: 1.1em
 
+  .feedback_iframe
+    &.redux
+      height: 2em !important
+
+
 
 @media (max-width: 880px)
 
   .feedback_iframe
     top: 8.55em
     height: calc(100vh - 17.6em)
+    &.redux
+      height: 3.5em
 
 
 @media (max-width: 880px) and (orientation: landscape) 
@@ -153,6 +204,10 @@
 
   .feedback_header
     font-size: 2em
+
+  .feedback_iframe
+    &.redux
+      height: 2.7em
 
 
 @media (max-width: $media9)
@@ -191,6 +246,10 @@
 
   .feedback_header
     text-align: center
+  
+  .feedback_iframe
+    &.redux
+      height: 2.3em
 
 
 @media (max-width: $media15)
