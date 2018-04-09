@@ -65,6 +65,7 @@
   color: black
   @include flex
   justify-content: center
+  @include transition_default
   .feedback_i_content
     width: 65%
     font-size: calc(1vh + 1vw + .5em)
@@ -80,6 +81,11 @@
     .content02
     .content03
       //font-size: calc(1.1vh + 1vw + .5em)
+  &.redux
+    //font-size: 2.5em
+    height: 4.5em
+    background-color: rgba(255, 255, 255,1)
+    @include transition_default
 
 
 @media (max-width: $media4) and (orientation: landscape)
@@ -96,6 +102,9 @@
   .feedback_iframe
     top: 8.55em
     height: calc(100vh - 17.6em)
+    &.redux
+      //font-size: 2em
+      height: 3.5em
 
 
 @media (max-width: $media4)
@@ -112,6 +121,9 @@
   .feedback_iframe
     top: 8.55em
     height: calc(100vh - 17.6em)
+    &.redux
+      //font-size: 2em
+      height: 3.5em
 
 
 @media (max-width: $media6) and (orientation: landscape) 
@@ -127,12 +139,21 @@
     text-align: right
     font-size: 1.1em
 
+  .feedback_iframe
+    &.redux
+      //font-size: 2em
+      height: 2em !important
+
+
 
 @media (max-width: 880px)
 
   .feedback_iframe
     top: 8.55em
     height: calc(100vh - 17.6em)
+    &.redux
+      //font-size: 2em
+      height: 3.5em
 
 
 @media (max-width: 880px) and (orientation: landscape) 
@@ -153,6 +174,11 @@
 
   .feedback_header
     font-size: 2em
+
+  .feedback_iframe
+    &.redux
+      //font-size: 2em
+      height: 2em
 
 
 @media (max-width: $media9)
