@@ -4,6 +4,7 @@ import * as questions from '../config/questions.js';
 import Animation from './Animation.jsx';
 import {stopAnimation, addObjectives, addSizes} from './../reducers/actions';
 import * as Utils from '../vendors/Utils.js';
+import Icon from './Icon.jsx';
 
 const QUESTIONS = questions[UI.question_array];
 
@@ -13,7 +14,12 @@ export default class Quiz extends React.Component {
     super(props);
     this.updateDimensions = this.updateDimensions.bind(this);
     this.calculateImgsSizes = this.calculateImgsSizes.bind(this);
+    this.toggleFeedback = this.toggleFeedback.bind(this);
     this.total_score = QUESTIONS.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
+    this.state = {hide_feedback: false};
+  }
+  toggleFeedback(){
+    this.setState({hide_feedback: !this.state.hide_feedback});
   }
   updateDimensions() {
     if(this.img && this.box){
@@ -126,11 +132,12 @@ export default class Quiz extends React.Component {
       let feedback_component = <div className={"feedback_header " + feedback1_class} ref={(feedback) => { this.feedback = feedback; }}>{feedback1 + ": " + feedback2}</div>;
       let nav_img = (question.secure === true) ? "assets/images/others/secure_nav.png" : "assets/images/others/no_secure_nav.png";
       let feedback_iframe;
+      let toggle_feedback_button;
       if(question.type ==="iframe" && show_feedback){
         if(question.true_or_false === false){
-          feedback_iframe = <div className="feedback_iframe"><div className="feedback_i_content"><p className="content01">{question.source_name}</p> <p className="content02">es un bulo sobre la salud como hay muchos. conviene contrastar la información y con una simple búsqueda en internet podemos ver que es falsa, por ejemplo <a href={question.feedback_search} target="_blank">con esta simple búsqueda</a></p><p className="content03">podemos encontrar webs muy útiles dedicadas a destapar este tipo de bulos, por ejemplo este lo desmienten en <a href={question.feedback_path} target="_blank">{question.feedback_sitename}</a></p></div></div> ;
+          feedback_iframe = <div className={"feedback_iframe " + (this.state.hide_feedback ? "redux":"")} key={1}><div className={"feedback_i_content " + (this.state.hide_feedback ? "hide":"")}><p className="content01">{question.source_name}</p> <p className="content02">es un bulo sobre la salud como hay muchos. conviene contrastar la información y con una simple búsqueda en internet podemos ver que es falsa, por ejemplo <a href={question.feedback_search} target="_blank">con esta simple búsqueda</a></p><p className="content03">podemos encontrar webs muy útiles dedicadas a destapar este tipo de bulos, por ejemplo este lo desmienten en <a href={question.feedback_path} target="_blank">{question.feedback_sitename}</a></p></div><div className="toggleFeedback" onClick={() => this.toggleFeedback()} key={0}>Ver feedback <Icon icon="right_arrow" className={"control control_right_arrow"}/></div></div>;
         } else {
-          feedback_iframe = <div className="feedback_iframe"><div className="feedback_i_content"><p className="content01">{question.source_name}</p><p className="content02">fíjate que viene de un medio reputado y que si buscas en internet información adicional verás la noticia en diferentes webs y periódicos también de prestigio</p></div></div> ;
+          feedback_iframe = <div className={"feedback_iframe " + (this.state.hide_feedback ? "redux":"")} key={1}><div className={"feedback_i_content " + (this.state.hide_feedback ? "hide":"")}><p className="content01">{question.source_name}</p><p className="content02">fíjate que viene de un medio reputado y que si buscas en internet información adicional verás la noticia en diferentes webs y periódicos también de prestigio</p></div><div className="toggleFeedback" onClick={() => this.toggleFeedback()} key={0}>Ver feedback <Icon icon="right_arrow" className={"control control_right_arrow"}/></div></div>;
         }
       }
 
