@@ -8,6 +8,9 @@ const config = {
   devtool: 'cheap-module-source-map',
 
   entry: [
+    'babel-polyfill',
+    'react', // Include this to enforce order
+    'react-dom', // Include this to enforce order
     './main.js'
   ],
 
