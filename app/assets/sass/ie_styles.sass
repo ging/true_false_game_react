@@ -1,0 +1,13 @@
+
+@import mixins
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none), (-ms-ime-align:auto) //IE 10 & 11
+  
+	*
+		cursor: auto !important
+
+
+@supports (-ms-ime-align:auto) //EDGE
+  
+  *
+		cursor: auto !important
