@@ -121,8 +121,7 @@ export default class Controls extends React.Component {
     }
 
     let finalStyleAppControls = {
-      width: 0,
-      marginRight: 0,
+      marginRight: "1.7em",
       marginLeft: "1.5em"
     };
 
