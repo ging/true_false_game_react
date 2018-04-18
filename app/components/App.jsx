@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import '../assets/sass/main_styles.sass';
+import '../assets/sass/ie_styles.sass';
 
 import {GLOBAL_CONFIG} from '../config/config.js';
 import * as questions from '../config/questions.js';
