@@ -137,8 +137,10 @@ export class App extends React.Component {
     return (
       <div id="container" onKeyDown={(e) => this.handleKeyPress(e)} tabIndex="0" >
         <div className="main_header">
-          <img className="detector_type_logo" src={UI.type_app_logo}/>
-          <img className="fake_detector_logo" src={UI.app_logo}/>
+          <div className="main_logo">
+            <img className="fake_detector_logo" src={UI.app_logo}/>
+            <img className="detector_type_logo" src={UI.type_app_logo}/>
+          </div>
           <div className="educalab">
             <p className="text_educalab">{UI.educalab_text}</p>
             <img className="educalab_logo" src={UI.educalab_logo}/>
