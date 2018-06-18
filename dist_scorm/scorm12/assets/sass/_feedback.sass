@@ -76,6 +76,7 @@
     @include transition (opacity 1100ms ease)
     a
       font-weight: 700
+      @include hand_cursor
     p
       margin: .5em 0 0 0
     .content01
@@ -192,6 +193,18 @@
     height: calc(100vh - 10em)
     .feedback_i_content
       font-size: calc(.7vh + .7vw + .5em)
+
+
+
+@media (max-width: 818px)
+  @media (max-height: 613px)
+
+    .feedback-box
+      .user_answer
+        font-size: 4.5em
+      .question
+        font-size: 3em
+
 
 
 @media (max-width: $media8)
