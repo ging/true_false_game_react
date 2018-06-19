@@ -61,6 +61,6 @@ export const UI = {
   modal_inst: "¿sabes qué noticias son verdaderas y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto detector de fake news. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.",
   progress_text: "noticias contestadas",
   task_list: "lista de noticias a contestar",
-  final_video: "https://www.youtube.com/watch?v=Hq813P5FXwE?rel=0",
+  final_video: "https://www.youtube.com/embed/Hq813P5FXwE?rel=0",
   survey: "https://docs.google.com/forms/d/e/1FAIpQLSdiEVIf3g2VpDrcatqda-k-kbJ8yrccxGxxU_ZLYwPKrFYPWA/viewform"
 };
