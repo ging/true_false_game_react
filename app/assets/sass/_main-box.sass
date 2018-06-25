@@ -57,8 +57,8 @@
             margin-right: 1em
         .nav_plus
           color: black
-          font-size: 1.2em
-          margin-left: .7em
+          font-size: .8em
+          margin-left: 1em
       .nav_bottom
         +flex
         height: 2.4em
@@ -68,7 +68,7 @@
         .nav_icons
           margin-left: 1em
           .nav_i
-            font-size: 1.2em
+            font-size: .9em
             margin-right: 1em
         .box_url
           +flex
@@ -78,8 +78,13 @@
           border-radius: .2em
           padding: .2em
           .url_group
-            .nav_secure
+            .nav_secure, .nav_no-secure
               margin: 0 .5em
+              font-size: .8em
+            .nav_secure
+              color: green
+            .nav_no-secure
+              color: $gray
             .nav_url
               max-width: 80%
               font-size: .8em

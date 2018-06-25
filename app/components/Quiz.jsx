@@ -130,7 +130,7 @@ export default class Quiz extends React.Component {
 
 
       let feedback_component = <div className={"feedback_header " + feedback1_class} ref={(feedback) => { this.feedback = feedback; }}>{feedback1 + ": " + feedback2}</div>;
-      let nav_img = (question.secure === true) ? "assets/images/others/secure_nav.png" : "assets/images/others/no_secure_nav.png";
+      let nav_sec_class = (question.secure === true) ? "nav_secure fa fa-lock" : "nav_no-secure fa fa-info-circle";
       let feedback_iframe;
       let toggle_feedback_button;
       if(question.type ==="iframe" && show_feedback){
@@ -156,24 +156,24 @@ export default class Quiz extends React.Component {
                   </div>
                   <div className="nav_tab">
                     <span className="tab_title">FakeDetector</span>
-                    <span className="tab_cross">x</span>
+                    <span className="tab_cross fa fa-times"></span>
                   </div>
-                  <div className="nav_plus">+
+                  <div className="nav_plus fa fa-plus">
                   </div>
                 </div>
                 <div className="nav_bottom">
                   <div className="nav_icons">
-                    <span className="fa fa-wrench nav_i i_right_arrow"></span>
-                    <span className="nav_i i_left_arrow">X</span>
-                    <span className="nav_i i_refresh">X</span>
+                    <span className="nav_i i_right_arrow fa fa-chevron-left"></span>
+                    <span className="nav_i i_left_arrow fa fa-chevron-right"></span>
+                    <span className="nav_i i_refresh fa fa-refresh"></span>
                   </div>
                   <div className="box_url">
                     <div className="url_group">
-                      <span className="nav_secure">X</span>
+                      <span className={nav_sec_class}></span>
                       <span className="nav_url" style={urlStyle}>{question.source_url}</span>
                     </div>
 
-                    <span className="nav_star">X</span>
+                    <span className="nav_star fa fa-star-o"></span>
                   </div>
                   <div className="three_dots">
                     <span className="dot"></span>
