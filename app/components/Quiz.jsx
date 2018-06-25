@@ -111,11 +111,6 @@ export default class Quiz extends React.Component {
         feedback2_class = "question wrong_question";
       }
 
-      let urlStyle = {
-        left: (question.secure === true) ? "14.5%" : "7%"
-      };
-
-
       let show_feedback;
       if(this.props.game.game_ended || (question.answered && answer_wrong) || (question.answered && answer_right && question.show_animation === false)){
         show_feedback =true;
@@ -170,7 +165,7 @@ export default class Quiz extends React.Component {
                   <div className="box_url">
                     <div className="url_group">
                       <span className={nav_sec_class}></span>
-                      <span className="nav_url" style={urlStyle}>{question.source_url}</span>
+                      <span className="nav_url">{question.source_url}</span>
                     </div>
 
                     <span className="nav_star fa fa-star-o"></span>
