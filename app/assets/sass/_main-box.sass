@@ -19,22 +19,86 @@
   .nav_box
     position: fixed
     width: 95%
+    background-color: $midgray
     &.with_feedback
       margin-top: 3.9em
     .nav_position
-      position: relative
-      .nav_image
-        width: 100%
-        display: block
-      .nav_url
+      .nav_top
+        +flex
+        height: 2em
+        .nav_circles
+          margin: 0 .8em
+          +flex
+          .nav_c
+            height: .75em
+            width: .75em
+            margin-right: .5em
+            border-radius: 5em
+            border: .01em solid $gray
+            &.c_red
+              background-color: #ef6a5e
+            &.c_yellow
+              background-color: #f7c150
+            &.c_green
+              background-color: #60c655
+        .nav_tab
+          +flex
+          justify-content: space-between
+          background-color: white
+          color: black
+          width: 12em
+          height: 100%
+          .tab_title
+            margin-left: 1em
+            font-size: .8em
+          .tab_cross
+            font-size: .6em
+            margin-top: -1em
+            margin-right: 1em
+        .nav_plus
+          color: black
+          font-size: 1.2em
+          margin-left: .7em
+      .nav_bottom
+        +flex
+        height: 2.4em
         color: black
-        font-size: .75vw
-        position: absolute
-        top: 65%
-        max-width: 89.3%
-        white-space: nowrap
-        text-overflow: ellipsis
-        overflow: hidden
+        background-color: white
+        border-bottom: .01em solid $gray
+        .nav_icons
+          margin-left: 1em
+          .nav_i
+            font-size: 1.2em
+            margin-right: 1em
+        .box_url
+          +flex
+          justify-content: space-between
+          width: 91%
+          border: 0.04em solid $gray
+          border-radius: .2em
+          padding: .2em
+          .url_group
+            .nav_secure
+              margin: 0 .5em
+            .nav_url
+              max-width: 80%
+              font-size: .8em
+              white-space: nowrap
+              text-overflow: ellipsis
+              overflow: hidden
+          .nav_star
+            margin-right: .5em
+      .three_dots
+        +column-flex
+        justify-content: center
+        .dot
+          width: .25em
+          height: .25em
+          border-radius: .2em
+          margin-left: .5em
+          margin-bottom: .25em
+          background-color: $gray
+
   .image_box
     text-align: center
     width: 100%

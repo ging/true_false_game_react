@@ -148,8 +148,40 @@ export default class Quiz extends React.Component {
             <Animation dispatch={this.props.dispatch} show={question.show_animation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
             <div className={"nav_box " + (show_feedback ? "with_feedback" : "") }>
               <div className="nav_position" ref={(nav) => { this.nav = nav; }}>
-                <img className="nav_image" src={nav_img} />
-                <span className="nav_url" style={urlStyle}>{question.source_url}</span>
+                <div className="nav_top">
+                  <div className="nav_circles">
+                    <span className="nav_c c_red"></span>
+                    <span className="nav_c c_yellow"></span>
+                    <span className="nav_c c_green"></span>
+                  </div>
+                  <div className="nav_tab">
+                    <span className="tab_title">FakeDetector</span>
+                    <span className="tab_cross">x</span>
+                  </div>
+                  <div className="nav_plus">+
+                  </div>
+                </div>
+                <div className="nav_bottom">
+                  <div className="nav_icons">
+                    <span className="nav_i i_right_arrow">X</span>
+                    <span className="nav_i i_left_arrow">X</span>
+                    <span className="nav_i i_refresh">X</span>
+                  </div>
+                  <div className="box_url">
+                    <div className="url_group">
+                      <span className="nav_secure">X</span>
+                      <span className="nav_url" style={urlStyle}>{question.source_url}</span>
+                    </div>
+
+                    <span className="nav_star">X</span>
+                  </div>
+                  <div className="three_dots">
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                  </div>
+                </div>
+                
               </div>
             </div>
             <div className="image_box" style={imgboxstyle}>
