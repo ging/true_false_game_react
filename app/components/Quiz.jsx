@@ -163,7 +163,7 @@ export default class Quiz extends React.Component {
                 </div>
                 <div className="nav_bottom">
                   <div className="nav_icons">
-                    <span className="nav_i i_right_arrow">X</span>
+                    <span className="fa fa-wrench nav_i i_right_arrow"></span>
                     <span className="nav_i i_left_arrow">X</span>
                     <span className="nav_i i_refresh">X</span>
                   </div>
