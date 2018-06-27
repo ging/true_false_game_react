@@ -173,7 +173,7 @@ export default class Quiz extends React.Component {
 
               </div>
             </div>
-            <div className="image_box">
+            <div className={"image_box " + (show_feedback ? "with_feedback" : "") }>
               {question.type ==="iframe" ?
                 <div className="iframeparent" style={{height:this.box.offsetHeight + "px"}}><iframe src={question.path} scrolling="no" className="eduiframe" ></iframe></div>
               :<img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
