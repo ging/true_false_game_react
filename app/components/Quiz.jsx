@@ -118,12 +118,6 @@ export default class Quiz extends React.Component {
         show_feedback = false;
       }
 
-      let margin1 = this.nav ? this.nav.clientHeight:70;
-      let margin2 = show_feedback ? (this.feedback ? this.feedback.clientHeight:61):0;
-      let margin = margin1 + margin2 + "px";
-      let imgboxstyle = {marginTop: margin};
-
-
       let feedback_component = <div className={"feedback_header " + feedback1_class} ref={(feedback) => { this.feedback = feedback; }}>{feedback1 + ": " + feedback2}</div>;
       let nav_sec_class = (question.secure === true) ? "nav_secure fa fa-lock" : "nav_no-secure fa fa-info-circle";
       let feedback_iframe;
@@ -176,12 +170,12 @@ export default class Quiz extends React.Component {
                     <span className="dot"></span>
                   </div>
                 </div>
-                
+
               </div>
             </div>
-            <div className="image_box" style={imgboxstyle}>
+            <div className="image_box">
               {question.type ==="iframe" ?
-                <div className="iframeparent" style={{height:this.box.offsetHeight - margin1 + "px"}}><iframe src={question.path} scrolling="no" className="eduiframe" ></iframe></div>
+                <div className="iframeparent" style={{height:this.box.offsetHeight + "px"}}><iframe src={question.path} scrolling="no" className="eduiframe" ></iframe></div>
               :<img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
             }
             </div>
