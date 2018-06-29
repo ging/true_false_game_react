@@ -1,9 +1,7 @@
 import {INITIAL_STATE, OBJECTIVES} from '../constants/constants';
-import * as questions from '../config/questions.js';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
 import {UI} from '../config/config';
 
-const QUESTIONS = questions[UI.question_array];
 
 export default function gameReducer(state = INITIAL_STATE.game, action){
   let receivedState;
@@ -66,7 +64,7 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
       receivedState.clock_paused = true;
     } else if(receivedState.questions[action.index].true_or_false === receivedState.questions[action.index].user_answer){
       //right answer, go to next question or if last, to the first unanswered
-      if(QUESTIONS.length - 1 !== action.index){
+      if(receivedState.questions.length - 1 !== action.index){
         receivedState.index = action.index + 1;
       } else {
         let first_question_unanswered = receivedState.questions.find(function(el){
@@ -121,7 +119,7 @@ function passquiz(state, action){
   } else {
     let receivedState = JSON.parse(JSON.stringify(state));
     if(action.right_left === GO_RIGHT){
-      if(QUESTIONS.length - 1 !== state.index){
+      if(receivedState.questions.length - 1 !== state.index){
         receivedState.index = state.index + 1;
       } else {
         receivedState.index = 0;
@@ -130,7 +128,7 @@ function passquiz(state, action){
       if(state.index !== 0){
         receivedState.index = state.index - 1;
       } else {
-        receivedState.index = QUESTIONS.length - 1;
+        receivedState.index = receivedState.questions.length - 1;
       }
     } else {
       console.log("Solo entiendo las acciones GO LEFT y GO RIGHT");
