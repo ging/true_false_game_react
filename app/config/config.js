@@ -46,6 +46,7 @@ export const UI = {
   question_array: "PHISHING",
   name:"detector de phishing",
   app_logo:"assets/images/logos/fakedetector_logo.svg",
+  type_app_text:"phishing",
   type_app_logo:"assets/images/logos/phishing.svg",
   educalab_text:"una aplicación de",
   educalab_logo:"assets/images/logos/elab_logo_white.svg",
