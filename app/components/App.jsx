@@ -140,7 +140,8 @@ export class App extends React.Component {
         <div className="main_header">
           <div className="main_logo">
             <img className="fake_detector_logo" src={UI.app_logo}/>
-            <img className="detector_type_logo" src={UI.type_app_logo}/>
+            <div className="detector_type_text">{UI.type_app_text}</div>
+            {/*<img className="detector_type_logo" src={UI.type_app_logo}/>*/}
           </div>
           <div className="educalab">
             <p className="text_educalab">{UI.educalab_text}</p>
