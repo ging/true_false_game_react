@@ -17,25 +17,97 @@
   .nav_box
     position: fixed
     width: 95%
+    background-color: $midgray
     &.with_feedback
       margin-top: 3.9em
     .nav_position
-      position: relative
-      .nav_image
-        width: 100%
-        display: block
-      .nav_url
+      .nav_top
+        +flex
+        height: 2em
+        .nav_circles
+          margin: 0 .8em
+          +flex
+          .nav_c
+            height: .75em
+            width: .75em
+            margin-right: .5em
+            border-radius: 5em
+            border: .01em solid $gray
+            &.c_red
+              background-color: #ef6a5e
+            &.c_yellow
+              background-color: #f7c150
+            &.c_green
+              background-color: #60c655
+        .nav_tab
+          +flex
+          justify-content: space-between
+          background-color: white
+          color: black
+          width: 12em
+          height: 100%
+          .tab_title
+            margin-left: 1em
+            font-size: .8em
+          .tab_cross
+            font-size: .6em
+            margin-top: -1em
+            margin-right: 1em
+        .nav_plus
+          color: black
+          font-size: .8em
+          margin-left: 1em
+      .nav_bottom
+        +flex
+        height: 2.4em
         color: black
-        font-size: .75vw
-        position: absolute
-        top: 65%
-        max-width: 89.3%
-        white-space: nowrap
-        text-overflow: ellipsis
-        overflow: hidden
+        background-color: white
+        border-bottom: .01em solid $gray
+        .nav_icons
+          margin-left: 1em
+          min-width: 5em
+          .nav_i
+            font-size: .9em
+            margin-right: 1em
+        .box_url
+          +flex
+          justify-content: space-between
+          width: calc(100% - 7.5em)
+          border: 0.04em solid $gray
+          border-radius: .2em
+          padding: .2em
+          .url_group
+            white-space: nowrap
+            text-overflow: ellipsis
+            overflow: hidden
+            .nav_secure, .nav_no-secure
+              margin: 0 .5em
+              font-size: .8em
+            .nav_secure
+              color: green
+            .nav_no-secure
+              color: $gray
+            .nav_url
+              font-size: .8em
+          .nav_star
+            margin: 0 .5em
+      .three_dots
+        +column-flex
+        justify-content: center
+        .dot
+          width: .25em
+          height: .25em
+          border-radius: .2em
+          margin-left: .5em
+          margin-bottom: .25em
+          background-color: $gray
+
   .image_box
     text-align: center
     width: 100%
+    margin-top: 4.4em
+    &.with_feedback
+      margin-top: 8.3em
     .iframeparent
       width: 100%
     .eduiframe
@@ -70,10 +142,7 @@
     .main_text
       font-size: calc(4vw + 2em)
       padding: 1em
-    .nav_box
-      .nav_position
-        .nav_url
-          top: 65%
+
     &.main_box_finished
       .main_text
         font-size: calc(4vh + 1.4em)
@@ -86,10 +155,6 @@
     .main_text
       font-size: calc(5vh + 2.3em)
       padding: .8em
-    .nav_box
-      .nav_position
-        .nav_url
-          top: 65%
 
 
 @media (max-width: $media4) and (orientation: landscape)
@@ -101,9 +166,10 @@
     .nav_box
       &.with_feedback
         margin-top: 3.1em
-      .nav_position
-        .nav_url
-          top: 65%
+    .image_box
+      &.with_feedback
+        margin-top: 7.5em
+
 
 
 @media (max-width: $media4) 
@@ -112,6 +178,9 @@
     .nav_box
       &.with_feedback
         margin-top: 3.1em
+    .image_box
+      &.with_feedback
+        margin-top: 7.5em
     &.main_box_finished
       .main_text
         font-size: calc(3vh + 1.6em)
@@ -127,6 +196,9 @@
     .nav_box
       &.with_feedback
         margin-top: 3.1em
+    .image_box
+      &.with_feedback
+        margin-top: 7.5em
 
 
 @media (max-width: $media6)
@@ -147,9 +219,10 @@
     .nav_box
       &.with_feedback
         margin-top: 1.7em
-      .nav_position
-        .nav_url
-          top: 63%
+    .image_box
+      &.with_feedback
+        margin-top: 6.1em
+
     .quiz_image
       &.with_margins
         width: 80%
@@ -165,6 +238,16 @@
       .main_text
         font-size: calc(1.7vw + 2em)
         padding: .7em 3em 0 1em
+      .nav_box
+        .nav_position
+          .nav_top
+            display: none
+        &.with_feedback
+          margin-top: 1.7em
+      .image_box
+        margin-top: 2.4em
+        &.with_feedback
+          margin-top: 4em
 
 
 
@@ -175,6 +258,13 @@
       .main_text
         font-size: calc(3.2vw + 2.2em)
         padding: .8em 1.5em 0 .8em
+
+
+
+@media (max-width: $media7) and (orientation: portrait)
+  .main_box
+    .nav_box
+      width: 94.5%
 
 
 
@@ -198,10 +288,10 @@
     .nav_box
       &.with_feedback
         margin-top: 3.1em
-      .nav_position
-        .nav_url
-          top: 66%
+
     .image_box
+      &.with_feedback
+        margin-top: 7.5em
       .quiz_image
         &.with_margins
           width: 80%
@@ -215,11 +305,16 @@
   .main_box
     height: calc(100vh - 9em)
     .nav_box
+      .nav_position
+        .nav_top
+          display: none
       &.with_feedback
         margin-top: 1.7em
-      .nav_position
-        .nav_url
-          top: 67%
+    .image_box
+      margin-top: 2.4em
+      &.with_feedback
+        margin-top: 4em
+
     .quiz_image
       &.with_margins
         width: 95%
@@ -235,10 +330,7 @@
     .main_text
       font-size: calc(2.5vw + 1.7em)
       padding: .7em 2.5em .7em 1em
-    .nav_box
-      .nav_position
-        .nav_url
-          top: 66%
+
     .image_box
       .quiz_image
         &.with_margins
@@ -253,10 +345,15 @@
     .main_text
       font-size: calc(2vw + 1.7em)
       padding: .7em 2em 0 1em
+
+
+
+
+@media (max-width: $media10) and (orientation: portrait)
+  .main_box
     .nav_box
-      .nav_position
-        .nav_url
-          top: 64%
+      width: 94%
+
 
 
 @media (max-width: $media10) and (orientation: landscape)
@@ -286,6 +383,11 @@
         padding: .8em 3em 0 1em
 
 
+@media (max-width: $media11) and (orientation: portrait)
+  .main_box
+    .nav_box
+      width: 95%
+
 
 @media (max-width: $media12)
 
@@ -307,11 +409,13 @@
 
 
 
-@media (max-width: $media13) and (orientation: portrait)
+@media (max-width: 414px) and (orientation: portrait)
 
   .main_box
     .main_text
       font-size: calc(3.5vh + 1.2em)
+    .nav_box
+      width: 94.3%
 
 
 
@@ -321,10 +425,13 @@
     .main_text
       font-size: calc(4vh + 1em)
       padding: .7em 1.5em 0 .7em
+
+
+@media (max-width: $media14) and (orientation: portrait)
+
+  .main_box
     .nav_box
-      .nav_position
-        .nav_url
-          top: 68%
+      width: 93.9%
 
 
 @media (max-width: $media15)
@@ -332,5 +439,12 @@
   .main_box
     .main_text
       font-size: calc(3.5vh + 1em)
+
+
+@media (max-width: $media15) and (orientation: portrait)
+
+  .main_box
+    .nav_box
+      width: 92%
 
 

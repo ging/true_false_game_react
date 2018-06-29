@@ -111,11 +111,6 @@ export default class Quiz extends React.Component {
         feedback2_class = "question wrong_question";
       }
 
-      let urlStyle = {
-        left: (question.secure === true) ? "14.5%" : "7%"
-      };
-
-
       let show_feedback;
       if(this.props.game.game_ended || (question.answered && answer_wrong) || (question.answered && answer_right && question.show_animation === false)){
         show_feedback =true;
@@ -123,14 +118,8 @@ export default class Quiz extends React.Component {
         show_feedback = false;
       }
 
-      let margin1 = this.nav ? this.nav.clientHeight:70;
-      let margin2 = show_feedback ? (this.feedback ? this.feedback.clientHeight:61):0;
-      let margin = margin1 + margin2 + "px";
-      let imgboxstyle = {marginTop: margin};
-
-
       let feedback_component = <div className={"feedback_header " + feedback1_class} ref={(feedback) => { this.feedback = feedback; }}>{feedback1 + ": " + feedback2}</div>;
-      let nav_img = (question.secure === true) ? "assets/images/others/secure_nav.png" : "assets/images/others/no_secure_nav.png";
+      let nav_sec_class = (question.secure === true) ? "nav_secure fa fa-lock" : "nav_no-secure fa fa-info-circle";
       let feedback_iframe;
       let toggle_feedback_button;
       if(question.type ==="iframe" && show_feedback){
@@ -148,13 +137,45 @@ export default class Quiz extends React.Component {
             <Animation dispatch={this.props.dispatch} show={question.show_animation} feedback1={feedback1} feedback2={feedback2} index={this.props.index} className1={feedback1_class} className2={feedback2_class}/>
             <div className={"nav_box " + (show_feedback ? "with_feedback" : "") }>
               <div className="nav_position" ref={(nav) => { this.nav = nav; }}>
-                <img className="nav_image" src={nav_img} />
-                <span className="nav_url" style={urlStyle}>{question.source_url}</span>
+                <div className="nav_top">
+                  <div className="nav_circles">
+                    <span className="nav_c c_red"></span>
+                    <span className="nav_c c_yellow"></span>
+                    <span className="nav_c c_green"></span>
+                  </div>
+                  <div className="nav_tab">
+                    <span className="tab_title">FakeDetector</span>
+                    <span className="tab_cross fa fa-times"></span>
+                  </div>
+                  <div className="nav_plus fa fa-plus">
+                  </div>
+                </div>
+                <div className="nav_bottom">
+                  <div className="nav_icons">
+                    <span className="nav_i i_right_arrow fa fa-chevron-left"></span>
+                    <span className="nav_i i_left_arrow fa fa-chevron-right"></span>
+                    <span className="nav_i i_refresh fa fa-refresh"></span>
+                  </div>
+                  <div className="box_url">
+                    <div className="url_group">
+                      <span className={nav_sec_class}></span>
+                      <span className="nav_url">{question.source_url}</span>
+                    </div>
+
+                    <span className="nav_star fa fa-star-o"></span>
+                  </div>
+                  <div className="three_dots">
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                  </div>
+                </div>
+
               </div>
             </div>
-            <div className="image_box" style={imgboxstyle}>
+            <div className={"image_box " + (show_feedback ? "with_feedback" : "") }>
               {question.type ==="iframe" ?
-                <div className="iframeparent" style={{height:this.box.offsetHeight - margin1 + "px"}}><iframe src={question.path} scrolling="no" className="eduiframe" ></iframe></div>
+                <div className="iframeparent" style={{height:this.box.offsetHeight + "px"}}><iframe src={question.path} scrolling="no" className="eduiframe" ></iframe></div>
               :<img ref={(img) => { this.img = img; }} className={"quiz_image" + (question.with_margins ? " with_margins":"")} src={show_feedback ? question.feedback_path:question.path} />
             }
             </div>
