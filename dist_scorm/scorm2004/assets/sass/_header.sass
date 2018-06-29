@@ -1,5 +1,4 @@
 
-
 //----------- HEADER ----------------
 
 .main_header
@@ -8,17 +7,26 @@
   justify-content: space-between
   align-items: center
   padding: 1em 2em
-  .detector_type_logo
-    position: relative
-    z-index: 1
-    width: 6.4em
-    top: -0.85em
-    left: -1em
-    @include transform(rotate(-7deg))
-  .fake_detector_logo
-    position: absolute
-    width: 12em
-    //@include hand_cursor
+  .main_logo
+    +flex
+    .detector_type_logo
+      display: block
+      margin: auto
+      width: 7.3em
+      padding-top: .2em
+      margin-left: .5em
+      //position: relative
+      //z-index: 1
+      //width: 5em
+      //top: -.9em
+      //left: -1.3em
+      //@include transform(rotate(-8deg))
+    .fake_detector_logo
+      display: block
+      margin: auto
+      width: 12em
+      //position: absolute
+      //@include hand_cursor
   .educalab
     display: flex
     flex-flow: row nowrap
@@ -30,29 +38,21 @@
       padding-top: .3em
     .educalab_logo
       width: 4em
-      //@include hand_cursor
-
-
-@media (max-width: $media2)
-  
-  .main_header
-    .detector_type_logo
-    .fake_detector_logo
-    .educalab
-      .text_educalab
-      .educalab_logo
 
 
 @media (max-width: $media6) and (orientation: landscape) 
 
   .main_header
     padding: .7em
-    .detector_type_logo
-      width: 3.45em
-      top: -0.45em
-      left: -.7em
-    .fake_detector_logo
-      width: 6em
+    .main_logo
+      .detector_type_logo
+        width: 3.8em
+        padding-top: .1em
+        margin-left: .2em
+        //top: -0.44em
+        //left: -.45em
+      .fake_detector_logo
+        width: 6em
     .educalab
       .text_educalab
         font-size: .6em
@@ -70,12 +70,15 @@
   .main_header
     padding: 1em
     margin-top: .5em
-    .detector_type_logo
-      width: 3.45em
-      top: -0.45em
-      left: -.7em
-    .fake_detector_logo
-      width: 6em
+    .main_logo
+      .detector_type_logo
+        width: 3.8em
+        padding-top: .1em
+        margin-left: .2em
+        //top: -0.44em
+        //left: -.45em
+      .fake_detector_logo
+        width: 6em
     .educalab
       .text_educalab
         font-size: .5em

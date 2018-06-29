@@ -6,9 +6,13 @@
   overflow: auto
   .main_text
     color: $secondarycolor
-    font-size: calc(5.5vh + 2em)
+    //font-size: calc(5.5vh + 2em)
+    //padding: .7em 6em 1em 1em
     font-weight: bold
-    padding: .7em 6em 1em 1em
+    font-size: calc(4.5vw + 1.5em)
+    line-height: calc(.4vw + .9em)
+    font-weight: bold
+    padding: .7em .7em 0 .7em
     margin: 0
   .nav_box
     position: fixed
@@ -64,8 +68,8 @@
 
   .main_box
     .main_text
-      font-size: calc(5vh + 2.3em)
-      padding: 1em 3em 1em 1em
+      font-size: calc(4vw + 2em)
+      padding: 1em
     .nav_box
       .nav_position
         .nav_url
@@ -80,20 +84,19 @@
 
   .main_box
     .main_text
-      font-size: calc(4vh + 2em)
-      padding: 1em 2em 1em 1em
+      font-size: calc(5vh + 2.3em)
+      padding: .8em
     .nav_box
       .nav_position
         .nav_url
           top: 65%
 
 
-
 @media (max-width: $media4) and (orientation: landscape)
 
   .main_box
     .main_text
-      font-size: calc(4vh + 2em)
+      font-size: calc(5vh + 1.9em)
       padding: 1em 2em 1em 1em
     .nav_box
       &.with_feedback
@@ -118,9 +121,20 @@
 @media (max-width: $media5)
 
   .main_box
+    .main_text
+      font-size: calc(4vh + 1.9em)
+      padding: 1em 2em 0 1em
     .nav_box
       &.with_feedback
         margin-top: 3.1em
+
+
+@media (max-width: $media6)
+
+  .main_box
+    .main_text
+      font-size: calc(4.5vh + 2.2em)
+      padding: .8em 1em .8em .8em
 
 
 @media (max-width: $media6) and (orientation: landscape)
@@ -144,9 +158,32 @@
 
 
 
+@media (max-width: $media6)
+  @media (max-height: $media13)
+
+    .main_box
+      .main_text
+        font-size: calc(1.7vw + 2em)
+        padding: .7em 3em 0 1em
+
+
+
+@media (max-width: 818px)
+  @media (max-height: 613px)
+
+    .main_box
+      .main_text
+        font-size: calc(3.2vw + 2.2em)
+        padding: .8em 1.5em 0 .8em
+
+
+
 @media (max-width: $media7) and (orientation: landscape) //iPhoneX
 
   .main_box
+    .main_text
+      font-size: calc(1.5vw + 2em)
+      padding: .7em 1.5em 0 1em
     &.main_box_finished
       height: calc(100vh - 4.7em)
 
@@ -156,8 +193,8 @@
 
   .main_box
     .main_text
-      font-size: calc(3vh + 2em)
-      padding: 1em 2em 1em 1em
+      font-size: calc(4vh + 2em)
+      padding: .9em
     .nav_box
       &.with_feedback
         margin-top: 3.1em
@@ -196,7 +233,7 @@
   .main_box
     height: calc(100vh - 8em)
     .main_text
-      font-size: calc(2.5vh + 1.7em)
+      font-size: calc(2.5vw + 1.7em)
       padding: .7em 2.5em .7em 1em
     .nav_box
       .nav_position
@@ -213,6 +250,9 @@
 @media (max-width: 670px) and (orientation: landscape)
 
   .main_box
+    .main_text
+      font-size: calc(2vw + 1.7em)
+      padding: .7em 2em 0 1em
     .nav_box
       .nav_position
         .nav_url
@@ -223,16 +263,36 @@
 
   .main_box
     .main_text
-      font-size: calc(2vh + 1.5em)
+      font-size: calc(3vh + 1.5em)
       padding: .8em 3em .8em 1em
+
+
+
+@media (max-width: $media10)
+  @media (max-height: $media14)
+
+    .main_box
+      .main_text
+        font-size: calc(2vw + 1.5em)
+        padding: .8em 3em 0 1em
+
+
+@media (max-width: 568px)
+  @media (max-height: $media14)
+
+    .main_box
+      .main_text
+        font-size: calc(2vh + 1.5em)
+        padding: .8em 3em 0 1em
+
 
 
 @media (max-width: $media12)
 
   .main_box
     .main_text
-      font-size: calc(3vh + 1.2em)
-      padding: .8em 2.2em .8em 1em
+      font-size: calc(4vh + 1.2em)
+      padding: .8em 1.2em 0 .8em
     &.main_box_finished
       .main_text
         font-size: calc(2vh + .9em)
@@ -242,20 +302,35 @@
 
   .main_box
     .main_text
-      font-size: calc(3vh + 1.2em)
-      padding: .8em 1.2em .8em 1em
+      font-size: calc(4.2vh + 1.2em)
+      padding: .8em 1.2em .8em .8em
+
+
+
+@media (max-width: $media13) and (orientation: portrait)
+
+  .main_box
+    .main_text
+      font-size: calc(3.5vh + 1.2em)
+
 
 
 @media (max-width: $media14)
 
   .main_box
     .main_text
-      font-size: calc(3vh + 1em)
-      padding: .7em 2em .7em 1em
+      font-size: calc(4vh + 1em)
+      padding: .7em 1.5em 0 .7em
     .nav_box
       .nav_position
         .nav_url
           top: 68%
 
 
-          
+@media (max-width: $media15)
+
+  .main_box
+    .main_text
+      font-size: calc(3.5vh + 1em)
+
+
