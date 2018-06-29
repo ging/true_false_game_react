@@ -1,5 +1,4 @@
 
-
 //----------- HEADER ----------------
 
 .main_header
@@ -8,17 +7,18 @@
   justify-content: space-between
   align-items: center
   padding: 1em 2em
-  .detector_type_logo
-    position: relative
-    z-index: 1
-    width: 4em
-    top: -0.72em
-    left: -1.4em
-    @include transform(rotate(-10deg))
-  .fake_detector_logo
-    position: absolute
-    width: 12em
-    //@include hand_cursor
+  .main_logo
+    +flex
+    .detector_type_logo
+      display: block
+      margin: auto
+      width: 5.3em
+      //padding-top: .4em
+      margin-left: .5em
+    .fake_detector_logo
+      display: block
+      margin: auto
+      width: 12em
   .educalab
     display: flex
     flex-flow: row nowrap
@@ -30,29 +30,19 @@
       padding-top: .3em
     .educalab_logo
       width: 4em
-      //@include hand_cursor
-
-
-@media (max-width: $media2)
-  
-  .main_header
-    .detector_type_logo
-    .fake_detector_logo
-    .educalab
-      .text_educalab
-      .educalab_logo
 
 
 @media (max-width: $media6) and (orientation: landscape) 
 
   .main_header
     padding: .7em
-    .detector_type_logo
-      width: 2em
-      top: -0.4em
-      left: -.7em
-    .fake_detector_logo
-      width: 6em
+    .main_logo
+      .detector_type_logo
+        width: 2.8em
+        //padding-top: .2em
+        margin-left: .2em
+      .fake_detector_logo
+        width: 6em
     .educalab
       .text_educalab
         font-size: .6em
@@ -70,12 +60,13 @@
   .main_header
     padding: 1em
     margin-top: .5em
-    .detector_type_logo
-      width: 2em
-      top: -0.4em
-      left: -.7em
-    .fake_detector_logo
-      width: 6em
+    .main_logo
+      .detector_type_logo
+        width: 2.8em
+        //padding-top: .2em
+        margin-left: .2em
+      .fake_detector_logo
+        width: 6em
     .educalab
       .text_educalab
         font-size: .5em

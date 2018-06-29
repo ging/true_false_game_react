@@ -1,0 +1,146 @@
+
+@import mixins
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none), (-ms-ime-align: auto) //IE 10 & 11
+
+	body
+		cursor: auto !important
+
+	.main_header
+		//display: -ms-flexbox
+		.detector_type_logo
+			position: absolute
+			top: 1.1em
+			left: 2.8vw
+		.fake_detector_logo
+			position: absolute
+			top: 2em
+		
+		@media (max-width: $media6)
+			.detector_type_logo
+				top: 1.2em
+				left: 2.5vw
+			.fake_detector_logo
+				top: 1.5em
+
+
+	.main_box
+		.main_text
+			padding: .7em 4em 1em 1em
+
+	.control_bar
+		.start_game
+			.control
+				cursor: pointer
+		.credits
+			cursor: pointer
+		.controls_menu
+			.control
+				cursor: pointer
+		.app_controls
+			.control
+				&.control_right_arrow, &.control_left_arrow, &.control_true, &.control_false
+      		cursor: pointer
+
+	.dark-opacity
+		cursor: pointer
+
+	.modal_position
+		.modal
+			.modal-box
+				.close-modal-cross
+					cursor: pointer
+				.control
+					&.control_cross
+						cursor: pointer
+				.modal-content
+					.modal-text
+						.task-list
+							.list-title
+								cursor: pointer
+							.control
+								cursor: pointer
+							.individual_task
+								.individual_task_text
+									cursor: pointer
+								.task-icons
+									.control
+										cursor: default
+					.logos
+						.logo
+							cursor: pointer
+							&.incibe_logo
+								height: 3em
+
+					.modal-actions
+						.btn
+							cursor: pointer
+
+	.feedback_iframe
+		.toggleFeedback
+			.control
+				cursor: pointer
+
+
+
+@supports (-ms-ime-align: auto) //EDGE
+
+	body
+		cursor: auto !important
+
+	.main_box
+		.main_text
+			padding: .7em 4em 1em 1em
+
+	.control_bar
+		.start_game
+			.control
+				cursor: pointer
+		.credits
+			cursor: pointer
+		.controls_menu
+			.control
+				cursor: pointer
+		.app_controls
+			.control
+				&.control_right_arrow, &.control_left_arrow, &.control_true, &.control_false
+					cursor: pointer
+
+	.dark-opacity
+		cursor: pointer
+
+	.modal_position
+		.modal
+			.modal-box
+				.close-modal-cross
+					cursor: pointer
+				.control
+					&.control_cross
+						cursor: pointer
+				.modal-content
+					.modal-text
+						.task-list
+							.list-title
+								cursor: pointer
+							.control
+								cursor: pointer
+							.individual_task
+								.individual_task_text
+									cursor: pointer
+								.task-icons
+									.control
+										cursor: default
+					.logos
+						.logo
+							cursor: pointer
+							&.incibe_logo
+								height: 3em
+
+					.modal-actions
+						.btn
+							cursor: pointer
+
+	.feedback_iframe
+		.toggleFeedback
+			.control
+				cursor: pointer

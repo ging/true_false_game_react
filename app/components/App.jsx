@@ -135,6 +135,7 @@ export class App extends React.Component {
     let user_score = this.props.game.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score_accomplished; }, 0);
     let showDarkLayer = this.state.showModalStart || this.state.showModalInfo || this.state.showModalProgress || this.state.showModalReset || this.state.showModalStop || this.state.showModalEnd || this.state.showModalCredits;
     return (
+      
       <div id="container" onKeyDown={(e) => this.handleKeyPress(e)} tabIndex="0" >
         <div className="main_header">
           <div className="main_logo">

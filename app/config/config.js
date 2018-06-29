@@ -43,13 +43,13 @@ let processConfig = (function(){
 
 
 export const UI = {
-  question_array: "MASTER",
+  question_array: "HEALTH",
   name:"detector de noticias falsas",
   app_logo:"assets/images/logos/fakedetector_logo.svg",
-  type_app_logo:"assets/images/logos/news.svg",
+  type_app_logo:"assets/images/logos/health.svg",
   educalab_text:"una aplicación de",
   educalab_logo:"assets/images/logos/elab_logo_white.svg",
-  initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, que no te tomen por tonto",
+  initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, no juegues con tu salud",
   instructions:"marca verdadero o falso para cada una de las noticias propuestas. irás obteniendo una puntuación según cuantas aciertes.",
   with_reset_button: false,
   with_fullscreen: true,
@@ -61,6 +61,6 @@ export const UI = {
   modal_inst: "¿sabes qué noticias son verdaderas y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto detector de fake news. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.",
   progress_text: "noticias contestadas",
   task_list: "lista de noticias a contestar",
-  final_video: "https://www.youtube.com/embed/-2PLx_udcK8?rel=0",
+  final_video: "https://www.youtube.com/embed/Hq813P5FXwE?rel=0",
   survey: "https://docs.google.com/forms/d/e/1FAIpQLSdiEVIf3g2VpDrcatqda-k-kbJ8yrccxGxxU_ZLYwPKrFYPWA/viewform"
 };
