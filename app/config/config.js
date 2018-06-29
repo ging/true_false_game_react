@@ -46,6 +46,7 @@ export const UI = {
   question_array: "MASTER",
   name:"detector de noticias falsas",
   app_logo:"assets/images/logos/fakedetector_logo.svg",
+  type_app_text:"news",
   type_app_logo:"assets/images/logos/news.svg",
   educalab_text:"una aplicación de",
   educalab_logo:"assets/images/logos/elab_logo_white.svg",
