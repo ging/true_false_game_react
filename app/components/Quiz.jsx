@@ -1,13 +1,9 @@
 import React from 'react';
 import {UI} from '../config/config.js';
-import * as questions from '../config/questions.js';
 import Animation from './Animation.jsx';
 import {stopAnimation, addObjectives, addSizes} from './../reducers/actions';
 import * as Utils from '../vendors/Utils.js';
 import Icon from './Icon.jsx';
-
-const QUESTIONS = questions[UI.question_array];
-
 
 export default class Quiz extends React.Component {
   constructor(props){
@@ -15,7 +11,7 @@ export default class Quiz extends React.Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.calculateImgsSizes = this.calculateImgsSizes.bind(this);
     this.toggleFeedback = this.toggleFeedback.bind(this);
-    this.total_score = QUESTIONS.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
+    this.total_score = this.props.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
     this.state = {hide_feedback: false};
   }
   toggleFeedback(){
@@ -38,12 +34,12 @@ export default class Quiz extends React.Component {
     }
   }
   calculateImgsSizes(){
-    let nQuestions = QUESTIONS.length;
-    let only_imgs_length = QUESTIONS.filter((q) =>{return q.type!=="iframe";}).length;
+    let nQuestions = this.props.questions.length;
+    let only_imgs_length = this.props.questions.filter((q) =>{return q.type!=="iframe";}).length;
     let processed = 0;
     let sizes = [];
     for(let i = 0; i < nQuestions; i++){
-      if(QUESTIONS[i].type==="iframe"){
+      if(this.props.questions[i].type==="iframe"){
         sizes[i] = null;
       } else {
         let img = new Image();
@@ -61,16 +57,16 @@ export default class Quiz extends React.Component {
           }
         }.bind(this);
         img.id = i;
-        img.src = QUESTIONS[i].path;
+        img.src = this.props.questions[i].path;
       }
     }
   }
   componentDidMount(){
     // Create objectives (One per question included in the quiz)
     let objectives = [];
-    let nQuestions = QUESTIONS.length;
+    let nQuestions = this.props.questions.length;
     for(let i = 0; i < nQuestions; i++){
-      objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(QUESTIONS[i].score / this.total_score)}));
+      objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(this.props.questions[i].score / this.total_score)}));
     }
     this.props.dispatch(addObjectives(objectives));
     this.updateDimensions();

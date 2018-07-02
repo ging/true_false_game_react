@@ -1,11 +1,8 @@
 import React from 'react';
 import {initializegame, finishApp} from './../reducers/actions';
-import * as questions from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
 import {UI} from '../config/config.js';
-
-const QUESTIONS = questions[UI.question_array];
 
 
 export default class ModalGameEnd extends React.Component {
@@ -16,7 +13,7 @@ export default class ModalGameEnd extends React.Component {
   }
   resetClick(){
     this.props.handleClose("End");
-    this.props.dispatch(initializegame(QUESTIONS));
+    this.props.dispatch(initializegame(this.props.questions));
     this.props.resetState();
   }
   finishGame(){
@@ -68,7 +65,7 @@ export default class ModalGameEnd extends React.Component {
                 <div className="modal-text">
                   <div className="final_score">
                     <div className="individual_score"><span className="number_score">{clock}</span> <span className="text_score">tiempo</span></div>
-                    <div className="individual_score"><span className="number_score">{correct}/{QUESTIONS.length}</span> <span className="text_score">aciertos</span></div>
+                    <div className="individual_score"><span className="number_score">{correct}/{this.props.questions.length}</span> <span className="text_score">aciertos</span></div>
                     <div className="individual_score"><span className="number_score">{this.props.user_score}</span> <span className="text_score">puntos</span></div>
                   </div>
                   <p>{message}</p>

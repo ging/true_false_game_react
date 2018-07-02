@@ -1,12 +1,8 @@
 import React from 'react';
 import {initializegame, endgame, goToQuestion, finishApp} from './../reducers/actions';
-import * as questions from '../config/questions.js';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
 import {UI} from '../config/config';
-
-const QUESTIONS = questions[UI.question_array];
-
 
 export default class ModalGameStop extends React.Component {
   constructor(props){
@@ -25,7 +21,7 @@ export default class ModalGameStop extends React.Component {
   }
   resetGame(){
     this.props.handleClose("Stop");
-    this.props.dispatch(initializegame(QUESTIONS));
+    this.props.dispatch(initializegame(this.props.questions));
     this.props.resetState();
   }
   finishGame(){

@@ -23,6 +23,7 @@ import Dark from './Dark.jsx';
 import {UI} from '../config/config';
 import * as I18n from '../vendors/I18n.js';
 
+
 const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen: false};
 const QUESTIONS = questions[UI.question_array];
 
@@ -45,7 +46,47 @@ export class App extends React.Component {
     this.setState(INITIAL_STATE);
   }
   componentDidMount(){
-    this.props.dispatch(initializegame(QUESTIONS));
+    let new_questions = Utils.getUrlParameter('questions')
+    console.log("yohoo: " + new_questions);
+    if(new_questions){
+      //try to fetch the questions from the URL given
+      fetch(new_questions)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log("we have a URL, and we fetched it and got the result:");
+          console.log(result);
+          if(result.status && result.status === 500 || result.status === 404){
+            this.props.dispatch(initializegame(QUESTIONS));
+          } else {
+            //POST the used URL to EducaInternet to save it
+            /*
+            fetch("http://localhost:3000/elab_url_file",
+            {
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'text/plain'
+                },
+                method: "POST",
+                body: JSON.stringify(result)
+            })
+            .then(function(res){ console.log(res) })
+            .catch(function(res){ console.log(res) });
+            */
+            this.props.dispatch(initializegame(result));
+          }
+        },
+        (error) => {
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          console.log("ERROR IN FETCH, go with default questions. The error was: " + error);
+          this.props.dispatch(initializegame(QUESTIONS));
+        }
+      );
+    } else {
+      this.props.dispatch(initializegame(QUESTIONS));
+    }
     let myinterval = setInterval(() => this.props.dispatch(updateTimer()), 1000);
     this.setState({intervalId: myinterval});
     window.addEventListener('fullscreenchange', this.fullscreenChange);
