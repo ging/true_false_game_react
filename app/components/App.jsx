@@ -54,15 +54,36 @@ export class App extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log("RESULT " + result);
+          console.log("we have a URL, and we fetched it and got the result:");
+          console.log(result);
+          if(result.status && result.status === 500 || result.status === 404){
+            this.props.dispatch(initializegame(QUESTIONS));
+          } else {
+            //POST the used URL to EducaInternet to save it
+            /*
+            fetch("http://localhost:3000/elab_url_file",
+            {
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'text/plain'
+                },
+                method: "POST",
+                body: JSON.stringify(result)
+            })
+            .then(function(res){ console.log(res) })
+            .catch(function(res){ console.log(res) });
+            */
+            this.props.dispatch(initializegame(result));
+          }
         },
         (error) => {
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
           // exceptions from actual bugs in components.
-          console.log("ERROR IN FETCH " + error);
+          console.log("ERROR IN FETCH, go with default questions. The error was: " + error);
+          this.props.dispatch(initializegame(QUESTIONS));
         }
-      );      
+      );
     } else {
       this.props.dispatch(initializegame(QUESTIONS));
     }
