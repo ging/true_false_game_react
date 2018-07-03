@@ -1,3 +1,5 @@
+const jsonImporter = require('node-sass-json-importer');
+
 const {resolve} = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -83,7 +85,7 @@ const config = {
         use: [
           'style-loader',
           'css-loader',
-          { loader: 'sass-loader', options: { sourceMap: true } },
+          { loader: 'sass-loader', options: { sourceMap: true, importer: jsonImporter } },
         ],
       },
       { test: /\.(png|jpg|gif|cur)$/, use: 'file-loader' },

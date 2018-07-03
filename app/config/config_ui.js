@@ -72,6 +72,7 @@ export const MASTER = [
 
 
 export const PHISHING = {
+  sass_maincolor: "#FBFC65",
   question_array: "HEALTH",
   name:"detector de noticias falsas",
   app_logo:"assets/images/logos/fakedetector_logo.svg",
@@ -186,7 +187,9 @@ export const PHISHING = {
     }
 ]};
 
-
+export const kike = {
+  secondaryColor: "black"
+}
 export const HEALTH = [
     { "path": "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
       "type": "iframe",
