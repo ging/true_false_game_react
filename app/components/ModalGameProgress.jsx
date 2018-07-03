@@ -2,7 +2,7 @@ import React from 'react';
 import {goToQuestion} from './../reducers/actions';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
-import {UI} from '../config/config';
+import {GLOBAL_CONFIG} from '../config/config.js';
 
 export default class ModalGameProgress extends React.Component {
   constructor(props){
@@ -32,7 +32,7 @@ export default class ModalGameProgress extends React.Component {
             <div className="modal-content">
               <div className="modal-title">progreso de la prueba</div>
                 <div className="modal-text">
-                  <p>{UI.progress_text} {progress}/{this.props.questions.length}</p>
+                  <p>{GLOBAL_CONFIG.BASIC_UI.progress_text} {progress}/{this.props.questions.length}</p>
                   <div className="task-list">
                     {this.props.questions.map((q, index) => {
                       let success = q.user_answer === q.true_or_false;

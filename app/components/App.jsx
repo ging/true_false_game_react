@@ -4,7 +4,7 @@ import '../assets/sass/main_styles.sass';
 import '../assets/sass/ie_styles.sass';
 
 import {GLOBAL_CONFIG} from '../config/config.js';
-import * as questions from '../config/questions.js';
+import * as configurations from '../config/config_ui.js';
 import * as Utils from '../vendors/Utils.js';
 import {objectiveAccomplished, resetGame, initializegame, startgame, updateTimer, pauseTimer, unpauseTimer, passquiz} from './../reducers/actions';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
@@ -20,12 +20,11 @@ import ModalGameStop from './ModalGameStop.jsx';
 import ModalCredits from './ModalCredits.jsx';
 import FinishScreen from './FinishScreen.jsx';
 import Dark from './Dark.jsx';
-import {UI} from '../config/config';
 import * as I18n from '../vendors/I18n.js';
 
 
 const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen: false};
-const QUESTIONS = questions[UI.question_array];
+const CONFIG_UI = configurations[GLOBAL_CONFIG.config_ui];
 
 export class App extends React.Component {
   constructor(props){
@@ -40,7 +39,7 @@ export class App extends React.Component {
     this.exitFullscreen = this.exitFullscreen.bind(this);
     this.fullscreenChange = this.fullscreenChange.bind(this);
     this.state = INITIAL_STATE;
-    this.total_score = QUESTIONS.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
+    this.total_score = CONFIG_UI.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
   }
   resetState(){
     this.setState(INITIAL_STATE);
@@ -57,7 +56,7 @@ export class App extends React.Component {
           console.log("we have a URL, and we fetched it and got the result:");
           console.log(result);
           if(result.status && result.status === 500 || result.status === 404){
-            this.props.dispatch(initializegame(QUESTIONS));
+            this.props.dispatch(initializegame(CONFIG_UI.questions));
           } else {
             //POST the used URL to EducaInternet to save it
             /*
@@ -81,11 +80,11 @@ export class App extends React.Component {
           // instead of a catch() block so that we don't swallow
           // exceptions from actual bugs in components.
           console.log("ERROR IN FETCH, go with default questions. The error was: " + error);
-          this.props.dispatch(initializegame(QUESTIONS));
+          this.props.dispatch(initializegame(CONFIG_UI.questions));
         }
       );
     } else {
-      this.props.dispatch(initializegame(QUESTIONS));
+      this.props.dispatch(initializegame(CONFIG_UI.questions));
     }
     let myinterval = setInterval(() => this.props.dispatch(updateTimer()), 1000);
     this.setState({intervalId: myinterval});
@@ -176,17 +175,16 @@ export class App extends React.Component {
     let user_score = this.props.game.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score_accomplished; }, 0);
     let showDarkLayer = this.state.showModalStart || this.state.showModalInfo || this.state.showModalProgress || this.state.showModalReset || this.state.showModalStop || this.state.showModalEnd || this.state.showModalCredits;
     return (
-      
+
       <div id="container" onKeyDown={(e) => this.handleKeyPress(e)} tabIndex="0" >
         <div className="main_header">
           <div className="main_logo">
-            <img className="fake_detector_logo" src={UI.app_logo}/>
-            <div className="detector_type_text">{UI.type_app_text}</div>
-            {/*<img className="detector_type_logo" src={UI.type_app_logo}/>*/}
+            <img className="fake_detector_logo" src={GLOBAL_CONFIG.BASIC_UI.app_logo}/>
+            <div className="detector_type_text">{GLOBAL_CONFIG.BASIC_UI.type_app_text}</div>
           </div>
           <div className="educalab">
-            <p className="text_educalab">{UI.educalab_text}</p>
-            <img className="educalab_logo" src={UI.educalab_logo}/>
+            <p className="text_educalab">{GLOBAL_CONFIG.BASIC_UI.educalab_text}</p>
+            <img className="educalab_logo" src={GLOBAL_CONFIG.BASIC_UI.educalab_logo}/>
           </div>
         </div>
         {this.props.tracking.finished ?

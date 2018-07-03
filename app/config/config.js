@@ -27,6 +27,7 @@ export let GLOBAL_CONFIG = {
     },
     n:undefined,
   },
+
 };
 
 let processConfig = (function(){
@@ -40,11 +41,9 @@ let processConfig = (function(){
   GLOBAL_CONFIG.debug_scorm_api_window = ((GLOBAL_CONFIG.debug_scorm_api) && (GLOBAL_CONFIG.debug_scorm_api_window));
 })();
 
-
-
-export const UI = {
-  question_array: "HEALTH",
-  name:"detector de noticias falsas",
+//set the config to use
+GLOBAL_CONFIG.config_ui = "PHISHING";
+GLOBAL_CONFIG.BASIC_UI = {
   app_logo:"assets/images/logos/fakedetector_logo.svg",
   type_app_text:"health",
   type_app_logo:"assets/images/logos/health.svg",

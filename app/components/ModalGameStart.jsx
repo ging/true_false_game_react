@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
-import {UI} from '../config/config';
+import {GLOBAL_CONFIG} from '../config/config.js';
 
 export default class ModalGameStart extends React.Component {
   constructor(props){
@@ -22,11 +22,11 @@ export default class ModalGameStart extends React.Component {
                   <div className="modal-content">
                      <div className="modal-title">instrucciones</div>
                      <div className="modal-text">
-                       <p>{UI.modal_inst}</p>
+                       <p>{GLOBAL_CONFIG.BASIC_UI.modal_inst}</p>
 
                        <div className="task-list">
                           <div className="list-title" onClick={() => this.toggleItems()}>
-                            <p className="list-title-text">{UI.task_list}</p>
+                            <p className="list-title-text">{GLOBAL_CONFIG.BASIC_UI.task_list}</p>
                             <Icon className="control control_plus" icon="plus2"/>
                           </div>
                           <ul className={this.state.show_items ? "":"hide"}>
@@ -37,7 +37,7 @@ export default class ModalGameStart extends React.Component {
                        <ul className="icon_list">
                         <li><Icon className="control control_info" icon="info"/>muestra las instrucciones</li>
                         <li><Icon className="control control_progress" icon="progress"/>muestra el progreso</li>
-                        {UI.with_reset_button &&
+                        {GLOBAL_CONFIG.BASIC_UI.with_reset_button &&
                           <li><Icon className="control control_reset" icon="reset"/>reinicia la prueba</li>}
                         <li><Icon className="control control_stop" icon="stop"/>finaliza la prueba</li>
                         <li><Icon className="control control_fullscreen" icon="full_screen"/>modo pantalla completa</li>

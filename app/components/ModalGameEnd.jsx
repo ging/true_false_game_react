@@ -2,7 +2,7 @@ import React from 'react';
 import {initializegame, finishApp} from './../reducers/actions';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
-import {UI} from '../config/config.js';
+import {GLOBAL_CONFIG} from '../config/config.js';
 
 
 export default class ModalGameEnd extends React.Component {
@@ -47,11 +47,11 @@ export default class ModalGameEnd extends React.Component {
     }
     let message;
     if(this.props.user_score > this.props.total_score*0.7){
-      message = UI.message_pro;
+      message = GLOBAL_CONFIG.BASIC_UI.message_pro;
     } else if(this.props.user_score > this.props.total_score*0.5){
-      message = UI.message_good;
+      message = GLOBAL_CONFIG.BASIC_UI.message_good;
     } else {
-      message = UI.message_ok;
+      message = GLOBAL_CONFIG.BASIC_UI.message_ok;
     }
 
     return (
@@ -70,11 +70,11 @@ export default class ModalGameEnd extends React.Component {
                   </div>
                   <p>{message}</p>
                   <div className="responsive_video">
-                    <iframe ref={(youtube) => { this.youtube = youtube; }} width="560" height="315" src={UI.final_video} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                    <iframe ref={(youtube) => { this.youtube = youtube; }} width="560" height="315" src={GLOBAL_CONFIG.BASIC_UI.final_video} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
                   </div>
                 </div>
               <div className="modal-actions">
-                {UI.with_reset_button ?
+                {GLOBAL_CONFIG.BASIC_UI.with_reset_button ?
                   <div className="btn btn-red" onClick={this.resetClick}>reiniciar</div>:
                   <div className="btn btn-red" onClick={this.finishGame}>terminar</div>}
                 <div className="btn btn-green" onClick={ () =>this.props.handleClose("End")}>ver feedback</div>

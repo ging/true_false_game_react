@@ -1,5 +1,4 @@
 import React from 'react';
-import {UI} from '../config/config';
 import {initializegame} from './../reducers/actions';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
