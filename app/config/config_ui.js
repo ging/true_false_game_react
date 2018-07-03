@@ -1,21 +1,20 @@
 export const MASTER = {
-  question_array: "MASTER",
-  name:"detector de noticias falsas",
-  type_app_text:"news",
-  initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, que no te tomen por tonto",
-  instructions:"marca verdadero o falso para cada una de las noticias propuestas. irás obteniendo una puntuación según cuantas aciertes.",
-  with_reset_button: true,
-  with_fullscreen: true,
-  feedback2_right: "la noticia es real",
-  feedback2_wrong: "la noticia es falsa",
-  message_pro: "eres un crack, ¡a ti no hay quien te engañe! sabemos que no necesitas que te enseñemos cómo reconocer fuentes fiables, pero aquí te dejamos un pequeño vídeo por si quieres saber más:",
-  message_good: "lo has hecho bastante bien, pero has fallado algunas. revisa el siguiente video para aprender a detectar fuentes fiables:",
-  message_ok: "no has acertado muchas. es muy importante detectar bien las fuentes fiables para una navegación segura. Te dejamos un video para que aprendas a detectarlas:",
-  modal_inst: "¿sabes qué noticias son verdaderas y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto detector de fake news. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.",
-  progress_text: "noticias contestadas",
-  task_list: "lista de noticias a contestar",
-  final_video: "https://www.youtube.com/embed/-2PLx_udcK8?rel=0",
-  questions: [
+  "name":"detector de noticias falsas",
+  "type_app_text":"news",
+  "initial_text":"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, que no te tomen por tonto",
+  "instructions":"marca verdadero o falso para cada una de las noticias propuestas. irás obteniendo una puntuación según cuantas aciertes.",
+  "with_reset_button": true,
+  "with_fullscreen": true,
+  "feedback2_right": "la noticia es real",
+  "feedback2_wrong": "la noticia es falsa",
+  "message_pro": "eres un crack, ¡a ti no hay quien te engañe! sabemos que no necesitas que te enseñemos cómo reconocer fuentes fiables, pero aquí te dejamos un pequeño vídeo por si quieres saber más:",
+  "message_good": "lo has hecho bastante bien, pero has fallado algunas. revisa el siguiente video para aprender a detectar fuentes fiables:",
+  "message_ok": "no has acertado muchas. es muy importante detectar bien las fuentes fiables para una navegación segura. Te dejamos un video para que aprendas a detectarlas:",
+  "modal_inst": "¿sabes qué noticias son verdaderas y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto detector de fake news. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.",
+  "progress_text": "noticias contestadas",
+  "task_list": "lista de noticias a contestar",
+  "final_video": "https://www.youtube.com/embed/-2PLx_udcK8?rel=0",
+  "questions": [
     { "path": "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
       "type": "iframe",
       "source_name": "Eliminar diabetes con dos ingredientes",
@@ -90,7 +89,6 @@ export const MASTER = {
 
 
 export const PHISHING = {
-  question_array: "PHISHING",
   name:"detector de phishing",
   type_app_text:"phishing",
   initial_text:"¿sabrías decir si las siguientes webs son verdaderas o falsas? aprende a distinguirlas, que no te la cuelen",
@@ -202,7 +200,6 @@ export const PHISHING = {
 };
 
 export const HEALTH = {
-  question_array: "HEALTH",
   name:"detector de noticias falsas sobre salud",
   type_app_text:"health",
   initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, no juegues con tu salud",
@@ -334,7 +331,6 @@ export const HEALTH = {
 };
 
 export const HEALTH_02 = {
-  question_array: "HEALTH_02",
   name:"detector de noticias falsas sobre salud",
   type_app_text:"health",
   initial_text:"¿sabrías decir si las siguientes noticias son verdaderas o falsas? aprende a distinguirlas, no juegues con tu salud",
