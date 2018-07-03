@@ -100,10 +100,10 @@ export default class Quiz extends React.Component {
       }
 
       if(question.true_or_false){
-        feedback2 = GLOBAL_CONFIG.BASIC_UI.feedback2_right;
+        feedback2 = this.props.config_ui.feedback2_right;
         feedback2_class = "question right_question";
       } else {
-        feedback2 = GLOBAL_CONFIG.BASIC_UI.feedback2_wrong;
+        feedback2 = this.props.config_ui.feedback2_wrong;
         feedback2_class = "question wrong_question";
       }
 
@@ -183,7 +183,7 @@ export default class Quiz extends React.Component {
     } else {
       return (
           <div className="main_box" ref={(box) => { this.box = box; }}>
-            <p className="main_text">{GLOBAL_CONFIG.BASIC_UI.initial_text}</p>
+            <p className="main_text">{this.props.config_ui.initial_text}</p>
           </div>
       );
     }

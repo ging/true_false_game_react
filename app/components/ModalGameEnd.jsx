@@ -47,11 +47,11 @@ export default class ModalGameEnd extends React.Component {
     }
     let message;
     if(this.props.user_score > this.props.total_score*0.7){
-      message = GLOBAL_CONFIG.BASIC_UI.message_pro;
+      message = this.props.config_ui.message_pro;
     } else if(this.props.user_score > this.props.total_score*0.5){
-      message = GLOBAL_CONFIG.BASIC_UI.message_good;
+      message = this.props.config_ui.message_good;
     } else {
-      message = GLOBAL_CONFIG.BASIC_UI.message_ok;
+      message = this.props.config_ui.message_ok;
     }
 
     return (
@@ -70,11 +70,11 @@ export default class ModalGameEnd extends React.Component {
                   </div>
                   <p>{message}</p>
                   <div className="responsive_video">
-                    <iframe ref={(youtube) => { this.youtube = youtube; }} width="560" height="315" src={GLOBAL_CONFIG.BASIC_UI.final_video} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                    <iframe ref={(youtube) => { this.youtube = youtube; }} width="560" height="315" src={this.props.config_ui.final_video} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
                   </div>
                 </div>
               <div className="modal-actions">
-                {GLOBAL_CONFIG.BASIC_UI.with_reset_button ?
+                {this.props.config_ui.with_reset_button ?
                   <div className="btn btn-red" onClick={this.resetClick}>reiniciar</div>:
                   <div className="btn btn-red" onClick={this.finishGame}>terminar</div>}
                 <div className="btn btn-green" onClick={ () =>this.props.handleClose("End")}>ver feedback</div>

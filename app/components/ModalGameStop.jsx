@@ -32,7 +32,7 @@ export default class ModalGameStop extends React.Component {
     let text;
     if(this.props.game_ended===false){
       text = "¿estás seguro de que quieres parar y finalizar la prueba? todavía tienes preguntas sin contestar:";
-    } else if(GLOBAL_CONFIG.BASIC_UI.with_reset_button===true){
+    } else if(this.props.config_ui.with_reset_button===true){
       text = "¿deseas finalizar revisión del feedback y reiniciar juego?";
     } else {
       text = "¿deseas finalizar revisión del feedback?";
@@ -66,7 +66,7 @@ export default class ModalGameStop extends React.Component {
                 <div className="modal-actions">
                   <div className="btn btn-red" onClick={ () => this.props.handleClose("Stop")}>cancelar</div>
                   {this.props.game_ended ?
-                    <div className="btn btn-green" onClick={GLOBAL_CONFIG.BASIC_UI.with_reset_button ? this.resetGame:this.finishGame}>aceptar</div> :
+                    <div className="btn btn-green" onClick={this.props.config_ui.with_reset_button ? this.resetGame:this.finishGame}>aceptar</div> :
                     <div className="btn btn-green" onClick={this.endGame}>aceptar</div>
                   }
                 </div>

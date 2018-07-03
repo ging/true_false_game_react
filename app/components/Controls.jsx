@@ -1,5 +1,4 @@
 import React from 'react';
-import {GLOBAL_CONFIG} from '../config/config.js';
 import {quizAnsweredWithScorm, passquiz} from './../reducers/actions';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
 import Icon from './Icon.jsx';
@@ -59,7 +58,7 @@ export default class Controls extends React.Component {
     console.log("req")
   }
   render(){
-    let fullscreenEnabled = GLOBAL_CONFIG.BASIC_UI.with_fullscreen && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled);
+    let fullscreenEnabled = this.props.config_ui.with_fullscreen && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled);
     if (!fullscreenEnabled) {
       console.log("Browser does not support fullscreen, or it is disabled by the app, we disable the button");
     }
@@ -130,9 +129,9 @@ export default class Controls extends React.Component {
     let mobileMenuTop = {
       top: "-8.7em"
     };
-    if((!GLOBAL_CONFIG.BASIC_UI.with_reset_button && fullscreenEnabled) || (GLOBAL_CONFIG.BASIC_UI.with_reset_button && !fullscreenEnabled)){
+    if((!this.props.config_ui.with_reset_button && fullscreenEnabled) || (this.props.config_ui.with_reset_button && !fullscreenEnabled)){
       mobileMenuTop = {top: "-7.1em"};
-    } else if(!GLOBAL_CONFIG.BASIC_UI.with_reset_button && !fullscreenEnabled) {
+    } else if(!this.props.config_ui.with_reset_button && !fullscreenEnabled) {
       mobileMenuTop = {top: "-5.4em"};
     }
 
@@ -144,7 +143,7 @@ export default class Controls extends React.Component {
               <div className="controls_menu" style={this.props.game.game_ended ? finalStyleMenu : null}>
                 <Icon className={this.props.game.game_ended ? "hide":"control control_info"} onClick={() => this.props.showModal("Info")} icon="info"/>
                 <Icon className={this.props.game.game_ended ? "hide":"control control_progress"} onClick={() => this.props.showModal("Progress")} icon="progress" />
-                {GLOBAL_CONFIG.BASIC_UI.with_reset_button &&
+                {this.props.config_ui.with_reset_button &&
                   <Icon className={this.props.game.game_ended ? "hide":"control control_reset"} onClick={() => this.props.showModal("Reset")} icon="reset"/>}
                 <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop"/>
                   {fullscreenEnabled &&
@@ -163,7 +162,7 @@ export default class Controls extends React.Component {
                 <div className={this.state.show_items ? "controls_int":"controls_int hide"} style={mobileMenuTop}>
                   <Icon className="control control_info" onClick={() => this.props.showModal("Info")} icon="info_fill"/>
                   <Icon className="control control_progress" onClick={() => this.props.showModal("Progress")} icon="progress_fill" />
-                  {GLOBAL_CONFIG.BASIC_UI.with_reset_button &&
+                  {this.props.config_ui.with_reset_button &&
                     <Icon className="control control_reset" onClick={() => this.props.showModal("Reset")} icon="reset_fill"/>}
                   <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop_fill"/>
                     {fullscreenEnabled &&

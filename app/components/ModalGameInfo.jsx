@@ -18,12 +18,12 @@ export default class ModalGameInfo extends React.Component {
                   <div className="modal-content">
                      <div className="modal-title">instrucciones</div>
                      <div className="modal-text">
-                       <p>{GLOBAL_CONFIG.BASIC_UI.modal_inst}</p>
+                       <p>{this.props.config_ui.modal_inst}</p>
 
                        <ul className="icon_list">
                         <li><Icon className="control control_info" icon="info"/>muestra las instrucciones</li>
                         <li><Icon className="control control_progress" icon="progress"/>muestra el progreso</li>
-                        {GLOBAL_CONFIG.BASIC_UI.with_reset_button &&
+                        {this.props.config_ui.with_reset_button &&
                           <li><Icon className="control control_reset" icon="reset"/>reinicia la prueba</li>}
                         <li><Icon className="control control_stop" icon="stop"/>finaliza la prueba</li>
                         <li><Icon className="control control_fullscreen" icon="full_screen"/>modo pantalla completa</li>

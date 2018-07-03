@@ -180,26 +180,26 @@ export class App extends React.Component {
         <div className="main_header">
           <div className="main_logo">
             <img className="fake_detector_logo" src={GLOBAL_CONFIG.BASIC_UI.app_logo}/>
-            <div className="detector_type_text">{GLOBAL_CONFIG.BASIC_UI.type_app_text}</div>
+            <div className="detector_type_text">{CONFIG_UI.type_app_text}</div>
           </div>
           <div className="educalab">
-            <p className="text_educalab">{GLOBAL_CONFIG.BASIC_UI.educalab_text}</p>
-            <img className="educalab_logo" src={GLOBAL_CONFIG.BASIC_UI.educalab_logo}/>
+            <p className="text_educalab">{GLOBAL_CONFIG.BASIC_UI.elab_text}</p>
+            <img className="educalab_logo" src={GLOBAL_CONFIG.BASIC_UI.elab_logo}/>
           </div>
         </div>
         {this.props.tracking.finished ?
-          <FinishScreen tracking={this.props.tracking} I18n={I18n}/>:
-          <Quiz dispatch={this.props.dispatch} game={this.props.game} index={this.props.game.index} questions={this.props.game.questions} />
+          <FinishScreen tracking={this.props.tracking} I18n={I18n} config_ui={CONFIG_UI}/>:
+          <Quiz dispatch={this.props.dispatch} game={this.props.game} index={this.props.game.index} questions={this.props.game.questions} config_ui={CONFIG_UI}/>
         }
         <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} config={GLOBAL_CONFIG}/>
-        <ModalGameStart show={this.state.showModalStart} handleClose={this.handleCloseModal} questions={this.props.game.questions} />
-        <ModalGameInfo show={this.state.showModalInfo} handleClose={this.handleCloseModal} />
-        <ModalGameProgress show={this.state.showModalProgress} dispatch={this.props.dispatch} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index}/>
-        <ModalGameReset resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalReset} handleClose={this.handleCloseModal} />
-        <ModalGameEnd resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalEnd} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} time={this.props.game.time}/>
-        <ModalGameStop resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalStop} handleClose={this.handleCloseModal} questions={this.props.game.questions} game_ended={this.props.game.game_ended}/>
+        <ModalGameStart show={this.state.showModalStart} handleClose={this.handleCloseModal} questions={this.props.game.questions} config_ui={CONFIG_UI}/>
+        <ModalGameInfo show={this.state.showModalInfo} handleClose={this.handleCloseModal} config_ui={CONFIG_UI}/>
+        <ModalGameProgress show={this.state.showModalProgress} dispatch={this.props.dispatch} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} config_ui={CONFIG_UI}/>
+        <ModalGameReset resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalReset} handleClose={this.handleCloseModal} config_ui={CONFIG_UI}/>
+        <ModalGameEnd resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalEnd} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} time={this.props.game.time} config_ui={CONFIG_UI}/>
+        <ModalGameStop resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalStop} handleClose={this.handleCloseModal} questions={this.props.game.questions} game_ended={this.props.game.game_ended} config_ui={CONFIG_UI}/>
         <ModalCredits show={this.state.showModalCredits} handleClose={this.handleCloseModal} />
-        {this.props.tracking.finished ? null : <Controls game={this.props.game} isFullScreen={this.state.isFullScreen} requestFullScreen={this.requestFullScreen} exitFullscreen={this.exitFullscreen} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG}/>}
+        {this.props.tracking.finished ? null : <Controls game={this.props.game} isFullScreen={this.state.isFullScreen} requestFullScreen={this.requestFullScreen} exitFullscreen={this.exitFullscreen} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG} config_ui={CONFIG_UI}/>}
         <Dark show={showDarkLayer} onClick={() => this.handleCloseModal("all")}/>
       </div>
     );

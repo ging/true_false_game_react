@@ -24,8 +24,8 @@ export default class FinishScreen extends React.Component {
 
   render(){
     let surv;
-    if(GLOBAL_CONFIG.BASIC_UI.survey){
-      surv = <div className="survey">por favor realiza esta <a className="background_color" href={GLOBAL_CONFIG.BASIC_UI.survey} target="_blank">encuesta</a> para ayudarnos a mejorar fakedetector</div>;
+    if(this.props.config_ui.survey){
+      surv = <div className="survey">por favor realiza esta <a className="background_color" href={this.props.config_ui.survey} target="_blank">encuesta</a> para ayudarnos a mejorar fakedetector</div>;
     }
     let finishTitleText = this._getFinishScreenTitle(this.props.tracking.progress_measure, this.props.tracking.score);
     return (
