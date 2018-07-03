@@ -201,13 +201,6 @@ export const PHISHING = {
   ]
 };
 
-<<<<<<< Updated upstream
-export const kike = {
-  secondaryColor: "black"
-}
-export const HEALTH = [
-=======
-
 export const HEALTH = {
   question_array: "HEALTH",
   name:"detector de noticias falsas sobre salud",
@@ -227,7 +220,6 @@ export const HEALTH = {
   final_video: "https://www.youtube.com/embed/Hq813P5FXwE?rel=0",
   survey: "https://docs.google.com/forms/d/e/1FAIpQLSdiEVIf3g2VpDrcatqda-k-kbJ8yrccxGxxU_ZLYwPKrFYPWA/viewform",
   questions: [
->>>>>>> Stashed changes
     { "path": "https://estiloconsalud.com/con-2-ingrediente-hice-un-remedio-que-acabo-con-10-anos-de-diabetes-en-solo-5-dias-dile-adios/",
       "type": "iframe",
       "source_name": "eliminar la diabetes con dos ingredientes",
