@@ -3,9 +3,13 @@
 
 console.log("Generating JSON config file for SASS");
 
+var fs = require('fs');
+var config = require('../app/config/config_vars.json');
 
-const fs = require('fs-extra');
-import {GLOBAL_CONFIG} from '../config/config.mjs';
-import * as configurations from '../config/config_ui.mjs';
-const CONFIG_UI = configurations["kike"];
-console.log("HOLA: " + CONFIG_UI.secondaryColor);
+//keep only secondarycolor from the config
+var sassconfig = {secondarycolor: config.secondarycolor };
+console.dir(sassconfig);
+fs.writeFile(__dirname + '/../app/config/config_sass.json', JSON.stringify(sassconfig), 'utf8', (err) => {
+  if (err) throw err;
+  console.log('The file has been saved!');
+});

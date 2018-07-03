@@ -23,11 +23,9 @@ import Dark from './Dark.jsx';
 import * as I18n from '../vendors/I18n.js';
 import user_config from '../config/config_vars.json';
 
+const CONFIG_UI = require('../config/examples/'+user_config.config_ui);
+
 const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen: false};
-
-
-const CONFIG_UI = configurations[user_config.config_ui ? user_config.config_ui:GLOBAL_CONFIG.config_ui];
-
 
 export class App extends React.Component {
   constructor(props){
