@@ -21,14 +21,19 @@ import ModalCredits from './ModalCredits.jsx';
 import FinishScreen from './FinishScreen.jsx';
 import Dark from './Dark.jsx';
 import * as I18n from '../vendors/I18n.js';
-
+import user_config from '../config/config_vars.json';
 
 const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen: false};
-const CONFIG_UI = configurations[GLOBAL_CONFIG.config_ui];
+
+
+const CONFIG_UI = configurations[user_config.config_ui ? user_config.config_ui:GLOBAL_CONFIG.config_ui];
+
 
 export class App extends React.Component {
   constructor(props){
     super(props);
+    console.log(user_config);
+
     I18n.init();
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.showModal = this.showModal.bind(this);

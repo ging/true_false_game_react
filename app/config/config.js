@@ -42,7 +42,7 @@ let processConfig = (function(){
 })();
 
 //set the config to use
-GLOBAL_CONFIG.config_ui = "MASTER";
+GLOBAL_CONFIG.config_ui = "PHISHING";
 GLOBAL_CONFIG.BASIC_UI = {
   app_logo:"assets/images/logos/fakedetector_logo.svg",
   elab_text:"una aplicación de",

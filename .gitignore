@@ -36,3 +36,6 @@ npm-debug.log
 /coverage
 **/.DS_Store
 .DS_Store
+
+#user config file
+/app/config/config_vars.json
