@@ -1,0 +1,14 @@
+{
+ "config_ui": "news.json",
+ "secondarycolor": "#1BB18C"
+}
+
+{
+ "config_ui": "health.json",
+ "secondarycolor": "#59a5e5"
+}
+
+{
+ "config_ui": "phishing.json",
+ "secondarycolor": "#ff783b"
+}

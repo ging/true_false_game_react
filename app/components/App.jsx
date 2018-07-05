@@ -4,7 +4,6 @@ import '../assets/sass/main_styles.sass';
 import '../assets/sass/ie_styles.sass';
 
 import {GLOBAL_CONFIG} from '../config/config.js';
-import * as configurations from '../config/config_ui.js';
 import * as Utils from '../vendors/Utils.js';
 import {objectiveAccomplished, resetGame, initializegame, startgame, updateTimer, pauseTimer, unpauseTimer, passquiz} from './../reducers/actions';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
