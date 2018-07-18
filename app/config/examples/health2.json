@@ -15,18 +15,7 @@
   "task_list": "lista de noticias a contestar",
   "final_video": "https://www.youtube.com/embed/Hq813P5FXwE?rel=0",
   "survey": "https://docs.google.com/forms/d/e/1FAIpQLSdiEVIf3g2VpDrcatqda-k-kbJ8yrccxGxxU_ZLYwPKrFYPWA/viewform",
-  "questions": [
-    /*{ "path": "url noticia falsa",
-      "type": "iframe",
-      "source_name": "título noticia falsa",
-      "source_url": "url noticia falsa",
-      "secure": true,
-      "true_or_false": false,
-      "score": 10,
-      "feedback_path": "url desmintiendo noticia",
-      "feedback_search": "búsqueda google",
-      "feedback_sitename": "fuente que desmiente noticia"
-    },*/
+  "questions": [    
     { "path": "https://curacancernatural.org/tomate/",
       "type": "iframe",
       "source_name": "el tomate cura el cáncer",

@@ -7,6 +7,7 @@ export let GLOBAL_CONFIG = {
     locale: "es",
     adaptive:true,
     finish_screen:true,
+    admits_url_config: true,
     scorm:{
       completion_threshold:0.5,
       score_threshold:0.6,
@@ -21,6 +22,7 @@ export let GLOBAL_CONFIG = {
     locale: "es",
     adaptive:true,
     finish_screen:true,
+    admits_url_config: true,
     scorm:{
       completion_threshold:0.5,
       score_threshold:0.6,
