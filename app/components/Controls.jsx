@@ -174,10 +174,12 @@ export default class Controls extends React.Component {
               </div>
 
               <div className="app_controls" style={this.props.game.game_ended ? finalStyleAppControls : null}>
-                <Icon className={"control control_left_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_LEFT)} icon="left_arrow"/>
+                {this.props.game.questions.length>1 ?
+                  <Icon className={"control control_left_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_LEFT)} icon="left_arrow"/>:null}
                 <Icon className={"control control_false " + button_false_extra_class + " " + disabled_extra_class} onClick={() => this.handleClick(false)} icon="false"/>
                 <Icon className={"control control_true " + button_true_extra_class + " " + disabled_extra_class} onClick={() => this.handleClick(true)} icon="true"/>
-                <Icon className={"control control_right_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_RIGHT)} icon="right_arrow"/>
+                {this.props.game.questions.length>1 ?
+                  <Icon className={"control control_right_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_RIGHT)} icon="right_arrow"/>:null}
               </div>
 
               <div className={this.props.game.game_ended ? "hide":"progress_score"}>
@@ -186,11 +188,11 @@ export default class Controls extends React.Component {
                   <div className="number_progress number_time">{clock}</div>
                   <div className="text_progress time_text">tiempo</div>
                 </div>
-
-                <div className="questions_answered">
-                  <div className="number_progress number_answered">{progress}/{this.props.game.questions.length}</div>
-                  <div className="progress_bar"><div className="progress_fill" style={progressStyle}></div></div>
-                </div>
+                {this.props.game.questions.length>1 ?
+                  (<div className="questions_answered">
+                    <div className="number_progress number_answered">{progress}/{this.props.game.questions.length}</div>
+                    <div className="progress_bar"><div className="progress_fill" style={progressStyle}></div></div>
+                  </div>):null}
 
                 <div className="user_score">
                   <div className="number_progress score_number">{this.props.user_score}</div>

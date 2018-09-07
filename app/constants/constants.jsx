@@ -15,7 +15,7 @@ export const INITIAL_STATE = {
     enable_buttons: true,
     index:0,
     questions:[],
-    game_started:false,
+    game_started:true,
     game_ended:false,
     time: 0,
     clock_paused: true
