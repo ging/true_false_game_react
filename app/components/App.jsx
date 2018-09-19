@@ -191,7 +191,7 @@ export class App extends React.Component {
           </div>
           <div className="educalab">
             <p className="text_educalab">{GLOBAL_CONFIG.BASIC_UI.elab_text}</p>
-            <img className="educalab_logo" src={GLOBAL_CONFIG.BASIC_UI.elab_logo}/>
+            <a href="http://educainternet.es/elab"><img className="educalab_logo" src={GLOBAL_CONFIG.BASIC_UI.elab_logo}/></a>
           </div>
         </div>
         {this.props.tracking.finished ?
@@ -205,7 +205,7 @@ export class App extends React.Component {
         <ModalGameReset resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalReset} handleClose={this.handleCloseModal} config_ui={this.config_ui}/>
         <ModalGameEnd resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalEnd} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} time={this.props.game.time} config_ui={this.config_ui}/>
         <ModalGameStop resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalStop} handleClose={this.handleCloseModal} questions={this.props.game.questions} game_ended={this.props.game.game_ended} config_ui={this.config_ui}/>
-        <ModalCredits show={this.state.showModalCredits} handleClose={this.handleCloseModal} />
+        <ModalCredits show={this.state.showModalCredits} handleClose={this.handleCloseModal} config_ui={this.config_ui}/>
         {this.props.tracking.finished ? null : <Controls game={this.props.game} isFullScreen={this.state.isFullScreen} requestFullScreen={this.requestFullScreen} exitFullscreen={this.exitFullscreen} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG} config_ui={this.config_ui}/>}
         <Dark show={showDarkLayer} onClick={() => this.handleCloseModal("all")}/>
       </div>

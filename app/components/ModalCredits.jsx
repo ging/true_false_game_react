@@ -1,12 +1,14 @@
 import React from 'react';
 import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
- 
+import {GLOBAL_CONFIG} from '../config/config.js';
+
 export default class ModalCredits extends React.Component {
   constructor(props){
     super(props);
   }
   render(){
+    const padding = {padding: '0'}
     return (
            <Modal show={this.props.show} >
               <div className="modal-box">
@@ -18,11 +20,13 @@ export default class ModalCredits extends React.Component {
                      <div className="modal-text">
                        <p>aplicación de <img className="e_logo" src="assets/images/logos/elab_logo_black.svg"/>, desarrollada por el Grupo Internet de Nueva Generación de la UPM, con el apoyo institucional del INCIBE, el CRIF las Acacias y Orange.</p>
                      </div>
-                     <div className="logos">
+                     <div className="logos" style={this.props.config_ui.with_extra_logo ? padding : null}>
                         <a href="http://www.upm.es/" target="_blank"><img className="logo upm_logo" src="assets/images/logos/upm_logo.png"/></a>
                        <a href="https://www.orange.es/" target="_blank"><img className="logo orange_logo" src="assets/images/logos/orange_logo.png"/></a>
                        <a href="https://www.incibe.es/" target="_blank"><img className="logo incibe_logo" src="assets/images/logos/incibe_logo.svg"/></a>
                        <a href="http://crif.acacias.educa.madrid.org" target="_blank"><img className="logo crif_logo" src="assets/images/logos/crif_logo.png"/></a>
+                       {this.props.config_ui.with_extra_logo &&
+                          <a href="https://saludsinbulos.com/" target="_blank"><img className="logo ssb_logo" src="assets/images/logos/cropped-ssb_logo.png"/></a>}
                      </div>
                      <div className="modal-title">licencia</div>
                      <div className="modal-text">
