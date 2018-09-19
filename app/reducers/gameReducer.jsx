@@ -1,6 +1,6 @@
 import {INITIAL_STATE, OBJECTIVES} from '../constants/constants';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
-import {UI} from '../config/config';
+import {GLOBAL_CONFIG} from '../config/config.js';
 
 
 export default function gameReducer(state = INITIAL_STATE.game, action){
@@ -8,7 +8,13 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
   switch (action.type){
   case 'INITIALIZE_GAME':
     receivedState = JSON.parse(JSON.stringify(INITIAL_STATE.game));
-    receivedState.questions = action.questions.map((q, index) => {
+    let questions_final;
+    if(action.questions.length > GLOBAL_CONFIG.n){
+      console.log("Picking " + GLOBAL_CONFIG.n + " random questions among " + action.questions.length);
+      questions_final = action.questions.sort(() => .5 - Math.random()).slice(0,GLOBAL_CONFIG.n);
+      console.log(questions_final);
+    }
+    receivedState.questions = questions_final.map((q, index) => {
       q.id = index;
       q.score_accomplished = 0;
       q.answered = false;

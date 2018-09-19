@@ -38,4 +38,4 @@ npm-debug.log
 .DS_Store
 
 #user config file
-/app/config/config_sass.json
+#/app/config/config_sass.json
