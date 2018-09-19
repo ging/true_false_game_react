@@ -191,7 +191,7 @@ export class App extends React.Component {
           </div>
           <div className="educalab">
             <p className="text_educalab">{GLOBAL_CONFIG.BASIC_UI.elab_text}</p>
-            <a href="http://educainternet.es/elab"><img className="educalab_logo" src={GLOBAL_CONFIG.BASIC_UI.elab_logo}/></a>
+            <a href="http://educainternet.es/elab" target="_blank"><img className="educalab_logo" src={GLOBAL_CONFIG.BASIC_UI.elab_logo}/></a>
           </div>
         </div>
         {this.props.tracking.finished ?
