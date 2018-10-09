@@ -5,6 +5,7 @@
   "instructions":"marca verdadero o falso para cada una de las noticias propuestas. irás obteniendo una puntuación según cuantas aciertes.",
   "with_reset_button": false,
   "with_fullscreen": true,
+  "with_extra_logo": false,
   "feedback2_right": "la noticia es real",
   "feedback2_wrong": "la noticia es falsa",
   "message_pro": "eres un crack, ¡a ti no hay quien te engañe! sabemos que no necesitas que te enseñemos cómo reconocer fuentes fiables, pero aquí te dejamos un pequeño vídeo por si quieres saber más:",

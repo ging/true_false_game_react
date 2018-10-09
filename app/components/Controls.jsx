@@ -100,6 +100,7 @@ export default class Controls extends React.Component {
     let button_true_extra_class = (question && question.answered && question.user_answer === true) ? "button_pressed" : "";
     let disabled_extra_class = (question && question.answered) || this.props.game.game_ended ? "disabled" : "";
     let is_arrow_disabled = this.props.game.enable_buttons ? "":"disabled";
+    console.log(this.props.game);
     let progress = question ? questions_answered : 0;
     let progressStyle = {
       width: Math.floor(105*questions_answered/this.props.game.questions.length) + "%"

@@ -188,6 +188,9 @@ export class App extends React.Component {
           <div className="main_logo">
             <img className="fake_detector_logo" src={GLOBAL_CONFIG.BASIC_UI.app_logo}/>
             <div className="detector_type_text">{this.config_ui.type_app_text}</div>
+            {this.config_ui.with_extra_logo &&
+              <a href={this.config_ui.extra_logo_url} target="_blank"><img className="logo ssb_logo" src={this.config_ui.extra_logo_src}/></a>}
+            {/* {this.props.config_ui.with_extra_logo ? <a href="https://saludsinbulos.com/" target="_blank"><img className="logo ssb_logo" src={GLOBAL_CONFIG.BASIC_UI.extra_logo}/></a> : ""} */}
           </div>
           <div className="educalab">
             <p className="text_educalab">{GLOBAL_CONFIG.BASIC_UI.elab_text}</p>
