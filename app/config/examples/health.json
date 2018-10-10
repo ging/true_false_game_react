@@ -8,6 +8,7 @@
   "with_extra_logo": true,
   "extra_logo_url": "https://saludsinbulos.com/",
   "extra_logo_src": "assets/images/logos/cropped-ssb_logo.png",
+  "extra_logo_src_inverted": "assets/images/logos/salud-sin-bulos_invert.png",
   "with_extra_logo_credits": true,
   "feedback2_right": "la noticia es real",
   "feedback2_wrong": "la noticia es falsa",
