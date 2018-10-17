@@ -20,19 +20,14 @@ import ModalCredits from './ModalCredits.jsx';
 import FinishScreen from './FinishScreen.jsx';
 import Dark from './Dark.jsx';
 import * as I18n from '../vendors/I18n.js';
-import user_config from '../config/config_vars.json';
-
-//first require the default config_ui, in a later step if it is allowed by config
-//we will change it if indicated in the URL
-const CONFIG_UI = require('../config/examples/'+user_config.config_ui);
+//First, get data from the file specified in the configuration. Afterwards, these data could be overriden by data provided through the URL.
+const DATA = require('../config/examples/'+GLOBAL_CONFIG.file+'.json');
 
 const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen: false};
 
 export class App extends React.Component {
   constructor(props){
     super(props);
-    console.log(user_config);
-
     I18n.init();
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.showModal = this.showModal.bind(this);
@@ -43,26 +38,22 @@ export class App extends React.Component {
     this.exitFullscreen = this.exitFullscreen.bind(this);
     this.fullscreenChange = this.fullscreenChange.bind(this);
     this.state = INITIAL_STATE;
-    this.config_ui = CONFIG_UI;
-    this.total_score = CONFIG_UI.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
+    this.data = DATA;
+    this.total_score = DATA.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
   }
   resetState(){
     this.setState(INITIAL_STATE);
   }
   componentDidMount(){
-    let new_questions = Utils.getUrlParameter('questions')
-    console.log("Admits config by URL: " + GLOBAL_CONFIG.admits_url_config);
-    console.log("yohoo: " + new_questions);
+    let new_questions = Utils.getUrlParameter('questions');
     if(GLOBAL_CONFIG.admits_url_config && new_questions){
       //try to fetch the questions from the URL given
       fetch(new_questions)
       .then(res => res.json())
       .then(
         (result) => {
-          console.log("we have a URL, and we fetched it and got the result:");
-          console.log(result);
           if(result.status && result.status === 500 || result.status === 404){
-            this.props.dispatch(initializegame(this.config_ui.questions));
+            this.props.dispatch(initializegame(this.data.questions));
           } else {
             //POST the used URL to EducaInternet to save it
             /*
@@ -78,7 +69,7 @@ export class App extends React.Component {
             .then(function(res){ console.log(res) })
             .catch(function(res){ console.log(res) });
             */
-            this.config_ui = result;
+            this.data = result;
             this.props.dispatch(initializegame(result.questions));
           }
         },
@@ -86,12 +77,12 @@ export class App extends React.Component {
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
           // exceptions from actual bugs in components.
-          console.log("ERROR IN FETCH, go with default questions. The error was: " + error);
-          this.props.dispatch(initializegame(this.config_ui.questions));
+          // console.log("ERROR IN FETCH, go with default questions. The error was: " + error);
+          this.props.dispatch(initializegame(this.data.questions));
         }
       );
     } else {
-      this.props.dispatch(initializegame(this.config_ui.questions));
+      this.props.dispatch(initializegame(this.data.questions));
     }
     let myinterval = setInterval(() => this.props.dispatch(updateTimer()), 1000);
     this.setState({intervalId: myinterval});
@@ -107,7 +98,6 @@ export class App extends React.Component {
     window.removeEventListener('MSFullscreenChange', this.fullscreenChange);
   }
   componentWillUnmount(){
-    console.log("CLEAR INTERVAL!");
     clearInterval(this.state.intervalId);
   }
   startGame(){
@@ -171,10 +161,8 @@ export class App extends React.Component {
     //this method is called whenever a fullscreenChange event is fired.
     //we change state here and not in the other methods because fullscreen can be toggled also with keys, not only buttons
     if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
-      console.log("no fullscreen");
       this.setState({isFullScreen:false});
     } else{
-      console.log("fullscreen");
       this.setState({isFullScreen:true});
     }
   }
@@ -186,30 +174,30 @@ export class App extends React.Component {
       <div id="container" onKeyDown={(e) => this.handleKeyPress(e)} tabIndex="0" >
         <div className="main_header">
           <div className="main_logo">
-            <img className="fake_detector_logo" src={GLOBAL_CONFIG.BASIC_UI.app_logo}/>
-            {!this.config_ui.with_extra_logo &&
-              <div className="detector_type_text">{this.config_ui.type_app_text}</div>}
-            {this.config_ui.with_extra_logo &&
-              <a href={this.config_ui.extra_logo_url} target="_blank"><img className="logo_header ssb_logo_header" src={this.config_ui.extra_logo_src_inverted}/></a>}
+            <img className="fake_detector_logo" src={GLOBAL_CONFIG.app_logo}/>
+            {!this.data.with_extra_logo &&
+              <div className="detector_type_text">{this.data.type_app_text}</div>}
+            {this.data.with_extra_logo &&
+              <a href={this.data.extra_logo_url} target="_blank"><img className="logo_header ssb_logo_header" src={this.data.extra_logo_src_inverted}/></a>}
           </div>
           <div className="educalab">
-            <p className="text_educalab">{GLOBAL_CONFIG.BASIC_UI.elab_text}</p>
-            <a href="http://educainternet.es/elab" target="_blank"><img className="educalab_logo" src={GLOBAL_CONFIG.BASIC_UI.elab_logo}/></a>
+            <p className="text_educalab">{GLOBAL_CONFIG.elab_text}</p>
+            <a href="http://educainternet.es/elab" target="_blank"><img className="educalab_logo" src={GLOBAL_CONFIG.elab_logo}/></a>
           </div>
         </div>
         {this.props.tracking.finished ?
-          <FinishScreen tracking={this.props.tracking} I18n={I18n} config_ui={this.config_ui}/>:
-          <Quiz dispatch={this.props.dispatch} game={this.props.game} index={this.props.game.index} questions={this.props.game.questions} config_ui={this.config_ui}/>
+          <FinishScreen tracking={this.props.tracking} I18n={I18n} data={this.data} config={GLOBAL_CONFIG}/>:
+          <Quiz dispatch={this.props.dispatch} game={this.props.game} index={this.props.game.index} questions={this.props.game.questions} data={this.data}/>
         }
         <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} config={GLOBAL_CONFIG}/>
-        <ModalGameStart show={this.state.showModalStart} handleClose={this.handleCloseModal} questions={this.props.game.questions} config_ui={this.config_ui}/>
-        <ModalGameInfo show={this.state.showModalInfo} handleClose={this.handleCloseModal} config_ui={this.config_ui}/>
-        <ModalGameProgress show={this.state.showModalProgress} dispatch={this.props.dispatch} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} config_ui={this.config_ui}/>
-        <ModalGameReset resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalReset} handleClose={this.handleCloseModal} config_ui={this.config_ui}/>
-        <ModalGameEnd resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalEnd} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} time={this.props.game.time} config_ui={this.config_ui}/>
-        <ModalGameStop resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalStop} handleClose={this.handleCloseModal} questions={this.props.game.questions} game_ended={this.props.game.game_ended} config_ui={this.config_ui}/>
-        <ModalCredits show={this.state.showModalCredits} handleClose={this.handleCloseModal} config_ui={this.config_ui}/>
-        {this.props.tracking.finished ? null : <Controls game={this.props.game} isFullScreen={this.state.isFullScreen} requestFullScreen={this.requestFullScreen} exitFullscreen={this.exitFullscreen} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG} config_ui={this.config_ui}/>}
+        <ModalGameStart show={this.state.showModalStart} handleClose={this.handleCloseModal} questions={this.props.game.questions} data={this.data}/>
+        <ModalGameInfo show={this.state.showModalInfo} handleClose={this.handleCloseModal} data={this.data}/>
+        <ModalGameProgress show={this.state.showModalProgress} dispatch={this.props.dispatch} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} data={this.data}/>
+        <ModalGameReset resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalReset} handleClose={this.handleCloseModal} data={this.data}/>
+        <ModalGameEnd resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalEnd} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} time={this.props.game.time} data={this.data}/>
+        <ModalGameStop resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalStop} handleClose={this.handleCloseModal} questions={this.props.game.questions} game_ended={this.props.game.game_ended} data={this.data}/>
+        <ModalCredits show={this.state.showModalCredits} handleClose={this.handleCloseModal} data={this.data}/>
+        {this.props.tracking.finished ? null : <Controls game={this.props.game} isFullScreen={this.state.isFullScreen} requestFullScreen={this.requestFullScreen} exitFullscreen={this.exitFullscreen} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG} data={this.data}/>}
         <Dark show={showDarkLayer} onClick={() => this.handleCloseModal("all")}/>
       </div>
     );

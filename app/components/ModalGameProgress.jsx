@@ -32,7 +32,7 @@ export default class ModalGameProgress extends React.Component {
             <div className="modal-content">
               <div className="modal-title">progreso de la prueba</div>
                 <div className="modal-text">
-                  <p>{this.props.config_ui.progress_text} {progress}/{this.props.questions.length}</p>
+                  <p>{this.props.data.progress_text} {progress}/{this.props.questions.length}</p>
                   <div className="task-list">
                     {this.props.questions.map((q, index) => {
                       let success = q.user_answer === q.true_or_false;

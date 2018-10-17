@@ -10,9 +10,7 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
     receivedState = JSON.parse(JSON.stringify(INITIAL_STATE.game));
     let questions_final;
     if(action.questions.length > GLOBAL_CONFIG.n){
-      console.log("Picking " + GLOBAL_CONFIG.n + " random questions among " + action.questions.length);
       questions_final = action.questions.sort(() => .5 - Math.random()).slice(0,GLOBAL_CONFIG.n);
-      console.log(questions_final);
     }
     receivedState.questions = questions_final.map((q, index) => {
       q.id = index;
@@ -57,7 +55,6 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
       }
       return q;
     });
-    console.log(receivedState);
     return receivedState;
   case 'ANIMATION_ENDED':
     receivedState = JSON.parse(JSON.stringify(state));
@@ -79,11 +76,11 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
         if(first_question_unanswered){
           receivedState.index = first_question_unanswered.id;
         } else {
-          console.log("PROBLEM. Game not ended but not more unanswered questions, this should never appear");
+          // console.log("PROBLEM. Game not ended but not more unanswered questions, this should never appear");
         }
       }
     } else{
-      console.log("Wrong answer, keep the actual question for the user to see the feedback");
+      // console.log("Wrong answer, keep the actual question for the user to see the feedback");
     }
     return receivedState;
   case 'GO_TO_QUESTION':
@@ -103,10 +100,10 @@ function checkAnswer(state, action){
   let receivedState = JSON.parse(JSON.stringify(state));
   let questionclone = JSON.parse(JSON.stringify(action.question));
   if(action.question.true_or_false === action.answer){
-    console.log("Ha respondido correctamente, todos los puntos");
+    // console.log("Ha respondido correctamente, todos los puntos");
     questionclone.score_accomplished = action.question.score;
   } else {
-    console.log("Ha respondido mal, cero puntos");
+    // console.log("Ha respondido mal, cero puntos");
     questionclone.score_accomplished = 0;
   }
   questionclone.answered = true;
@@ -114,13 +111,11 @@ function checkAnswer(state, action){
   questionclone.show_animation = true; // we haven't shown the animation right/wrong telling the user
   receivedState.enable_buttons = false; //disable next and prev buttons to wait for the animation to finish
   receivedState.questions[action.index] = questionclone;
-  console.log("checkAnswer, receivedState: ", receivedState);
   return receivedState;
 }
 
 function passquiz(state, action){
   if(state.enable_buttons === false){
-    console.log("No se puede pasar las preguntas durante una animación. enable_buttons es false");
     return state;
   } else {
     let receivedState = JSON.parse(JSON.stringify(state));
@@ -137,7 +132,7 @@ function passquiz(state, action){
         receivedState.index = receivedState.questions.length - 1;
       }
     } else {
-      console.log("Solo entiendo las acciones GO LEFT y GO RIGHT");
+      // console.log("Solo entiendo las acciones GO LEFT y GO RIGHT");
     }
     return receivedState;
   }

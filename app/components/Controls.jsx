@@ -15,7 +15,6 @@ export default class Controls extends React.Component {
     this.requestFullScreen = this.requestFullScreen.bind(this);
   }
   toggleMenuMob(){
-    console.log("toggle menu");
     this.setState({show_items: !this.state.show_items});
   }
   hideMenuMob(){
@@ -30,12 +29,10 @@ export default class Controls extends React.Component {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
   setWrapperRef(node) {
-    console.log("setWrapperRef");
     this.wrapperRef = node;
   }
   handleClickOutside(event) {
     if (!this.wrapperRef || this.wrapperRef.contains(event.target)) {
-       console.log("no menu, or click on the menu, no handleClickOutside");
        return;
      }
      this.hideMenuMob();
@@ -55,12 +52,11 @@ export default class Controls extends React.Component {
     }
   }
   requestFullScreen(){
-    console.log("req")
   }
   render(){
-    let fullscreenEnabled = this.props.config_ui.with_fullscreen && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled);
+    let fullscreenEnabled = this.props.data.with_fullscreen && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled);
     if (!fullscreenEnabled) {
-      console.log("Browser does not support fullscreen, or it is disabled by the app, we disable the button");
+      // console.log("Browser does not support fullscreen, or it is disabled by the app");
     }
 
     let loggedText;
@@ -100,7 +96,7 @@ export default class Controls extends React.Component {
     let button_true_extra_class = (question && question.answered && question.user_answer === true) ? "button_pressed" : "";
     let disabled_extra_class = (question && question.answered) || this.props.game.game_ended ? "disabled" : "";
     let is_arrow_disabled = this.props.game.enable_buttons ? "":"disabled";
-    console.log(this.props.game);
+
     let progress = question ? questions_answered : 0;
     let progressStyle = {
       width: Math.floor(105*questions_answered/this.props.game.questions.length) + "%"
@@ -130,9 +126,9 @@ export default class Controls extends React.Component {
     let mobileMenuTop = {
       top: "-8.7em"
     };
-    if((!this.props.config_ui.with_reset_button && fullscreenEnabled) || (this.props.config_ui.with_reset_button && !fullscreenEnabled)){
+    if((!this.props.data.with_reset_button && fullscreenEnabled) || (this.props.data.with_reset_button && !fullscreenEnabled)){
       mobileMenuTop = {top: "-7.1em"};
-    } else if(!this.props.config_ui.with_reset_button && !fullscreenEnabled) {
+    } else if(!this.props.data.with_reset_button && !fullscreenEnabled) {
       mobileMenuTop = {top: "-5.4em"};
     }
 
@@ -144,7 +140,7 @@ export default class Controls extends React.Component {
               <div className="controls_menu" style={this.props.game.game_ended ? finalStyleMenu : null}>
                 <Icon className={this.props.game.game_ended ? "hide":"control control_info"} onClick={() => this.props.showModal("Info")} icon="info"/>
                 <Icon className={this.props.game.game_ended ? "hide":"control control_progress"} onClick={() => this.props.showModal("Progress")} icon="progress" />
-                {this.props.config_ui.with_reset_button &&
+                {this.props.data.with_reset_button &&
                   <Icon className={this.props.game.game_ended ? "hide":"control control_reset"} onClick={() => this.props.showModal("Reset")} icon="reset"/>}
                 <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop"/>
                   {fullscreenEnabled &&
@@ -163,7 +159,7 @@ export default class Controls extends React.Component {
                 <div className={this.state.show_items ? "controls_int":"controls_int hide"} style={mobileMenuTop}>
                   <Icon className="control control_info" onClick={() => this.props.showModal("Info")} icon="info_fill"/>
                   <Icon className="control control_progress" onClick={() => this.props.showModal("Progress")} icon="progress_fill" />
-                  {this.props.config_ui.with_reset_button &&
+                  {this.props.data.with_reset_button &&
                     <Icon className="control control_reset" onClick={() => this.props.showModal("Reset")} icon="reset_fill"/>}
                   <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop_fill"/>
                     {fullscreenEnabled &&
