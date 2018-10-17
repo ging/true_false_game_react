@@ -31,11 +31,11 @@ export default class ModalGameStop extends React.Component {
   render(){
     let text;
     if(this.props.game_ended===false){
-      text = "¿estás seguro de que quieres parar y finalizar la prueba? todavía tienes preguntas sin contestar:";
+      text = "¿Estás seguro de que quieres parar y finalizar la prueba? Todavía tienes preguntas sin contestar:";
     } else if(this.props.data.with_reset_button===true){
-      text = "¿deseas finalizar revisión del feedback y reiniciar juego?";
+      text = "¿Deseas finalizar revisión del feedback y reiniciar juego?";
     } else {
-      text = "¿deseas finalizar revisión del feedback?";
+      text = "¿Deseas finalizar revisión del feedback?";
     }
     return (
       <Modal show={this.props.show} >

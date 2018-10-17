@@ -58,13 +58,6 @@ export default class Quiz extends React.Component {
     }
   }
   componentDidMount(){
-    // Create objectives (One per question included in the quiz)
-    let objectives = [];
-    let nQuestions = this.props.questions.length;
-    for(let i = 0; i < nQuestions; i++){
-      objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(this.props.questions[i].score / this.total_score)}));
-    }
-    this.props.dispatch(addObjectives(objectives));
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions);
     this.calculateImgsSizes();

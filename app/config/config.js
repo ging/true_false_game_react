@@ -12,11 +12,11 @@ export let GLOBAL_CONFIG = {
       completion_threshold:0.5,
       score_threshold:0.6,
     },
-    n:1,
+    n:5,
     app_logo:"assets/images/logos/fakedetector_logo.svg",
     elab_text:"una aplicación de",
     elab_logo:"assets/images/logos/elab_logo_white.svg",
-    file: "phishing"
+    file: "phishing.json"
   },
   production:{
     debug:false,

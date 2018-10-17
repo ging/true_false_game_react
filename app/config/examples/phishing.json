@@ -8,9 +8,9 @@
   "with_extra_logo": false,
   "feedback2_right": "la web es real",
   "feedback2_wrong": "la web es falsa",
-  "message_pro": "eres un crack, ¡a ti no hay quien te engañe! sabemos que no necesitas que te enseñemos cómo reconocer webs fiables, pero aquí te dejamos un pequeño vídeo por si quieres saber más:",
-  "message_good": "lo has hecho bastante bien, pero has fallado algunas. revisa el siguiente video para aprender a detectar webs fiables:",
-  "message_ok": "no has acertado muchas. Es muy importante detectar bien las webs fiables para una navegación segura. te dejamos un video para que aprendas a detectarlas:",
+  "message_pro": "Eres un crack, ¡a ti no hay quien te engañe! Sabemos que no necesitas que te enseñemos cómo reconocer webs fiables, pero aquí te dejamos un pequeño vídeo por si quieres saber más:",
+  "message_good": "Lo has hecho bastante bien, pero has fallado algunas webs. Revisa el siguiente video para aprender a detectar webs fiables:",
+  "message_ok": "No has acertado muchas. Es muy importante detectar bien las webs fiables para una navegación segura. Te dejamos un video para que aprendas a detectarlas:",
   "modal_inst": "¿sabes qué webs son reales y falsas? contesta lo más rápido que puedas, para sumar puntos y conviértete en experto en phishing. los controles son muy sencillos, solo tienes que pulsar verdadero o falso en los botones centrales.",
   "progress_text": "webs contestadas",
   "task_list": "lista de webs a contestar",
@@ -80,7 +80,7 @@
       "feedback_path": "./assets/images/quiz/phishing/phishing07_feedback.png",
       "feedback_text": ""
     },
-    { "path": "./assets/images/quiz/phishing08.png",
+    { "path": "./assets/images/quiz/phishing/phishing08.png",
       "source_name": "Pandora, venta joyería",
       "source_url": "http://www.ptoshmarks.com/index/",
       "secure": false,
@@ -104,7 +104,7 @@
       "secure": false,
       "true_or_false": false,
       "score": 10,
-      "feedback_path": "./assets/images/phishing/quiz/phishing10_feedback.png",
+      "feedback_path": "./assets/images/quiz/phishing/phishing10_feedback.png",
       "feedback_text": ""
     }
   ]

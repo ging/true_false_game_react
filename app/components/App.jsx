@@ -5,7 +5,7 @@ import '../assets/sass/ie_styles.sass';
 
 import {GLOBAL_CONFIG} from '../config/config.js';
 import * as Utils from '../vendors/Utils.js';
-import {objectiveAccomplished, resetGame, initializegame, startgame, updateTimer, pauseTimer, unpauseTimer, passquiz} from './../reducers/actions';
+import {addObjectives, objectiveAccomplished, resetGame, initializegame, startgame, updateTimer, pauseTimer, unpauseTimer, passquiz} from './../reducers/actions';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
 import SCORM from './SCORM.jsx';
 import Controls from './Controls.jsx';
@@ -21,7 +21,7 @@ import FinishScreen from './FinishScreen.jsx';
 import Dark from './Dark.jsx';
 import * as I18n from '../vendors/I18n.js';
 //First, get data from the file specified in the configuration. Afterwards, these data could be overriden by data provided through the URL.
-const DATA = require('../config/examples/'+GLOBAL_CONFIG.file+'.json');
+const DATA = require('../config/examples/'+GLOBAL_CONFIG.file);
 
 const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen: false};
 
@@ -39,7 +39,26 @@ export class App extends React.Component {
     this.fullscreenChange = this.fullscreenChange.bind(this);
     this.state = INITIAL_STATE;
     this.data = DATA;
-    this.total_score = DATA.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
+
+    let questions = this.data.questions;
+    let questions_final;
+    if(questions.length > GLOBAL_CONFIG.n){
+      questions_final = questions.sort(() => .5 - Math.random()).slice(0,GLOBAL_CONFIG.n);
+    } else {
+      questions_final = questions;
+    }
+    this.data.questions = questions_final;
+
+    this.total_score = this.data.questions.reduce((accumulator, currentValue) => { return accumulator + currentValue.score; }, 0);
+    this.props.dispatch(initializegame(this.data.questions));
+
+    // Create objectives (One per question included in the quiz)
+    let objectives = [];
+    let nQuestions = this.data.questions.length;
+    for(let i = 0; i < nQuestions; i++){
+      objectives.push(new Utils.Objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(this.data.questions[i].score / this.total_score)}));
+    }
+    this.props.dispatch(addObjectives(objectives));
   }
   resetState(){
     this.setState(INITIAL_STATE);
