@@ -8,7 +8,7 @@ export default class ModalCredits extends React.Component {
     super(props);
   }
   render(){
-    const padding = {padding: '0'}
+    const padding = {padding:'0'};
     return (
             <Modal show={this.props.show} >
               <div className="modal-box">
@@ -32,7 +32,7 @@ export default class ModalCredits extends React.Component {
                       <div className="modal-text">
                         <p>esta obra está bajo una <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">licencia de Creative Commons Reconocimiento-NoComercial 4.0 Internacional.</a> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank"><img className="license_logo" src="assets/images/logos/license.png"/></a></p>
                       </div>
-                    {/*<div className="modal-actions">
+                    {/* <div className="modal-actions">
                       <div className="btn btn-red" onClick={() => this.props.handleClose("Credits")}>cerrar</div>
                     </div>*/}
                   </div>

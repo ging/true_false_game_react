@@ -30,9 +30,9 @@ export default class ModalGameStop extends React.Component {
   }
   render(){
     let text;
-    if(this.props.game_ended===false){
+    if(this.props.game_ended === false){
       text = "¿Estás seguro de que quieres parar y finalizar la prueba? Todavía tienes preguntas sin contestar:";
-    } else if(this.props.data.with_reset_button===true){
+    } else if(this.props.data.with_reset_button === true){
       text = "¿Deseas finalizar revisión del feedback y reiniciar juego?";
     } else {
       text = "¿Deseas finalizar revisión del feedback?";
@@ -54,9 +54,9 @@ export default class ModalGameStop extends React.Component {
                         <span className="individual_task_text" onClick={ () => this.questionClick(index)}>{q.source_name}</span>
                         <div className="task-icons">
                           <Icon className={"control control_feedback control_wrong "
-                         + (q.answered ? (success ? "":"wrong") : "")} icon="cross"/>
+                         + (q.answered ? (success ? "" : "wrong") : "")} icon="cross"/>
                           <Icon className={"control control_feedback control_right "
-                         + (q.answered ? (success ? "right":"") : "")} icon="tick"/>
+                         + (q.answered ? (success ? "right" : "") : "")} icon="tick"/>
                         </div>
                       </div>;
                     })
@@ -66,7 +66,7 @@ export default class ModalGameStop extends React.Component {
                 <div className="modal-actions">
                   <div className="btn btn-red" onClick={ () => this.props.handleClose("Stop")}>cancelar</div>
                   {this.props.game_ended ?
-                    <div className="btn btn-green" onClick={this.props.data.with_reset_button ? this.resetGame:this.finishGame}>aceptar</div> :
+                    <div className="btn btn-green" onClick={this.props.data.with_reset_button ? this.resetGame : this.finishGame}>aceptar</div> :
                     <div className="btn btn-green" onClick={this.endGame}>aceptar</div>
                   }
                 </div>

@@ -6,11 +6,11 @@ import {GLOBAL_CONFIG} from '../config/config.js';
 export default class ModalGameStart extends React.Component {
   constructor(props){
     super(props);
-    this.state = {show_items: false};
+    this.state = {show_items:false};
     this.toggleItems = this.toggleItems.bind(this);
   }
   toggleItems(){
-    this.setState({show_items: !this.state.show_items});
+    this.setState({show_items:!this.state.show_items});
   }
   render(){
     return (
@@ -29,8 +29,8 @@ export default class ModalGameStart extends React.Component {
                             <p className="list-title-text">{this.props.data.task_list}</p>
                             <Icon className="control control_plus" icon="plus2"/>
                           </div>
-                          <ul className={this.state.show_items ? "":"hide"}>
-                            {this.props.questions.map((q,index) => {return <li key={index}>- {q.source_name}</li>;})
+                          <ul className={this.state.show_items ? "" : "hide"}>
+                            {this.props.questions.map((q, index) => {return <li key={index}>- {q.source_name}</li>;})
                             }
                           </ul>
                        </div>

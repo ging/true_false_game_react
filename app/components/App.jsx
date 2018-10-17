@@ -20,10 +20,10 @@ import ModalCredits from './ModalCredits.jsx';
 import FinishScreen from './FinishScreen.jsx';
 import Dark from './Dark.jsx';
 import * as I18n from '../vendors/I18n.js';
-//First, get data from the file specified in the configuration. Afterwards, these data could be overriden by data provided through the URL.
-const DATA = require('../config/examples/'+GLOBAL_CONFIG.file);
+// First, get data from the file specified in the configuration. Afterwards, these data could be overriden by data provided through the URL.
+const DATA = require('../config/examples/' + GLOBAL_CONFIG.file);
 
-const INITIAL_STATE = {intervalId: 0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen: false};
+const INITIAL_STATE = {intervalId:0, showModalStart:false, showModalInfo:false, showModalEnd:false, showModalProgress:false, showModalReset:false, showModalStop:false, showModalCredits:false, isFullScreen:false};
 
 export class App extends React.Component {
   constructor(props){
@@ -43,7 +43,7 @@ export class App extends React.Component {
     let questions = this.data.questions;
     let questions_final;
     if(questions.length > GLOBAL_CONFIG.n){
-      questions_final = questions.sort(() => .5 - Math.random()).slice(0,GLOBAL_CONFIG.n);
+      questions_final = questions.sort(() => 0.5 - Math.random()).slice(0, GLOBAL_CONFIG.n);
     } else {
       questions_final = questions;
     }
@@ -66,7 +66,7 @@ export class App extends React.Component {
   componentDidMount(){
     let new_questions = Utils.getUrlParameter('questions');
     if(GLOBAL_CONFIG.admits_url_config && new_questions){
-      //try to fetch the questions from the URL given
+      // try to fetch the questions from the URL given
       fetch(new_questions)
       .then(res => res.json())
       .then(
@@ -74,7 +74,7 @@ export class App extends React.Component {
           if(result.status && result.status === 500 || result.status === 404){
             this.props.dispatch(initializegame(this.data.questions));
           } else {
-            //POST the used URL to EducaInternet to save it
+            // POST the used URL to EducaInternet to save it
             /*
             fetch("http://localhost:3000/elab_url_file",
             {
@@ -104,13 +104,13 @@ export class App extends React.Component {
       this.props.dispatch(initializegame(this.data.questions));
     }
     let myinterval = setInterval(() => this.props.dispatch(updateTimer()), 1000);
-    this.setState({intervalId: myinterval});
+    this.setState({intervalId:myinterval});
     window.addEventListener('fullscreenchange', this.fullscreenChange);
     window.addEventListener('webkitfullscreenchange', this.fullscreenChange);
     window.addEventListener('mozfullscreenchange', this.fullscreenChange);
     window.addEventListener('MSFullscreenChange', this.fullscreenChange);
   }
-  componentWillUnmount() {
+  componentWillUnmount(){
     window.removeEventListener('fullscreenchange', this.fullscreenChange);
     window.removeEventListener('webkitfullscreenchange', this.fullscreenChange);
     window.removeEventListener('mozfullscreenchange', this.fullscreenChange);
@@ -122,11 +122,11 @@ export class App extends React.Component {
   startGame(){
     this.props.dispatch(startgame());
   }
-  handleKeyPress(event) {
-    if(event.key == "ArrowRight"){
+  handleKeyPress(event){
+    if(event.key === "ArrowRight"){
       this.props.dispatch(passquiz(GO_RIGHT));
     }
-    else if(event.key == "ArrowLeft"){
+    else if(event.key === "ArrowLeft"){
       this.props.dispatch(passquiz(GO_LEFT));
     }
   }
@@ -155,33 +155,33 @@ export class App extends React.Component {
     }
   }
   requestFullScreen(){
-    if(document.body.requestFullscreen) {
+    if(document.body.requestFullscreen){
       document.body.requestFullscreen();
-    } else if(document.body.mozRequestFullScreen) {
+    } else if(document.body.mozRequestFullScreen){
       document.body.mozRequestFullScreen();
-    } else if(document.body.webkitRequestFullscreen) {
+    } else if(document.body.webkitRequestFullscreen){
       document.body.webkitRequestFullscreen();
-    } else if(document.body.msRequestFullscreen) {
+    } else if(document.body.msRequestFullscreen){
       document.body.msRequestFullscreen();
     }
   }
-  exitFullscreen() {
-    if(document.exitFullscreen) {
+  exitFullscreen(){
+    if(document.exitFullscreen){
       document.exitFullscreen();
-    } else if(document.mozCancelFullScreen) {
+    } else if(document.mozCancelFullScreen){
       document.mozCancelFullScreen();
-    } else if(document.webkitExitFullscreen) {
+    } else if(document.webkitExitFullscreen){
       document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
+    } else if(document.msExitFullscreen){
     	document.msExitFullscreen();
     }
   }
   fullscreenChange(){
-    //this method is called whenever a fullscreenChange event is fired.
-    //we change state here and not in the other methods because fullscreen can be toggled also with keys, not only buttons
-    if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+    // this method is called whenever a fullscreenChange event is fired.
+    // we change state here and not in the other methods because fullscreen can be toggled also with keys, not only buttons
+    if(!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement){
       this.setState({isFullScreen:false});
-    } else{
+    } else {
       this.setState({isFullScreen:true});
     }
   }
@@ -205,7 +205,7 @@ export class App extends React.Component {
           </div>
         </div>
         {this.props.tracking.finished ?
-          <FinishScreen tracking={this.props.tracking} I18n={I18n} data={this.data} config={GLOBAL_CONFIG}/>:
+          <FinishScreen tracking={this.props.tracking} I18n={I18n} data={this.data} config={GLOBAL_CONFIG}/> :
           <Quiz dispatch={this.props.dispatch} game={this.props.game} index={this.props.game.index} questions={this.props.game.questions} data={this.data}/>
         }
         <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} config={GLOBAL_CONFIG}/>
@@ -216,7 +216,7 @@ export class App extends React.Component {
         <ModalGameEnd resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalEnd} handleClose={this.handleCloseModal} user_score={user_score} total_score={this.total_score} questions={this.props.game.questions} index={this.props.game.index} time={this.props.game.time} data={this.data}/>
         <ModalGameStop resetState={this.resetState} dispatch={this.props.dispatch} show={this.state.showModalStop} handleClose={this.handleCloseModal} questions={this.props.game.questions} game_ended={this.props.game.game_ended} data={this.data}/>
         <ModalCredits show={this.state.showModalCredits} handleClose={this.handleCloseModal} data={this.data}/>
-        {this.props.tracking.finished ? null : <Controls game={this.props.game} isFullScreen={this.state.isFullScreen} requestFullScreen={this.requestFullScreen} exitFullscreen={this.exitFullscreen} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} tracking={this.props.tracking} dispatch={this.props.dispatch} config={GLOBAL_CONFIG} data={this.data}/>}
+        {this.props.tracking.finished ? null : <Controls game={this.props.game} isFullScreen={this.state.isFullScreen} requestFullScreen={this.requestFullScreen} exitFullscreen={this.exitFullscreen} tracking={this.props.tracking} startGame={this.startGame} showModal={this.showModal} user_profile={this.props.user_profile} user_score={user_score} total_score={this.total_score} dispatch={this.props.dispatch} config={GLOBAL_CONFIG} data={this.data}/>}
         <Dark show={showDarkLayer} onClick={() => this.handleCloseModal("all")}/>
       </div>
     );

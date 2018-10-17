@@ -4,10 +4,10 @@ export let GLOBAL_CONFIG = {
     debug_scorm_api:false,
     debug_scorm_api_window:false,
     available_locales:["en", "es"],
-    locale: "es",
+    locale:"es",
     adaptive:true,
     finish_screen:true,
-    admits_url_config: true,
+    admits_url_config:true,
     scorm:{
       completion_threshold:0.5,
       score_threshold:0.6,
@@ -16,12 +16,12 @@ export let GLOBAL_CONFIG = {
     app_logo:"assets/images/logos/fakedetector_logo.svg",
     elab_text:"una aplicación de",
     elab_logo:"assets/images/logos/elab_logo_white.svg",
-    file: "phishing.json"
+    file:"phishing.json",
   },
   production:{
     debug:false,
     debug_scorm_api:false,
-    debug_scorm_api_window:false
+    debug_scorm_api_window:false,
   },
 };
 
@@ -30,9 +30,9 @@ let processConfig = (function(){
   if(typeof GLOBAL_CONFIG[env] === "undefined"){
     env = "dev";
   }
-  if((env === "production")&&(typeof GLOBAL_CONFIG["dev"] != "undefined")){
-    let productionConfig = Object.assign({},GLOBAL_CONFIG["dev"], GLOBAL_CONFIG["production"]);
-    GLOBAL_CONFIG["production"] = productionConfig;
+  if((env === "production") && (typeof GLOBAL_CONFIG.dev !== "undefined")){
+    let productionConfig = Object.assign({}, GLOBAL_CONFIG.dev, GLOBAL_CONFIG.production);
+    GLOBAL_CONFIG.production = productionConfig;
   }
   GLOBAL_CONFIG = GLOBAL_CONFIG[env];
 

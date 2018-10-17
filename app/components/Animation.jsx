@@ -15,7 +15,7 @@ export default class Animation extends React.Component {
     this.props.dispatch(animationEnded(this.props.index));
   }
   componentWillReceiveProps(nextProps){
-    if(this.props.show===false && nextProps.show === true){
+    if(this.props.show === false && nextProps.show === true){
       this.setState({isShown:true});
     }
   }

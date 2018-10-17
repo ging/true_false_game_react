@@ -28,7 +28,6 @@ export default class ModalGameProgress extends React.Component {
               <Icon className="control control_cross" onClick={ () => this.props.handleClose("Progress")} icon="cross"/>
             </div>
 
-
             <div className="modal-content">
               <div className="modal-title">progreso de la prueba</div>
                 <div className="modal-text">
@@ -40,12 +39,12 @@ export default class ModalGameProgress extends React.Component {
                         <span className="individual_task_text" onClick={ () => this.questionClick(index)}>{q.source_name}</span>
                         <div className="task-icons">
                           <Icon className={"control control_feedback control_wrong "
-                          + (q.answered ? (success ? "":"wrong") : "")} icon="cross"/>
+                          + (q.answered ? (success ? "" : "wrong") : "")} icon="cross"/>
                           <Icon className={"control control_feedback control_right "
-                          + (q.answered ? (success ? "right":"") : "")} icon="tick"/>
+                          + (q.answered ? (success ? "right" : "") : "")} icon="tick"/>
                         </div>
                         </div>;
-                      })
+                    })
                     }
                   </div>
                 </div>

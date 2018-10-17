@@ -3,7 +3,6 @@ import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
 import {GLOBAL_CONFIG} from '../config/config.js';
 
-
 export default class ModalGameInfo extends React.Component {
   constructor(props){
     super(props);
