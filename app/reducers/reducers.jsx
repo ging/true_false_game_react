@@ -10,7 +10,7 @@ const GlobalState = combineReducers({
   scorm:scormReducer,
   user_profile:userProfileReducer,
   wait_for_user_profile:waitForUserProfileReducer,
-  game:gameReducer
+  game:gameReducer,
 });
 
 export default GlobalState;

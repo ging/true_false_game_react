@@ -4,7 +4,6 @@ import Modal from './Modal.jsx';
 import Icon from './Icon.jsx';
 import {GLOBAL_CONFIG} from '../config/config.js';
 
-
 export default class ModalGameEnd extends React.Component {
   constructor(props){
     super(props);
@@ -22,16 +21,16 @@ export default class ModalGameEnd extends React.Component {
   }
   componentWillReceiveProps(nextProps){
     if(this.props.show === true && nextProps.show === false){
-      //reset youtube video src to stop it when modal closes
+      // reset youtube video src to stop it when modal closes
       let mysrc = this.youtube.src;
       this.youtube.src = "";
-      this.youtube.src = mysrc;     }
+      this.youtube.src = mysrc; }
   }
   render(){
 
     let question = this.props.questions[this.props.index];
     let questions_right_answered = this.props.questions.reduce((accumulator, currentValue) => {
-      return (currentValue.answered && currentValue.user_answer===currentValue.true_or_false) ? accumulator + 1 : accumulator;
+      return (currentValue.answered && currentValue.user_answer === currentValue.true_or_false) ? accumulator + 1 : accumulator;
     }, 0);
     let correct = question ? questions_right_answered : 0;
     let minutes = Math.floor(this.props.time / 60);
@@ -40,18 +39,18 @@ export default class ModalGameEnd extends React.Component {
       seconds = "0" + seconds;
     }
     let clock;
-    if(minutes>0){
+    if(minutes > 0){
       clock = minutes + ":" + seconds;
     } else {
       clock = seconds;
     }
     let message;
-    if(this.props.user_score > this.props.total_score*0.7){
-      message = this.props.config_ui.message_pro;
-    } else if(this.props.user_score > this.props.total_score*0.5){
-      message = this.props.config_ui.message_good;
+    if(this.props.user_score > this.props.total_score * 0.7){
+      message = this.props.data.message_pro;
+    } else if(this.props.user_score > this.props.total_score * 0.5){
+      message = this.props.data.message_good;
     } else {
-      message = this.props.config_ui.message_ok;
+      message = this.props.data.message_ok;
     }
 
     return (
@@ -70,12 +69,12 @@ export default class ModalGameEnd extends React.Component {
                   </div>
                   <p>{message}</p>
                   <div className="responsive_video">
-                    <iframe ref={(youtube) => { this.youtube = youtube; }} width="560" height="315" src={this.props.config_ui.final_video} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                    <iframe ref={(youtube) => { this.youtube = youtube; }} width="560" height="315" src={this.props.data.final_video} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
                   </div>
                 </div>
               <div className="modal-actions">
-                {this.props.config_ui.with_reset_button ?
-                  <div className="btn btn-red" onClick={this.resetClick}>reiniciar</div>:
+                {this.props.data.with_reset_button ?
+                  <div className="btn btn-red" onClick={this.resetClick}>reiniciar</div> :
                   <div className="btn btn-red" onClick={this.finishGame}>terminar</div>}
                 <div className="btn btn-green" onClick={ () =>this.props.handleClose("End")}>ver feedback</div>
               </div>

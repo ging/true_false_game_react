@@ -7,7 +7,7 @@ export default class Controls extends React.Component {
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.state = {show_items: false};
+    this.state = {show_items:false};
     this.toggleMenuMob = this.toggleMenuMob.bind(this);
     this.hideMenuMob = this.hideMenuMob.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -15,31 +15,28 @@ export default class Controls extends React.Component {
     this.requestFullScreen = this.requestFullScreen.bind(this);
   }
   toggleMenuMob(){
-    console.log("toggle menu");
-    this.setState({show_items: !this.state.show_items});
+    this.setState({show_items:!this.state.show_items});
   }
   hideMenuMob(){
-    if(this.state.show_items===true){
-      this.setState({show_items: false});
+    if(this.state.show_items === true){
+      this.setState({show_items:false});
     }
   }
-  componentDidMount() {
+  componentDidMount(){
     document.addEventListener('mousedown', this.handleClickOutside);
   }
-  componentWillUnmount() {
+  componentWillUnmount(){
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
-  setWrapperRef(node) {
-    console.log("setWrapperRef");
+  setWrapperRef(node){
     this.wrapperRef = node;
   }
-  handleClickOutside(event) {
-    if (!this.wrapperRef || this.wrapperRef.contains(event.target)) {
-       console.log("no menu, or click on the menu, no handleClickOutside");
-       return;
-     }
-     this.hideMenuMob();
-   }
+  handleClickOutside(event){
+    if(!this.wrapperRef || this.wrapperRef.contains(event.target)){
+      return;
+    }
+    this.hideMenuMob();
+  }
   handleClick(button_clicked){
     switch (button_clicked){
     case true:
@@ -55,12 +52,11 @@ export default class Controls extends React.Component {
     }
   }
   requestFullScreen(){
-    console.log("req")
   }
   render(){
-    let fullscreenEnabled = this.props.config_ui.with_fullscreen && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled);
-    if (!fullscreenEnabled) {
-      console.log("Browser does not support fullscreen, or it is disabled by the app, we disable the button");
+    let fullscreenEnabled = this.props.data.with_fullscreen && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled);
+    if(!fullscreenEnabled){
+      // console.log("Browser does not support fullscreen, or it is disabled by the app");
     }
 
     let loggedText;
@@ -99,11 +95,11 @@ export default class Controls extends React.Component {
     let button_false_extra_class = (question && question.answered && question.user_answer === false) ? "button_pressed" : "";
     let button_true_extra_class = (question && question.answered && question.user_answer === true) ? "button_pressed" : "";
     let disabled_extra_class = (question && question.answered) || this.props.game.game_ended ? "disabled" : "";
-    let is_arrow_disabled = this.props.game.enable_buttons ? "":"disabled";
-    console.log(this.props.game);
+    let is_arrow_disabled = this.props.game.enable_buttons ? "" : "disabled";
+
     let progress = question ? questions_answered : 0;
     let progressStyle = {
-      width: Math.floor(105*questions_answered/this.props.game.questions.length) + "%"
+      width:Math.floor(105 * questions_answered / this.props.game.questions.length) + "%",
     };
     let minutes = Math.floor(this.props.game.time / 60);
     let seconds = this.props.game.time - minutes * 60;
@@ -111,29 +107,29 @@ export default class Controls extends React.Component {
       seconds = "0" + seconds;
     }
     let clock;
-    if(minutes>0){
+    if(minutes > 0){
       clock = minutes + ":" + seconds;
     } else {
       clock = seconds;
     }
 
     let finalStyleAppControls = {
-      marginRight: "1.7em",
-      marginLeft: "1.5em"
+      marginRight:"1.7em",
+      marginLeft:"1.5em",
     };
 
     let finalStyleMenu = {
-      width: 0,
-      marginRight: 0,
+      width:0,
+      marginRight:0,
     };
 
     let mobileMenuTop = {
-      top: "-8.7em"
+      top:"-8.7em",
     };
-    if((!this.props.config_ui.with_reset_button && fullscreenEnabled) || (this.props.config_ui.with_reset_button && !fullscreenEnabled)){
-      mobileMenuTop = {top: "-7.1em"};
-    } else if(!this.props.config_ui.with_reset_button && !fullscreenEnabled) {
-      mobileMenuTop = {top: "-5.4em"};
+    if((!this.props.data.with_reset_button && fullscreenEnabled) || (this.props.data.with_reset_button && !fullscreenEnabled)){
+      mobileMenuTop = {top:"-7.1em"};
+    } else if(!this.props.data.with_reset_button && !fullscreenEnabled){
+      mobileMenuTop = {top:"-5.4em"};
     }
 
     return (
@@ -142,14 +138,14 @@ export default class Controls extends React.Component {
             (<div className="control_bar">
 
               <div className="controls_menu" style={this.props.game.game_ended ? finalStyleMenu : null}>
-                <Icon className={this.props.game.game_ended ? "hide":"control control_info"} onClick={() => this.props.showModal("Info")} icon="info"/>
-                <Icon className={this.props.game.game_ended ? "hide":"control control_progress"} onClick={() => this.props.showModal("Progress")} icon="progress" />
-                {this.props.config_ui.with_reset_button &&
-                  <Icon className={this.props.game.game_ended ? "hide":"control control_reset"} onClick={() => this.props.showModal("Reset")} icon="reset"/>}
+                <Icon className={this.props.game.game_ended ? "hide" : "control control_info"} onClick={() => this.props.showModal("Info")} icon="info"/>
+                <Icon className={this.props.game.game_ended ? "hide" : "control control_progress"} onClick={() => this.props.showModal("Progress")} icon="progress" />
+                {this.props.data.with_reset_button &&
+                  <Icon className={this.props.game.game_ended ? "hide" : "control control_reset"} onClick={() => this.props.showModal("Reset")} icon="reset"/>}
                 <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop"/>
                   {fullscreenEnabled &&
                     (!this.props.isFullScreen ?
-                      <Icon className="control control_fullscreen" onClick={() => this.props.requestFullScreen()} icon="full_screen"/>:
+                      <Icon className="control control_fullscreen" onClick={() => this.props.requestFullScreen()} icon="full_screen"/> :
                       <Icon className="control control_nofullscreen" onClick={() => this.props.exitFullscreen()} icon="no_full_screen"/>)
                       }
               </div>
@@ -160,40 +156,40 @@ export default class Controls extends React.Component {
                   <Icon className={this.props.game.game_ended ? "control control_stop" : "hide"} onClick={() => this.props.showModal("Stop")} icon="stop"/>
                 </div>
 
-                <div className={this.state.show_items ? "controls_int":"controls_int hide"} style={mobileMenuTop}>
+                <div className={this.state.show_items ? "controls_int" : "controls_int hide"} style={mobileMenuTop}>
                   <Icon className="control control_info" onClick={() => this.props.showModal("Info")} icon="info_fill"/>
                   <Icon className="control control_progress" onClick={() => this.props.showModal("Progress")} icon="progress_fill" />
-                  {this.props.config_ui.with_reset_button &&
+                  {this.props.data.with_reset_button &&
                     <Icon className="control control_reset" onClick={() => this.props.showModal("Reset")} icon="reset_fill"/>}
                   <Icon className="control control_stop" onClick={() => this.props.showModal("Stop")} icon="stop_fill"/>
                     {fullscreenEnabled &&
                       (!this.props.isFullScreen ?
-                        <Icon className="control control_fullscreen" onClick={() => this.props.requestFullScreen()} icon="full_screen_fill"/>:
+                        <Icon className="control control_fullscreen" onClick={() => this.props.requestFullScreen()} icon="full_screen_fill"/> :
                         <Icon className="control control_nofullscreen" onClick={() => this.props.exitFullscreen()} icon="no_full_screen_fill"/>)
                         }
                 </div>
               </div>
 
               <div className="app_controls" style={this.props.game.game_ended ? finalStyleAppControls : null}>
-                {this.props.game.questions.length>1 ?
-                  <Icon className={"control control_left_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_LEFT)} icon="left_arrow"/>:null}
+                {this.props.game.questions.length > 1 ?
+                  <Icon className={"control control_left_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_LEFT)} icon="left_arrow"/> : null}
                 <Icon className={"control control_false " + button_false_extra_class + " " + disabled_extra_class} onClick={() => this.handleClick(false)} icon="false"/>
                 <Icon className={"control control_true " + button_true_extra_class + " " + disabled_extra_class} onClick={() => this.handleClick(true)} icon="true"/>
-                {this.props.game.questions.length>1 ?
-                  <Icon className={"control control_right_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_RIGHT)} icon="right_arrow"/>:null}
+                {this.props.game.questions.length > 1 ?
+                  <Icon className={"control control_right_arrow " + is_arrow_disabled} onClick={() => this.handleClick(GO_RIGHT)} icon="right_arrow"/> : null}
               </div>
 
-              <div className={this.props.game.game_ended ? "hide":"progress_score"}>
+              <div className={this.props.game.game_ended ? "hide" : "progress_score"}>
 
                 <div className="time_elapsed">
                   <div className="number_progress number_time">{clock}</div>
                   <div className="text_progress time_text">tiempo</div>
                 </div>
-                {this.props.game.questions.length>1 ?
+                {this.props.game.questions.length > 1 ?
                   (<div className="questions_answered">
                     <div className="number_progress number_answered">{progress}/{this.props.game.questions.length}</div>
-                    <div className="progress_bar"><div className="progress_fill" style={progressStyle}></div></div>
-                  </div>):null}
+                    <div className="progress_bar"><div className="progress_fill" style={progressStyle} /></div>
+                  </div>) : null}
 
                 <div className="user_score">
                   <div className="number_progress score_number">{this.props.user_score}</div>
@@ -202,7 +198,7 @@ export default class Controls extends React.Component {
 
               </div>
 
-              <div className={this.props.game.game_ended ? "feedback_revision":"hide"}><div className="feedback_text">revisión</div>
+              <div className={this.props.game.game_ended ? "feedback_revision" : "hide"}><div className="feedback_text">revisión</div>
               </div>
 
             </div>

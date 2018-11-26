@@ -8,7 +8,7 @@ export default class ModalCredits extends React.Component {
     super(props);
   }
   render(){
-    const padding = {padding: '0'}
+    const padding = {padding:'0'};
     return (
             <Modal show={this.props.show} >
               <div className="modal-box">
@@ -20,19 +20,19 @@ export default class ModalCredits extends React.Component {
                       <div className="modal-text">
                         <p>aplicación de <img className="e_logo" src="assets/images/logos/elab_logo_black.svg"/>, desarrollada por el Grupo Internet de Nueva Generación de la UPM, con el apoyo institucional del INCIBE, el CRIF las Acacias y Orange.</p>
                       </div>
-                      <div className="logos" style={this.props.config_ui.with_extra_logo_credits ? padding : null}>
+                      <div className="logos" style={this.props.data.with_extra_logo_credits ? padding : null}>
                           <a href="http://www.upm.es/" target="_blank"><img className="logo upm_logo" src="assets/images/logos/upm_logo.png"/></a>
                         <a href="https://www.orange.es/" target="_blank"><img className="logo orange_logo" src="assets/images/logos/orange_logo.png"/></a>
                         <a href="https://www.incibe.es/" target="_blank"><img className="logo incibe_logo" src="assets/images/logos/incibe_logo.svg"/></a>
                         <a href="http://crif.acacias.educa.madrid.org" target="_blank"><img className="logo crif_logo" src="assets/images/logos/crif_logo.png"/></a>
-                        {this.props.config_ui.with_extra_logo_credits &&
-                            <a href={this.props.config_ui.extra_logo_url} target="_blank"><img className="logo ssb_logo" src={this.props.config_ui.extra_logo_src}/></a>}
+                        {this.props.data.with_extra_logo_credits &&
+                            <a href={this.props.data.extra_logo_url} target="_blank"><img className="logo ssb_logo" src={this.props.data.extra_logo_src}/></a>}
                       </div>
                       <div className="modal-title">licencia</div>
                       <div className="modal-text">
                         <p>esta obra está bajo una <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">licencia de Creative Commons Reconocimiento-NoComercial 4.0 Internacional.</a> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank"><img className="license_logo" src="assets/images/logos/license.png"/></a></p>
                       </div>
-                    {/*<div className="modal-actions">
+                    {/* <div className="modal-actions">
                       <div className="btn btn-red" onClick={() => this.props.handleClose("Credits")}>cerrar</div>
                     </div>*/}
                   </div>

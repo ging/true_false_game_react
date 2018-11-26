@@ -1,5 +1,4 @@
 import React from 'react';
-import {GLOBAL_CONFIG} from '../config/config.js';
 
 export default class FinishScreen extends React.Component {
   constructor(props){
@@ -24,8 +23,8 @@ export default class FinishScreen extends React.Component {
 
   render(){
     let surv;
-    if(this.props.config_ui.survey){
-      surv = <div className="survey">por favor realiza esta <a className="background_color" href={this.props.config_ui.survey} target="_blank">encuesta</a> para ayudarnos a mejorar fakedetector</div>;
+    if(this.props.data.survey){
+      surv = <div className="survey">por favor realiza esta <a className="background_color" href={this.props.data.survey} target="_blank">encuesta</a> para ayudarnos a mejorar fakedetector</div>;
     }
     let finishTitleText = this._getFinishScreenTitle(this.props.tracking.progress_measure, this.props.tracking.score);
     return (
