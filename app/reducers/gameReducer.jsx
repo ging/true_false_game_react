@@ -8,7 +8,7 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
   switch (action.type){
   case 'INITIALIZE_GAME':
     receivedState = JSON.parse(JSON.stringify(INITIAL_STATE.game));
-    let questions_final;
+    let questions_final = action.questions;
     if(action.questions.length > GLOBAL_CONFIG.n){
       console.log("Picking " + GLOBAL_CONFIG.n + " random questions among " + action.questions.length);
       questions_final = action.questions.sort(() => .5 - Math.random()).slice(0,GLOBAL_CONFIG.n);
