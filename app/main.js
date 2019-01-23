@@ -11,3 +11,4 @@ const render = (Component) => {
 };
 
 render(ReduxProvider);
+serviceWorker.register();
