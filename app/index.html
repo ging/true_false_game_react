@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>FakeDetector</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link rel="shortcut icon" href="assets/images/logos/favicon_d.ico" type="image/x-icon">
     <link rel="icon" href="assets/images/logos/favicon_d.ico" type="image/x-icon">
- </head>
+</head>
+
 <body>
-<div id="root"></div>
-<script type="text/javascript" src="bundle.js"></script>
+    <script type="text/javascript">
+        var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
+        var winHeight = window.innerHeight > window.innerWidth ? window.innerHeight : window.innerWidth;
+        var winWidth = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight;
+        if (isAndroid) {
+            document.write('<meta name="viewport" content="width=device-width, height=' + window.innerHeight +
+                ', initial-scale=1.0">');
+            window.addEventListener("orientationchange", function () {
+                let heightt = Math.abs(screen.orientation.angle) === 90 ? winWidth : winHeight;
+                const metas = document.getElementsByTagName('meta');
+                for (let i = 0; i < metas.length; i++) {
+                    if (metas[i].getAttribute('name') === 'viewport') {
+                        metas[i].setAttribute("content", "width=device-width, height=" + heightt +
+                            ", initial-scale=1.0");
+                    }
+                }
+            });
+        }
+    </script>
+    <div id="root"></div>
+    <script type="text/javascript" src="bundle.js"></script>
 </body>
+
 </html>

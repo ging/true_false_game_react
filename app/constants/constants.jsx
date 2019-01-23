@@ -12,13 +12,13 @@ export const INITIAL_STATE = {
   },
   wait_for_user_profile:false,
   game:{
-    enable_buttons: true,
+    enable_buttons:true,
     index:0,
     questions:[],
     game_started:false,
     game_ended:false,
-    time: 0,
-    clock_paused: true
+    time:0,
+    clock_paused:true,
   },
 };
 

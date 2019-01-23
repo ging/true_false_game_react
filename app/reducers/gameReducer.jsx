@@ -2,7 +2,6 @@ import {INITIAL_STATE, OBJECTIVES} from '../constants/constants';
 import {GO_LEFT, GO_RIGHT} from '../constants/constants.jsx';
 import {GLOBAL_CONFIG} from '../config/config.js';
 
-
 export default function gameReducer(state = INITIAL_STATE.game, action){
   let receivedState;
   switch (action.type){
@@ -44,20 +43,19 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
       receivedState = JSON.parse(JSON.stringify(state));
       receivedState.time += 1;
       return receivedState;
-    } else {
-      return state;
     }
+    return state;
+
   case 'ADD_SIZES':
     receivedState = JSON.parse(JSON.stringify(state));
-    //in action.sizes we have an array with all the image sizes , if type is iframe it comes with a null, instead of width and height
+    // in action.sizes we have an array with all the image sizes , if type is iframe it comes with a null, instead of width and height
     receivedState.questions = receivedState.questions.map((q, index) => {
-      if(q.type!=="iframe"){
+      if(q.type !== "iframe"){
         q.width = action.sizes[index].width;
         q.height = action.sizes[index].height;
       }
       return q;
     });
-    console.log(receivedState);
     return receivedState;
   case 'ANIMATION_ENDED':
     receivedState = JSON.parse(JSON.stringify(state));
@@ -69,7 +67,7 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
       receivedState.game_ended = true;
       receivedState.clock_paused = true;
     } else if(receivedState.questions[action.index].true_or_false === receivedState.questions[action.index].user_answer){
-      //right answer, go to next question or if last, to the first unanswered
+      // right answer, go to next question or if last, to the first unanswered
       if(receivedState.questions.length - 1 !== action.index){
         receivedState.index = action.index + 1;
       } else {
@@ -79,11 +77,11 @@ export default function gameReducer(state = INITIAL_STATE.game, action){
         if(first_question_unanswered){
           receivedState.index = first_question_unanswered.id;
         } else {
-          console.log("PROBLEM. Game not ended but not more unanswered questions, this should never appear");
+          // console.log("PROBLEM. Game not ended but not more unanswered questions, this should never appear");
         }
       }
-    } else{
-      console.log("Wrong answer, keep the actual question for the user to see the feedback");
+    } else {
+      // console.log("Wrong answer, keep the actual question for the user to see the feedback");
     }
     return receivedState;
   case 'GO_TO_QUESTION':
@@ -103,42 +101,40 @@ function checkAnswer(state, action){
   let receivedState = JSON.parse(JSON.stringify(state));
   let questionclone = JSON.parse(JSON.stringify(action.question));
   if(action.question.true_or_false === action.answer){
-    console.log("Ha respondido correctamente, todos los puntos");
+    // console.log("Ha respondido correctamente, todos los puntos");
     questionclone.score_accomplished = action.question.score;
   } else {
-    console.log("Ha respondido mal, cero puntos");
+    // console.log("Ha respondido mal, cero puntos");
     questionclone.score_accomplished = 0;
   }
   questionclone.answered = true;
   questionclone.user_answer = action.answer;
   questionclone.show_animation = true; // we haven't shown the animation right/wrong telling the user
-  receivedState.enable_buttons = false; //disable next and prev buttons to wait for the animation to finish
+  receivedState.enable_buttons = false; // disable next and prev buttons to wait for the animation to finish
   receivedState.questions[action.index] = questionclone;
-  console.log("checkAnswer, receivedState: ", receivedState);
   return receivedState;
 }
 
 function passquiz(state, action){
   if(state.enable_buttons === false){
-    console.log("No se puede pasar las preguntas durante una animación. enable_buttons es false");
     return state;
-  } else {
-    let receivedState = JSON.parse(JSON.stringify(state));
-    if(action.right_left === GO_RIGHT){
-      if(receivedState.questions.length - 1 !== state.index){
-        receivedState.index = state.index + 1;
-      } else {
-        receivedState.index = 0;
-      }
-    } else if(action.right_left === GO_LEFT){
-      if(state.index !== 0){
-        receivedState.index = state.index - 1;
-      } else {
-        receivedState.index = receivedState.questions.length - 1;
-      }
-    } else {
-      console.log("Solo entiendo las acciones GO LEFT y GO RIGHT");
-    }
-    return receivedState;
   }
+  let receivedState = JSON.parse(JSON.stringify(state));
+  if(action.right_left === GO_RIGHT){
+    if(receivedState.questions.length - 1 !== state.index){
+      receivedState.index = state.index + 1;
+    } else {
+      receivedState.index = 0;
+    }
+  } else if(action.right_left === GO_LEFT){
+    if(state.index !== 0){
+      receivedState.index = state.index - 1;
+    } else {
+      receivedState.index = receivedState.questions.length - 1;
+    }
+  } else {
+      // console.log("Solo entiendo las acciones GO LEFT y GO RIGHT");
+  }
+  return receivedState;
+
 }
