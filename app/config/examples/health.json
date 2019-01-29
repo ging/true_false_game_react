@@ -21,14 +21,14 @@
   "final_video": "https://www.youtube.com/embed/Hq813P5FXwE?rel=0",
   "survey": "https://docs.google.com/forms/d/e/1FAIpQLSdiEVIf3g2VpDrcatqda-k-kbJ8yrccxGxxU_ZLYwPKrFYPWA/viewform",
   "questions": [
-    { "path": "https://www.hogarderemedios.com/2-ingredientes-hice-remedio-acabo-10-anos-diabetes-descontrolada-solo-5-dias-dile-adios/",
+    { "path": "https://www.lavidalucida.com/regular-los-niveles-de-azucar-en-la-sangre-con-canela-y-clavo-de-olor.html",
       "type": "iframe",
       "source_name": "eliminar la diabetes con dos ingredientes",
-      "source_url": "https://www.hogarderemedios.com/2-ingredientes-hice-remedio-acabo-10-anos-diabetes-descontrolada-solo-5-dias-dile-adios/",
+      "source_url": "https://www.lavidalucida.com/regular-los-niveles-de-azucar-en-la-sangre-con-canela-y-clavo-de-olor.html",
       "secure": true,
       "true_or_false": false,
       "score": 10,
-      "feedback_path": "https://saludsinbulos.com/alertas/diabetes-dos-ingredientes/",
+      "feedback_path": "https://saludsinbulos.com/alertas/cura-diabetes-natural-clavo-canela/",
       "feedback_search": "https://www.google.es/search?q=diabetes+dos+ingredientes+bulo",
       "feedback_sitename": "saludsinbulos"
     },
