@@ -36,8 +36,8 @@
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid03.png",
-      "source_name": "Madrid denuncia que el Gobierno paralizó en Zaragoza 5.000 kilos de mascarillas para Madrid porque «Aduanas cierra a las 15h»",
-      "source_url": "https://okdiario.com/espana/gobierno-paraliza-zaragoza-5-000-kilos-mascarillas-madrid-porque-aduanas-cierra-15h-5392455",
+      "source_name": "Una técnica experimental diagnostica la covid en 40 minutos",
+      "source_url": "https://elpais.com/ciencia/2020-04-21/una-tecnica-experimental-diagnostica-la-covid-en-40-minutos.html",
       "secure": true,
       "true_or_false": true,
       "score": 10,
@@ -63,8 +63,8 @@
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid06.png",
-      "source_name": "Madrid denuncia que el Gobierno paralizó en Zaragoza 5.000 kilos de mascarillas para Madrid porque «Aduanas cierra a las 15h»",
-      "source_url": "https://okdiario.com/espana/gobierno-paraliza-zaragoza-5-000-kilos-mascarillas-madrid-porque-aduanas-cierra-15h-5392455",
+      "source_name": "Con mascarilla y respetando la distancia social: miles de personas protestan contra Netanyahu en Israel",
+      "source_url": "https://www.elmundo.es/internacional/2020/04/19/5e9ca879fdddff251d8b4582.html",
       "secure": true,
       "true_or_false": true,
       "score": 10,
@@ -98,8 +98,8 @@
       "feedback_path": "./assets/images/quiz/covid/covid09feedback.png",
       "feedback_text": ""
     },{ "path": "./assets/images/quiz/covid/covid10.png",
-      "source_name": "Madrid denuncia que el Gobierno paralizó en Zaragoza 5.000 kilos de mascarillas para Madrid porque «Aduanas cierra a las 15h»",
-      "source_url": "https://okdiario.com/espana/gobierno-paraliza-zaragoza-5-000-kilos-mascarillas-madrid-porque-aduanas-cierra-15h-5392455",
+      "source_name": "La increíble historia de Ana, una anciana de 107 años curada de coronavirus que ya superó la gripe española de 1918",
+      "source_url": "https://www.lasexta.com/noticias/nacional/increible-historia-ana-anciana-107-anos-curada-coronavirus-que-supero-gripe-espanola-1918_202004235ea1bb9d2800260001d8bfd4.html",
       "secure": true,
       "true_or_false": true,
       "score": 10,
