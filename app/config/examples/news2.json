@@ -23,7 +23,7 @@
       "secure": false,
       "true_or_false": false,
       "score": 10,
-      "feedback_path": "./assets/images/quiz/covid/covid01feedback.png",
+      "feedback_path": "./assets/images/quiz/covid/covid01_feedback.png",
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid02.png",
@@ -32,7 +32,7 @@
       "secure": false,
       "true_or_false": false,
       "score": 10,
-      "feedback_path": "./assets/images/quiz/covid/covid02feedback.png",
+      "feedback_path": "./assets/images/quiz/covid/covid02_feedback.png",
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid03.png",
@@ -41,7 +41,7 @@
       "secure": true,
       "true_or_false": true,
       "score": 10,
-      "feedback_path": "",
+      "feedback_path": "./assets/images/quiz/covid/covid03_feedback.png",
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid04.png",
@@ -50,7 +50,7 @@
       "secure": true,
       "true_or_false": false,
       "score": 10,
-      "feedback_path": "./assets/images/quiz/covid/covid04feedback.png",
+      "feedback_path": "./assets/images/quiz/covid/covid04_feedback.png",
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid05.png",
@@ -59,7 +59,7 @@
       "secure": true,
       "true_or_false": false,
       "score": 10,
-      "feedback_path": "./assets/images/quiz/covid/covid05feedback.png",
+      "feedback_path": "./assets/images/quiz/covid/covid05_feedback.png",
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid06.png",
@@ -68,7 +68,7 @@
       "secure": true,
       "true_or_false": true,
       "score": 10,
-      "feedback_path": "",
+      "feedback_path": "./assets/images/quiz/covid/covid06_feedback.png",
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid07.png",
@@ -77,7 +77,7 @@
       "secure": true,
       "true_or_false": false,
       "score": 10,
-      "feedback_path": "./assets/images/quiz/covid/covid07feedback.png",
+      "feedback_path": "./assets/images/quiz/covid/covid07_feedback.png",
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid08.png",
@@ -86,7 +86,7 @@
       "secure": true,
       "true_or_false": false,
       "score": 10,
-      "feedback_path": "./assets/images/quiz/covid/covid08feedback.png",
+      "feedback_path": "./assets/images/quiz/covid/covid08_feedback.png",
       "feedback_text": ""
     },
     { "path": "./assets/images/quiz/covid/covid09.png",
@@ -95,7 +95,7 @@
       "secure": false,
       "true_or_false": false,
       "score": 10,
-      "feedback_path": "./assets/images/quiz/covid/covid09feedback.png",
+      "feedback_path": "./assets/images/quiz/covid/covid09_feedback.png",
       "feedback_text": ""
     },{ "path": "./assets/images/quiz/covid/covid10.png",
       "source_name": "La increíble historia de Ana, una anciana de 107 años curada de coronavirus que ya superó la gripe española de 1918",
@@ -103,7 +103,7 @@
       "secure": true,
       "true_or_false": true,
       "score": 10,
-      "feedback_path": "",
+      "feedback_path": "./assets/images/quiz/covid/covid10_feedback.png",
       "feedback_text": ""
     }
   ]
