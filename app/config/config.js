@@ -16,7 +16,7 @@ export let GLOBAL_CONFIG = {
     app_logo:"assets/images/logos/fakedetector_logo.svg",
     elab_text:"una aplicación de",
     elab_logo:"assets/images/logos/elab_logo_white.svg",
-    file:"ciencia.json",
+    file:"health.json",
   },
   production:{
     debug:false,
