@@ -21,10 +21,10 @@
   "final_video": "https://www.youtube.com/embed/Hq813P5FXwE?rel=0",
   "survey": "https://docs.google.com/forms/d/e/1FAIpQLSdiEVIf3g2VpDrcatqda-k-kbJ8yrccxGxxU_ZLYwPKrFYPWA/viewform",
   "questions": [
-    { "path": "https://www.elpucara.com/2019/06/regular-los-niveles-de-azucar-en-la-sangre-con-canela-y-clavo-de-olor/",
+    { "path": "./assets/images/quiz/health/health01.png",
       "type": "iframe",
       "source_name": "eliminar la diabetes con dos ingredientes",
-      "source_url": "https://www.lavidalucida.com/regular-los-niveles-de-azucar-en-la-sangre-con-canela-y-clavo-de-olor.html",
+      "source_url": "https://www.elpucara.com/2021/04/regular-los-niveles-de-azucar-en-la-sangre-con-canela-y-clavo-de-olor/",
       "secure": true,
       "true_or_false": false,
       "score": 10,
@@ -32,7 +32,7 @@
       "feedback_search": "https://www.google.es/search?q=diabetes+dos+ingredientes+bulo",
       "feedback_sitename": "saludsinbulos"
     },
-    { "path": "https://www.dietametabolica.es/lacteos.htm",
+    { "path": "./assets/images/quiz/health/health02.png",
       "type": "iframe",
       "source_name": "lacteos sí, pero no pasteurizados",
       "source_url": "https://www.dietametabolica.es/lacteos.htm",
@@ -43,7 +43,7 @@
       "feedback_search": "https://www.google.es/search?q=leche+sin+pasteurizar+bulo",
       "feedback_sitename": "saludsinbulos"
     },
-    { "path": "https://elpais.com/elpais/2018/04/02/buenavida/1522699942_976535.html",
+    { "path": "./assets/images/quiz/health/health03.png",
       "type": "iframe",
       "source_name": "alergia a los gatos, ¿tengo que deshacerme de él?",
       "source_url": "https://elpais.com/elpais/2018/04/02/buenavida/1522699942_976535.html",
@@ -54,7 +54,7 @@
       "feedback_search": "",
       "feedback_sitename": ""
     },
-    { "path": "https://elpais.com/elpais/2018/03/16/tentaciones/1521192377_540924.html",
+    { "path": "./assets/images/quiz/health/health04.png",
       "type": "iframe",
       "source_name": "patentada una tijera que corta el pelo a fuego",
       "source_url": "https://elpais.com/elpais/2018/03/16/tentaciones/1521192377_540924.html",
@@ -65,7 +65,7 @@
       "feedback_search": "https://www.google.es/search?q=tijera+pelo+alopecia+bulo",
       "feedback_sitename": "saludsinbulos"
     },
-    { "path": "https://anabelavila.com/paleo/guia-dieta",
+    { "path": "./assets/images/quiz/health/health05.png",
       "type": "iframe",
       "source_name": "dieta paleolítica",
       "source_url": "https://anabelavila.com/paleo/guia-dieta",
@@ -76,7 +76,7 @@
       "feedback_search": "https://www.google.es/search?q=dieta+paleolitica+bulo",
       "feedback_sitename": "saludsinbulos"
     },
-    { "path": "https://www.20minutos.es/noticia/3301842/0/crean-dispositivo-permite-detectar-meningitis-infantil-3-segundos/",
+    { "path": "./assets/images/quiz/health/health06.png",
       "type": "iframe",
       "source_name": "dispositivo que detecta la meningitis infantil en 3 sec",
       "source_url": "https://www.20minutos.es/noticia/3301842/0/crean-dispositivo-permite-detectar-meningitis-infantil-3-segundos/",
@@ -87,7 +87,7 @@
       "feedback_search": "",
       "feedback_sitename": ""
     },
-    { "path": "https://retoadelgaza.com/dieta-de-la-banana/",
+    { "path": "./assets/images/quiz/health/health07.png",
       "type": "iframe",
       "source_name": "dieta de la banana",
       "source_url": "https://retoadelgaza.com/dieta-de-la-banana/",
@@ -98,7 +98,7 @@
       "feedback_search": "https://www.google.es/search?q=dieta+banana+bulo",
       "feedback_sitename": "saludsinbulos"
     },
-    { "path": "https://as.com/epik/2018/02/05/portada/1517845700_265782.html",
+    { "path": "./assets/images/quiz/health/health08.png",
       "type": "iframe",
       "source_name": "patatas de McDonald's curan la calvicie",
       "source_url": "https://as.com/epik/2018/02/05/portada/1517845700_265782.html",
@@ -109,7 +109,7 @@
       "feedback_search": "https://www.google.es/search?q=bulo+patatas+mcdonalds+calvicie",
       "feedback_sitename": "saludsinbulos"
     },
-    { "path": "https://www.elmundo.es/comunidad-valenciana/castellon/2018/03/20/5ab15bb0e2704ee2308b4760.html",
+    { "path": "./assets/images/quiz/health/health09.png",
       "type": "iframe",
       "source_name": "17 horas sin dormir: límite al volante",
       "source_url": "https://www.elmundo.es/comunidad-valenciana/castellon/2018/03/20/5ab15bb0e2704ee2308b4760.html",
@@ -120,7 +120,7 @@
       "feedback_search": "",
       "feedback_sitename": ""
     },
-    { "path": "https://www.bbc.com/mundo/noticias-38933890",
+    { "path": "./assets/images/quiz/health/health10.png",
       "type": "iframe",
       "source_name": "arsénico el arroz que consumimos",
       "source_url": "https://www.bbc.com/mundo/noticias-38933890",
